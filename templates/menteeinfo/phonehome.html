@@ -1,0 +1,1114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% comment %} <link rel="stylesheet" href="{% static 'StyleSheet/home.css' %}" /> {% endcomment %}
+    <title>PMP | SARC | IITB</title>
+    <link rel="icon" href='../static/img/favIcon.png' sizes="16x16" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/2.3.1/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
+    <link href="//netdna.bootstrapcdn.com/bootstrap/2.3.1/css/bootstrap-responsive.min.css" rel="stylesheet" />
+    <style>
+        .venn-container {
+            padding: 25px 25px 25px 200px;
+          }
+          .venncircle {
+            padding: 18px;
+            width: 150px;
+            height: 150px;
+            -moz-border-radius: 200px;
+            -webkit-border-radius: 200px;
+            border-radius: 50%;
+            position: absolute;
+            -webkit-transition: color 0.5s linear, background-color 0.5s linear;
+            -moz-transition: color 0.5s linear, background-color 0.5s linear;
+            -o-transition: color 0.5s linear, background-color 0.5s linear;
+            transition: color 0.5s linear, background-color 0.5s linear;
+          }
+          .venncircle > a {
+            font-size: 19px;
+            font-weight: bold;
+            letter-spacing: .004em;
+            color: #FFFFFF;
+            text-decoration: none;
+          }
+          .venncirctop {
+            padding: 18px;
+            width: 150px;
+            height: 150px;
+            -moz-border-radius: 200px;
+            -webkit-border-radius: 200px;
+            border-radius: 50%;
+            position: absolute;
+            -webkit-transition: color 0.5s linear, background-color 0.5s linear;
+            -moz-transition: color 0.5s linear, background-color 0.5s linear;
+            -o-transition: color 0.5s linear, background-color 0.5s linear;
+            transition: color 0.5s linear, background-color 0.5s linear;
+            margin-bottom: -130px;
+            margin-left: -90px;
+            background-color: #5c5b59;
+            -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+            filter: alpha(opacity=50);
+            background-color: rgba(92, 91, 89, 0.5);
+            z-index: 1;
+            position: relative;
+          }
+          .venncirctop > a {
+            font-size: 19px;
+            font-weight: bold;
+            letter-spacing: .004em;
+            color: #FFFFFF;
+            text-decoration: none;
+          }
+          .venncirctop:hover {
+            z-index: 5;
+            background-color: #6A6561;
+            -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+            filter: alpha(opacity=50);
+            background-color: rgba(106, 101, 97, 0.9);
+          }
+          .venncirclft {
+            padding: 18px;
+            width: 150px;
+            height: 150px;
+            -moz-border-radius: 200px;
+            -webkit-border-radius: 200px;
+            border-radius: 50%;
+            position: absolute;
+            -webkit-transition: color 0.5s linear, background-color 0.5s linear;
+            -moz-transition: color 0.5s linear, background-color 0.5s linear;
+            -o-transition: color 0.5s linear, background-color 0.5s linear;
+            transition: color 0.5s linear, background-color 0.5s linear;
+            margin-left: -207px;
+            background-color: #093d5c;
+            -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+            filter: alpha(opacity=50);
+            background-color: rgba(9, 61, 92, 0.5);
+            z-index: 2;
+          }
+          .venncirclft > a {
+            font-size: 19px;
+            font-weight: bold;
+            letter-spacing: .004em;
+            color: #FFFFFF;
+            text-decoration: none;
+          }
+          .venncirclft:hover {
+            z-index: 5;
+            background-color: #37688C;
+            -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+            filter: alpha(opacity=50);
+            background-color: rgba(55, 104, 140, 0.9);
+          }
+          .venncircrt {
+            padding: 18px;
+            width: 150px;
+            height: 150px;
+            -moz-border-radius: 200px;
+            -webkit-border-radius: 200px;
+            border-radius: 50%;
+            position: absolute;
+            -webkit-transition: color 0.5s linear, background-color 0.5s linear;
+            -moz-transition: color 0.5s linear, background-color 0.5s linear;
+            -o-transition: color 0.5s linear, background-color 0.5s linear;
+            transition: color 0.5s linear, background-color 0.5s linear;
+            margin-left: 17px;
+            background-color: #5e577b;
+            -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+            filter: alpha(opacity=50);
+            background-color: rgba(94, 87, 123, 0.5);
+            z-index: 3;
+            text-align: right;
+          }
+          .venncircrt > a {
+            font-size: 19px;
+            font-weight: bold;
+            letter-spacing: .004em;
+            color: #FFFFFF;
+            text-decoration: none;
+          }
+          .venncircrt:hover {
+            z-index: 5;
+            background-color: #625F75;
+            -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+            filter: alpha(opacity=50);
+            background-color: rgba(98, 95, 117, 0.9);
+          }
+          .venncircbtm {
+            padding: 18px;
+            width: 150px;
+            height: 150px;
+            -moz-border-radius: 200px;
+            -webkit-border-radius: 200px;
+            border-radius: 50%;
+            position: absolute;
+            -webkit-transition: color 0.5s linear, background-color 0.5s linear;
+            -moz-transition: color 0.5s linear, background-color 0.5s linear;
+            -o-transition: color 0.5s linear, background-color 0.5s linear;
+            transition: color 0.5s linear, background-color 0.5s linear;
+            top: 90px;
+            margin-right: 100px;
+            margin-left: -90px;
+            text-align: center;
+            background-color: #627746;
+            -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+            filter: alpha(opacity=50);
+            background-color: rgba(98, 119, 70, 0.5);
+            z-index: 1;
+            position: relative;
+          }
+          .venncircbtm > a {
+            font-size: 19px;
+            font-weight: bold;
+            letter-spacing: .004em;
+            color: #FFFFFF;
+            text-decoration: none;
+          }
+          .venncircbtm:hover {
+            z-index: 5;
+            background-color: #3a4e20;
+            -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+            filter: alpha(opacity=50);
+            background-color: rgba(58, 78, 32, 0.9);
+          }
+          .venntxttop {
+            text-align: center;
+            display: inline-block;
+            margin: 0 auto;
+            margin-left: 30px;
+            position: relative;
+            top: 20px;
+          }
+          .venntxttop:hover {
+            color: #FFFFFF;
+            text-decoration:none;
+          }
+          .venntxtrt {
+            margin: 0 0 10 60px;
+            display: inline-block;
+            position: relative;
+            top: 63px;
+            z-index: 5;
+          }
+          .venntxtrt:hover {
+            color: #FFFFFF;
+            text-decoration:none;
+          }
+          
+          .venntxtlft {
+            width: 70%;
+            display: inline-block;
+            position: relative;
+            top: 63px;
+            z-index: 5;
+          }
+          .venntxtlft:hover {
+            color: #FFFFFF;
+            text-decoration:none;
+          }
+          .venntxtbtm {
+            text-align: center;
+            display: inline-block;
+            width: 70%;
+            position: relative;
+            top: 70px;
+          }
+          .venntxtbtm:hover {
+            color: #FFFFFF;
+            text-decoration:none;
+          }
+
+          .ques {
+            font-size: 19px;
+            color: #87C240;
+        }
+        
+        .ans {
+            font-size: 16px;
+            color: white;
+        }
+        
+        #faq {
+            margin-bottom: 1.5vh;
+        }
+        
+        .faq {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        
+        .faq>.container {
+            display: flex;
+            flex-direction: column;
+            margin-top: 2rem;
+        
+        }
+        
+        .illustration1 {
+            position: relative;
+            width: 80px;
+            height: 80px;
+            top: -42px;
+            left: -10px;
+            z-index: -1;
+        }
+        
+        .faq-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .faq {
+            background-color: #DBF4A7;
+            border: 1px solid #DBF4A7;
+            margin: 5px 0;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+            transition: 0.3s ease;
+            border-radius: 46px;
+        }
+        
+        .faq.active {
+            background-color: #DBF4A7;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1), 0 3px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .faq.active::before,
+        .faq.active::after {
+            content: '\f075';
+            {% comment %} font-family: 'Poppins'; {% endcomment %}
+            color: #2ecc71;
+            font-size: 19px;
+            position: absolute;
+            opacity: 0.2;
+            top: 20px;
+            left: 20px;
+            z-index: 0;
+        }
+        
+        .faq.active::before {
+            color: #3498db;
+            top: -10px;
+            left: -30px;
+            transform: rotateY(180deg);
+        }
+        
+        .faq-title {
+            margin: 0 35px 0 0;
+        }
+        
+        .faq-text {
+            display: none;
+            margin: 30px 0 0;
+        }
+        
+        .faq.active .faq-text {
+            display: block;
+        }
+        
+        .faq-toggle {
+            background-color: transparent;
+            border: 0;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            padding: 0;
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            height: 30px;
+            width: 30px;
+        }
+        
+        .faq-toggle:focus {
+            outline: 0;
+        }
+        
+        .faq-toggle #clear {
+            display: none;
+        }
+        
+        .faq.active .faq-toggle #clear {
+            color: #222;
+            display: block;
+        }
+        
+        .faq.active .faq-toggle #arrow {
+            display: none;
+        }
+        
+        .heading {
+            text-align: center;
+            color: #454343;
+            font-size: 30px;
+            font-weight: 700;
+            position: relative;
+            margin-bottom: 70px;
+            text-transform: uppercase;
+            z-index: 999;
+        }
+        .white-heading{
+            color: #ffffff;
+        }
+        .heading:after {
+            content: ' ';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            height: 40px;
+            width: 180px;
+            border-radius: 4px;
+            transform: translateX(-50%);
+            background: url(img/heading-line.png);
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        .white-heading:after {
+            background: url(https://i.ibb.co/d7tSD1R/heading-line-white.png);
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        
+        .heading span {
+            font-size: 18px;
+            display: block;
+            font-weight: 500;
+        }
+        .white-heading span {
+            color: #ffffff;
+        }
+        /*-----Testimonial-------*/
+        
+        .testimonial:after {
+            position: absolute;
+            top: -0 !important;
+            left: 0;
+            content: " ";
+            background: url(img/testimonial.bg-top.png);
+            background-size: 100% 100px;
+            width: 100%;
+            height: 100px;
+            float: left;
+            z-index: 99;
+        }
+        
+        .testimonial {
+            min-height: 375px;
+            position: relative;
+            background: url(https://i.ibb.co/PTJDkgb/testimonials.jpg);
+            padding-top: 50px;
+            padding-bottom: 50px;
+            background-position: center;
+                background-size: cover;
+        }
+        #testimonial4 .carousel-inner:hover{
+          cursor: -moz-grab;
+          cursor: -webkit-grab;
+        }
+        #testimonial4 .carousel-inner:active{
+          cursor: -moz-grabbing;
+          cursor: -webkit-grabbing;
+        }
+        #testimonial4 .carousel-inner .item{
+          overflow: hidden;
+        }
+        
+        .testimonial4_indicators .carousel-indicators{
+          left: 0;
+          margin: 0;
+          width: 100%;
+          font-size: 0;
+          height: 20px;
+          bottom: 15px;
+          padding: 0 5px;
+          cursor: e-resize;
+          overflow-x: auto;
+          overflow-y: hidden;
+          position: absolute;
+          text-align: center;
+          white-space: nowrap;
+        }
+        .testimonial4_indicators .carousel-indicators li{
+          padding: 0;
+          width: 14px;
+          height: 14px;
+          border: none;
+          text-indent: 0;
+          margin: 2px 3px;
+          cursor: pointer;
+          display: inline-block;
+          background: #ffffff;
+          -webkit-border-radius: 100%;
+          border-radius: 100%;
+        }
+        .testimonial4_indicators .carousel-indicators .active{
+          padding: 0;
+          width: 14px;
+          height: 14px;
+          border: none;
+          margin: 2px 3px;
+          background-color: #9dd3af;
+          -webkit-border-radius: 100%;
+          border-radius: 100%;
+        }
+        .testimonial4_indicators .carousel-indicators::-webkit-scrollbar{
+          height: 3px;
+        }
+        .testimonial4_indicators .carousel-indicators::-webkit-scrollbar-thumb{
+          background: #eeeeee;
+          -webkit-border-radius: 0;
+          border-radius: 0;
+        }
+        
+        .testimonial4_control_button .carousel-control{
+          top: 175px;
+          opacity: 1;
+          width: 40px;
+          bottom: auto;
+          height: 40px;
+          font-size: 10px;
+          cursor: pointer;
+          font-weight: 700;
+          overflow: hidden;
+          line-height: 38px;
+          text-shadow: none;
+          text-align: center;
+          position: absolute;
+          background: transparent;
+          border: 2px solid #ffffff;
+          text-transform: uppercase;
+          -webkit-border-radius: 100%;
+          border-radius: 100%;
+          -webkit-box-shadow: none;
+          box-shadow: none;
+          -webkit-transition: all 0.6s cubic-bezier(0.3,1,0,1);
+          transition: all 0.6s cubic-bezier(0.3,1,0,1);
+        }
+        .testimonial4_control_button .carousel-control.left{
+          left: 7%;
+          top: 50%;
+          right: auto;
+        }
+        .testimonial4_control_button .carousel-control.right{
+          right: 7%;
+          top: 50%;
+          left: auto;
+        }
+        .testimonial4_control_button .carousel-control.left:hover,
+        .testimonial4_control_button .carousel-control.right:hover{
+          color: #000;
+          background: #fff;
+          border: 2px solid #fff;
+        }
+        
+        .testimonial4_header{
+          top: 0;
+          left: 0;
+          bottom: 0;
+          width: 550px;
+          display: block;
+          margin: 30px auto;
+          text-align: center;
+          position: relative;
+        }
+        .testimonial4_header h4{
+          color: #ffffff;
+          font-size: 30px;
+          font-weight: 600;
+          position: relative;
+          letter-spacing: 1px;
+          text-transform: uppercase;
+        }
+        
+        .testimonial4_slide{
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          width: 70%;
+          margin: auto;
+          padding: 20px;
+          position: relative;
+          text-align: center;
+        }
+        .testimonial4_slide img {
+            top: 0;
+            left: 0;
+            right: 0;
+            width: 136px;
+            height: 136px;
+            margin: auto;
+            display: block;
+            color: #f2f2f2;
+            font-size: 18px;
+            line-height: 46px;
+            text-align: center;
+            position: relative;
+            border-radius: 50%;
+            box-shadow: -6px 6px 6px rgba(0, 0, 0, 0.23);
+            -moz-box-shadow: -6px 6px 6px rgba(0, 0, 0, 0.23);
+            -o-box-shadow: -6px 6px 6px rgba(0, 0, 0, 0.23);
+            -webkit-box-shadow: -6px 6px 6px rgba(0, 0, 0, 0.23);
+        }
+        .testimonial4_slide p {
+            color: #ffffff;
+            font-size: 20px;
+            line-height: 1.4;
+            margin: 40px 0 20px 0;
+        }
+        .testimonial4_slide h4 {
+          color: #ffffff;
+          font-size: 22px;
+        }
+        
+        .testimonial .carousel {
+            padding-bottom:50px;
+        }
+        .testimonial .carousel-control-next-icon, .testimonial .carousel-control-prev-icon {
+            width: 35px;
+            height: 35px;
+        }
+        /* ------testimonial  close-------*/
+        #contact {
+            position: relative;
+            {% comment %} margin-top: 5vh; {% endcomment %}
+        }
+        
+        @media (min-width : 801px) {
+            .contact>.container {
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+                margin-bottom: 5vh;
+            }
+        
+            .contactOne,
+            .contactTwo {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                color: #222629;
+                background-color: #DBF4A7;
+                font-weight: bold;
+                padding: 1rem;
+            }
+        
+            #contact {
+                height: 10vh;
+                width: 45vh;
+                background: white;
+                display: grid;
+                place-items: center;
+                font-size: 4vh;
+                font-weight: bold;
+            }
+        }
+        
+        @media(max-width : 800px) {
+            #contact {
+                position: relative;
+                margin-top: 15%;
+            }
+        
+            #contact {
+                height: 10vh;
+                width: 45vh;
+                background: white;
+                display: grid;
+                place-items: center;
+                font-size: 4vh;
+                font-weight: bold;
+            }
+        
+            .contact>.container {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-evenly;
+                align-items: center;
+                margin-top: 10vh;
+            }
+        
+            .contactOne,
+            .contactTwo {
+                color: #222629;
+                background-color: #DBF4A7;
+                font-weight: bold;
+                padding: 1rem;
+                display: flex;
+                flex-direction: column;
+                margin-top: 1rem;
+                margin-bottom: 1rem;
+        
+            }
+        
+            .conatiner {
+                margin-bottom: 5%;
+            }
+        
+        
+        }
+
+        .wrapper{
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            /*background: linear-gradient(-135deg, #c850c0, #4158d0);*/
+            /* background: linear-gradient(375deg, #1cc7d0, #2ede98); */
+           /* background: linear-gradient(-45deg, #e3eefe 0%, #efddfb 100%);*/
+            /* clip-path: circle(25px at calc(0% + 45px) 45px); */
+            background: #389583;
+            clip-path: circle(25px at calc(100% - 45px) 45px);
+            transition: all 0.3s ease-in-out;
+            z-index:1;
+          }
+          #active:checked ~ .wrapper{
+            clip-path: circle(75%);
+          }
+          .menu-btn{
+            position: absolute;
+            z-index: 2;
+            right: 20px;
+            /* left: 20px; */
+            top: 20px;
+            height: 50px;
+            width: 50px;
+            text-align: center;
+            line-height: 50px;
+            border-radius: 50%;
+            font-size: 20px;
+            color: #fff;
+            cursor: pointer;
+            /*background: linear-gradient(-135deg, #c850c0, #4158d0);*/
+            /* background: linear-gradient(375deg, #1cc7d0, #2ede98); */
+           /* background: linear-gradient(-45deg, #e3eefe 0%, #efddfb 100%); */
+            background: #000;
+            transition: all 0.3s ease-in-out;
+          }
+          #active:checked ~ .menu-btn{
+            color: #fff;
+          }
+          #active:checked ~ .menu-btn i:before{
+            content: "\f00d";
+          }
+          .wrapper ul{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            list-style: none;
+            text-align: center;
+          }
+          .wrapper ul li{
+            margin: 15px 0;
+          }
+          .wrapper ul li a{
+            color: none;
+            text-decoration: none;
+            font-size: 30px;
+            font-weight: 500;
+            padding: 5px 30px;
+            color: #fff;
+            border-radius: 50px;
+            background: #000;
+            position: relative;
+            line-height: 50px;
+            transition: all 0.3s ease;
+          }
+          .wrapper ul li a:after{
+            position: absolute;
+            content: "";
+            background: #fff;
+             background: linear-gradient(#14ffe9, #ffeb3b, #ff00e0);
+            /*background: linear-gradient(375deg, #1cc7d0, #2ede98);*/
+            width: 104%;
+            height: 110%;
+            left: -2%;
+            top: -5%; /* if the font is 'Oswald'*/
+            border-radius: 50px;
+            transform: scaleY(0);
+            z-index: -1;
+            animation: rotate 1.5s linear infinite;
+            transition: transform 0.3s ease;
+          }
+          .wrapper ul li a:hover:after{
+            transform: scaleY(1);
+          }
+          .wrapper ul li a:hover{
+            color: #fff;
+          }
+          input[type="checkbox"]{
+            display: none;
+          }
+          .content{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+            text-align: center;
+            width: 100%;
+            color: #202020;
+          }
+          .content .title{
+            font-size: 40px;
+            font-weight: 700;
+          }
+          .content p{
+            font-size: 35px;
+            font-weight: 600;
+          }
+          
+          @keyframes rotate {
+            0%{
+              filter: hue-rotate(0deg);
+            }
+            100%{
+              filter: hue-rotate(360deg);
+            }
+          }
+          
+
+.loader {
+    position : fixed;
+    z-index: 9999;
+    background : url('https://api.insti.app/static/upload/5616c93c-438.jpg') 50% 50% no-repeat;
+    top : 0px;
+    left : 0px;
+    height : 100%;
+    width : 100%;
+    cursor : wait;
+}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    </style>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+
+</head>
+<body style="font-family: 'Lato', sans-serif;
+background: #389583; padding: 10px;">
+{% comment %} <div class="loader"></div> {% endcomment %}
+<input type="checkbox" id="active">
+    <label for="active" class="menu-btn"><i class="fas fa-bars"></i></label>
+  <img src="../static/img/sarc black@3x.png" style="width: 30vw; height: auto;">
+    <div class="wrapper">
+      <ul>
+<li><a href="/">Home</a></li>
+<li><a href="/savedata_new">Register</a></li>
+<li><a href="https://team22.sarc-iitb.org/contact/">Team</a></li>
+</ul>
+</div>
+<div style="margin-top: 100px; height: 200px">
+    <h1 style="color: white; text-align: center; ">Placement Mentoring</h1>
+    <h1 style="color: white; text-align: center; ">Program</h1>
+    <br><br>
+    <button id="sign-in" class="btn" style="border: 2px solid white;
+    border-radius: 150px;
+    align-self: center;
+    width: 150px;
+    padding: 8px 16px;
+    color: white;
+    background: orange;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.1s ease-in-out 0.1s;
+    margin-left: 33%;
+    {% comment %} margin-right: auto; {% endcomment %}
+    " onclick="location.href='/savedata_new'">REGISTER</button>
+    <br><br>
+</div>
+    <hr>
+    <h3>About PMP</h3>
+    <p style="color: white; text-align: justify;">The Placement Mentoring Program seeks to provide mentorship to final-year students in a variety of core and non-core
+        sectors such as finance, analytics, consulting, IT/Software, and so on, in order to help them with their placement
+        process. The programme does this through contributions from recently graduated batches who have gone through the similar
+        placement procedure and are thus familiar with the problems that may be encountered. The service connects mentors and
+        mentees, allowing the latter to discuss the tactics to use when looking for work in a specific profession. PMP kicks off
+        the initial interaction between mentor and mentee, which they may continue at their own pace and according to their
+        requirements, with intermediate follow-ups to address any hurdles that may occur.
+    </p>
+    <hr>
+    <h3>Roles of a Mentor</h3>
+   <div>
+    <div class="row-fluid">
+        <div class="span9">
+
+                <div class="venn-container">
+
+                        <div class="venncirctop">
+                        <a class="venntxttop" href="#i01">Counsel</a>
+                        </div>
+      
+                
+                        <div class="venncirclft">
+                        <a class="venntxtlft" href="#i02">Communication</a>
+                        </div>
+                
+                        <div class="venncircrt">
+                        <a class="venntxtrt" href="#i03">Experience</a>
+                        </div>
+            
+
+                        <div class="venncircbtm">
+                        <a class="venntxtbtm" href="#i04">Evaluation</a>
+                        </div>
+            </div>
+    </div>
+    </div>
+   </div>
+   <div>
+       <br><br><br><br><br>
+       <hr>
+       <p style="color: white" id="i01">
+           COUNSEL
+        <ul style="color: white">
+            <li>Help the mentee during the entire course of prep, starting from resume reviewing to the final placement process</li>
+            <li>Pass on the valuable tips that helped you crack placements, so that the mentee can pass it on to their juniors in the future</li>
+        </ul>
+        </p>
+        <p style="color: white" id="i02">
+            COMMUNICATION
+            <ul style="color: white">
+                <li>Ensure regular communication in these stressful times with the mentee.</li>
+                <li>Be responsive to their doubts/queries/messages. If you are busy, let the mentee know a suitable time to talk</li>
+            </ul>
+        </p>
+        <p style="color: white" id="i03">
+            EXPERIENCE
+            <ul style="color: white">
+                <li>Give them general fundae for preparing for their interviews, etc, and provide feedback on their performance</li>
+                <li>Ensure regular feedback to our team as well</li>
+            </ul>
+        </p>
+        <p style="color: white" id="i04">
+            EVALUATION
+            <ul style="color: white">
+                <li>Provide them with resources to help them prepare well, if possible</li>
+                <li>Help them to not commit the same mistakes you might have</li>
+            </ul>
+        </p>
+   </div>
+   <hr>
+   <h3 style="">Frequently Asked Questions</h3>
+   <div class=' faqs' style="font-size:19px;">
+    <div class="faq-container">
+        <div class="faq ">
+            <h3 class="faq-title"   style="font-weight: 500px; font-size: 19px; line-height:24px;">
+                Why should I become a mentor with PMP?
+            </h3>
+    
+            <p class="faq-text">
+                As an alumnus/alumna, this will be your first opportunity to aid the student community and future batches with your
+                expertise and experience. As a PMP mentor, you will be able to actively contribute to the success of your juniors while
+                also remaining linked to the institute.
+
+            </p>
+    
+            <button class="faq-toggle">
+                <i class="material-icons" id="arrow">></i>
+                <i class="material-icons" id="clear">^</i>
+            </button>
+        </div>
+    
+        <div class="faq">
+            <h3 class="faq-title" style="font-weight: 500px; font-size: 19px; line-height:24px;">
+                What is the further procedure after I register?
+
+            </h3>
+            <p class="faq-text">
+                Mentees will be assigned to you in your desired professional sector when the mentor and mentee registrations are
+                completed. You will have the option of selecting the number of mentees you wish to mentor. The dialogue will then be
+                initiated by your respective mentees, and you will be able to decide on a course of action together. There will be a few
+                follow-ups to help you work through any issues.
+
+            </p>
+            <button class="faq-toggle">
+                <i class="material-icons" id="arrow">></i>
+                <i class="material-icons" id="clear">^</i>
+            </button>
+        </div>
+    
+        <div class="faq">
+            <h3 class="faq-title"  style="font-weight: 500px; font-size: 19px; line-height:24px;">
+                How will my personal details be used?
+            </h3>
+            <p class="faq-text">
+                Names, roll numbers, and contact information will be kept private until the allocation procedure is completed. Your
+                contact information will only be disclosed to the mentees who have been assigned to you. Only your job profile will be
+                made public during mentee registration.
+
+            </p>
+            <button class="faq-toggle">
+                <i class="material-icons" id="arrow">></i>
+                <i class="material-icons" id="clear">^</i>
+            </button>
+        </div>
+    
+        <div class="faq">
+            <h3 class="faq-title"  style="font-weight: 500px; font-size: 19px; line-height:24px;">
+                What is new this time?
+            </h3>
+            <p class="faq-text">
+                Mentees will have an option to fill in their preferences for the mentor (based on the work profile).
+                The allocation will also allow cross-department mentor-mentee pairing
+                A system to refer your batchmates who you feel could contribute to this program by becoming mentors.
+
+            </p>
+            <button class="faq-toggle">
+                <i class="material-icons" id="arrow">></i>
+                <i class="material-icons" id="clear">^</i>
+            </button>
+        </div>
+    
+        <div class="faq">
+            <h3 class="faq-title" style="font-weight: 500px; font-size: 19px; line-height:24px;">
+                How did this program benefit the mentee last year?
+            </h3>
+            <p class="faq-text">
+                According to reports, the mentees profited greatly from the programme last year. The mentoring they received from their
+                mentors was beneficial throughout the placement process. They were able to benefit from their mentor's experiences, and
+                all of the helpful hints and recommendations assisted them with cracking placements and the whole process.
+
+            </p>
+            <button class="faq-toggle">
+                <i class="material-icons" id="arrow">></i>
+                <i class="material-icons" id="clear">^</i>
+            </button>
+        </div>
+    </div>
+    </div>
+</div>
+<br><br>
+<hr>
+<section class="testimonial text-center" style="background: transparent;">
+    <div class="container" >
+
+        <div class="heading white-heading" style="color: black;">
+            Testimonials
+        </div>
+        <div id="testimonial4" class="carousel slide testimonial4_indicators testimonial4_control_button thumb_scroll_x swipe_x" data-ride="carousel" data-pause="hover" data-interval="5000" data-duration="2000">
+         
+            <div class="carousel-inner" role="listbox">
+                <div class="carousel-item active">
+                    <div class="testimonial4_slide">
+                        <img src="../static/img/Aakrit_Mentor.jpg" />
+                        <h4>Akriti Anshuman, CSE 2021</h4>
+                        <p style="text-align: justify;">I believe giving back is one of the best ways to improve anything, including ourselves. The placement mentorship programme provided me with an opportunity to do the same. Having honed through the time of placement and having faced the fears, I wanted to help my juniors in whatever way I could. It feels really great that my expectation was fulfilled. I connected with all my mentees regularly and guided them with their resume making and various assessment rounds. Every time I connected with them, I was reminded of how I was helped in those daunting times and how great it felt to have someone.
+                            And for this reason, I believe this is a great programme, that will only get better in the coming year. I encourage the passed out graduates to contribute and help, and to the juniors, I recommend making the best use of your mentor assigned and never to hesitate in asking for the silliest of things. After all, it is famously said, “Help shall be given to those who ask for it”.
+                            </p>
+                    </div>
+                </div>
+                
+                <div class="carousel-item">
+                    <div class="testimonial4_slide">
+                        <img src="../static/img/Ram Phal Suthar_Mentor.jpeg" />
+                        <h4>Ram Phal Suthar, Chem 2020</h4>
+                        <p style="text-align: justify;">The placement mentoring program gave me a great opportunity to share my experience of the placements with my juniors. The placement at IIT is a stressful process but at the same time, it also gives a great learning opportunity from preparing resumes, to mock GD and PI’s, pre-placement talks, and to final placement sessions. These experiences ultimately help a lot in professional life. To be able to help my juniors with the placements through this program is a very fulfilling experience. Thank you for giving me this opportunity and I recommend all the students to subscribe to this program and make a maximum out of it. </p>
+                    </div>
+                </div>
+            </div>
+            {% comment %} <a class="carousel-control-prev" href="#testimonial4" data-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </a>
+            <a class="carousel-control-next" href="#testimonial4" data-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </a> {% endcomment %}
+        </div>
+    </div>
+</section>
+<hr>
+<h3>Contact Us</h3>
+<div class='contact' style="margin-top:0px;">
+    <div class='container '>
+        <div class='contactOne'>
+            <p>Prannav Raam R A</p>
+            <p>Core Team Member, Hostel and Department Affairs</p>
+            <p>Contact Number - 9940891543</p>
+            <p>Email - prannav@sarc-iitb.org</p>
+        </div>
+        <div class='contactTwo'>
+        <p>Ishika Mamtani</p>
+        <p>Core Team Member, Hostel and Department Affairs</p>
+        <p>Contact Number - 8208884772</p>
+        <p>Email - ishika@sarc-iitb.org</p>
+        </div>
+    </div>
+   </div>
+<script>
+    const toggles = document.querySelectorAll('.faq-toggle');
+
+        toggles.forEach(toggle => {
+            toggle.addEventListener('click', () => {
+                toggle.parentNode.classList.toggle('active');
+            });
+        });
+        const sliderElm = document.querySelector(".slider-container .slider");
+            const btnLeft = document.querySelector(".slider-container .btn-left");
+            const btnRight = document.querySelector(".slider-container .btn-right");
+
+            const numberSliderBoxs = sliderElm.children.length;
+            let idxCurrentSlide = 0;
+
+            // Functions:
+            function moveSlider() {
+                let leftMargin = (sliderElm.clientWidth / numberSliderBoxs) * idxCurrentSlide;
+                sliderElm.style.marginLeft = -leftMargin + "px";
+                console.log(sliderElm.clientWidth, leftMargin);
+            }
+            function moveLeft() {
+                if (idxCurrentSlide === 0) idxCurrentSlide = numberSliderBoxs - 1;
+                else idxCurrentSlide--;
+
+                moveSlider();
+            }
+            function moveRight() {
+                if (idxCurrentSlide === numberSliderBoxs - 1) idxCurrentSlide = 0;
+                else idxCurrentSlide++;
+
+                moveSlider();
+            }
+
+            // Event Listeners:
+            btnLeft.addEventListener("click", moveLeft);
+            btnRight.addEventListener("click", moveRight);
+            window.addEventListener("resize", moveSlider);
+const sections = document.querySelectorAll(".section");
+
+window.addEventListener("scroll", function (event) {
+    sections.forEach((section) => {
+        let top = window.scrollY + 250;
+        let offset = section.offsetTop;
+        let height = section.offsetHeight;
+        let id = section.getAttribute("id");
+
+        if (top >= offset && top < offset + height) {
+            document.querySelectorAll(".active").forEach((a) => {
+                a.classList.remove("active");
+            });
+
+            document.querySelector("[href*=" + id + "]").classList.add("active");
+        }
+    });
+});
+
+</script>
+
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+<hr><hr>
+<h4 style="color: orange; text-align: center;">MADE WITH <3 BY SARC 2022</h4>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+<script type="text/javascript">
+    $(window).load(function() {
+    $(".loader").fadeOut("1000"); })
+</script>
+</body>
+</html>

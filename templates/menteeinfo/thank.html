@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{ '../static/img/favIcon.png' }" sizes="16x16" type="image/png">
+    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,400i,700,900&display=swap" rel="stylesheet">
+    <title>PMP|SARC|IITB</title>
+    <style>
+        body {
+          text-align: center;
+          padding: 40px 0;
+          background: #389583;
+        }
+          h1 {
+            color: white;
+            font-family: "Nunito Sans", "Helvetica Neue", sans-serif;
+            font-weight: 900;
+            font-size: 40px;
+            margin-bottom: 10px;
+          }
+          p {
+            color: white;
+            font-family: "Nunito Sans", "Helvetica Neue", sans-serif;
+            font-size:20px;
+            margin: 0;
+          }
+        i {
+          color: #9ABC66;
+          font-size: 100px;
+          line-height: 200px;
+          margin-left:-15px;
+        }
+        .card {
+          background: orange;
+          padding: 60px;
+          border-radius: 4px;
+          box-shadow: 0 2px 3px #C8D0D8;
+          display: inline-block;
+          margin: 0 auto;
+        }
+
+        .wrapper{
+          position: fixed;
+          top: 0;
+          left: 0;
+          height: 100%;
+          width: 100%;
+          /*background: linear-gradient(-135deg, #c850c0, #4158d0);*/
+          /* background: linear-gradient(375deg, #1cc7d0, #2ede98); */
+         /* background: linear-gradient(-45deg, #e3eefe 0%, #efddfb 100%);*/
+          /* clip-path: circle(25px at calc(0% + 45px) 45px); */
+          background: #389583;
+          clip-path: circle(25px at calc(100% - 45px) 45px);
+          transition: all 0.3s ease-in-out;
+          z-index:1;
+        }
+        #active:checked ~ .wrapper{
+          clip-path: circle(75%);
+        }
+        .menu-btn{
+          position: absolute;
+          z-index: 2;
+          right: 20px;
+          /* left: 20px; */
+          top: 20px;
+          height: 50px;
+          width: 50px;
+          text-align: center;
+          line-height: 50px;
+          border-radius: 50%;
+          font-size: 20px;
+          color: #fff;
+          cursor: pointer;
+          /*background: linear-gradient(-135deg, #c850c0, #4158d0);*/
+          /* background: linear-gradient(375deg, #1cc7d0, #2ede98); */
+         /* background: linear-gradient(-45deg, #e3eefe 0%, #efddfb 100%); */
+          background: #000;
+          transition: all 0.3s ease-in-out;
+        }
+        #active:checked ~ .menu-btn{
+          color: #fff;
+        }
+        #active:checked ~ .menu-btn i:before{
+          content: "\f00d";
+        }
+        .wrapper ul{
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          list-style: none;
+          text-align: center;
+        }
+        .wrapper ul li{
+          margin: 15px 0;
+        }
+        .wrapper ul li a{
+          color: none;
+          text-decoration: none;
+          font-size: 30px;
+          font-weight: 500;
+          padding: 5px 30px;
+          color: #fff;
+          border-radius: 50px;
+          background: #000;
+          position: relative;
+          line-height: 50px;
+          transition: all 0.3s ease;
+        }
+        .wrapper ul li a:after{
+          position: absolute;
+          content: "";
+          background: #fff;
+           background: linear-gradient(#14ffe9, #ffeb3b, #ff00e0);
+          /*background: linear-gradient(375deg, #1cc7d0, #2ede98);*/
+          width: 104%;
+          height: 110%;
+          left: -2%;
+          top: -5%; /* if the font is 'Oswald'*/
+          border-radius: 50px;
+          transform: scaleY(0);
+          z-index: -1;
+          animation: rotate 1.5s linear infinite;
+          transition: transform 0.3s ease;
+        }
+        .wrapper ul li a:hover:after{
+          transform: scaleY(1);
+        }
+        .wrapper ul li a:hover{
+          color: #fff;
+        }
+        input[type="checkbox"]{
+          display: none;
+        }
+        .content{
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          z-index: 1;
+          text-align: center;
+          width: 100%;
+          color: #202020;
+        }
+        .content .title{
+          font-size: 40px;
+          font-weight: 700;
+        }
+        .content p{
+          font-size: 35px;
+          font-weight: 600;
+        }
+        
+        @keyframes rotate {
+          0%{
+            filter: hue-rotate(0deg);
+          }
+          100%{
+            filter: hue-rotate(360deg);
+          }
+        }
+      </style>
+</head>
+<body background-color="#389583">
+  <input type="checkbox" id="active">
+    <label for="active" class="menu-btn"><i class="fas fa-bars"></i></label>
+    <div class="wrapper">
+      <ul>
+<li><a href="/">Home</a></li>
+<li><a href="/savedata_new">Register</a></li>
+<li><a href="https://team22.sarc-iitb.org/contact/">Team</a></li>
+</ul>
+</div>
+
+    <div class="card">
+        <div style="border-radius:200px; height:200px; width:200px; background: #F8FAF5; margin:0 auto;">
+          <i class="checkmark">
+            <img src="https://api.insti.app/static/upload/5616c93c-438.jpg" height="100px" width="100px">
+          </i>
+        </div>
+          <h1>Sorry</h1> 
+          <p>The applications are closed now!!</p>
+          <h2>{{alumni_id}}</h2>
+          <h2>{{duration}}</h2>
+        </div>
+</body>
+</html>

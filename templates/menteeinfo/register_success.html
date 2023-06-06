@@ -1,0 +1,97 @@
+{% load static%}
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% comment %} <title>Placement Mentoring Program | SARC | IIT Bombay<title> {% endcomment %}
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link type='text/css' rel="stylesheet" href="{% static 'menteeinfo/random.css' %}">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="regform.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.3/velocity.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+    <meta name="keywords" content="SARC, Student Alumni Relations Cell, SARC-IITB, sarc, sarc-iitb, sarc iitb, SARC iitb, SARC IITB, SARC IITB Coordie, HTML, CSS, javascript">
+    {% comment %} <link rel="shortcut icon" href="{% static 'img/logo1.png' %}" sizes="16x16" type="image/png">
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script> {% endcomment %}
+    
+    <style>
+        #progressbar li:after {
+            content: '';
+            width: 100%;
+            height: 2px;
+            background: #87c240;
+            position: absolute;
+            left: 0;
+            top: 25px;
+            z-index: -1
+        }
+
+        #progressbar li:before {
+            width: 50px;
+            height: 50px;
+            line-height: 45px;
+            display: block;
+            font-size: 20px;
+            color: #ffffff;
+            background: #87c240;
+            border-radius: 50%;
+            margin: 0 auto 10px auto;
+            padding: 2px
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid px-0">
+        <header>PLACEMENT MENTORING PROGRAM</header>
+    </div>
+    <div class="container" id="t01">
+        <div class="row justify-content-center">
+            <div class="col-11 text-center p-0 mt-3 mb-2">
+                <div class="card px-0 pt-4 pb-0 mt-3 mb-3" id="t01">
+                    <h2 id="heading">MENTEE REGISTRATION FORM</h2>
+
+                    <form id="msform">
+                        <!-- progressbar -->
+                        <ul id="progressbar">
+                            <li class="active" id="account"><strong style="color: #87c240;">Personal Details</strong>
+                            </li>
+                            <li id="personal"><strong style="color: #87c240;">Choose your Mentors</strong></li>
+                            <li id="confirm"><strong style="color: #87c240;">Finish</strong></li>
+                        </ul>
+
+
+
+                        <fieldset>
+                            <div class="form-card" id="t01">
+                                {% comment %} <div class="row">
+                                    <div class="col-7">
+                                        <h2 class="fs-title">Finish:</h2>
+                                    </div>
+                                    <div class="col-5">
+                                        <h2 class="steps">Step 3 - 3</h2>
+                                    </div>
+                                </div> <br><br> {% endcomment %}
+                                <h2 class="purple-text text-center"><strong>SUCCESS!</strong></h2> <br>
+
+                                <div class="row justify-content-center">
+                                    <div class="col-7 text-center">
+                                        <h5 class="purple-text text-center">You have successfully registered!</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
