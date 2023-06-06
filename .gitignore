@@ -1,0 +1,9 @@
+staticfiles/
+db.sqlite3
+menteeeinfo/migrations/
+menteeeinfo/__pycache__/
+
+pmep/__pycache__/
+pmep/migrations/
+
+*.pyc

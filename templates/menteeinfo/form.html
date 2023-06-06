@@ -1,0 +1,467 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'StyleSheet/form.css' %}" />
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+  <link rel="icon" href="{% static 'img/base/favIcon.png' %}" sizes="16x16" type="image/png">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+  </script>
+
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+    integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+  <title>SARC, IIT Bombay</title>
+  <script src="https://www.marcoguglie.it/Codepen/AnimatedHeaderBg/demo-1/js/EasePack.min.js"></script>
+  <script src="https://www.marcoguglie.it/Codepen/AnimatedHeaderBg/demo-1/js/rAF.js"></script>
+  <script src="https://www.marcoguglie.it/Codepen/AnimatedHeaderBg/demo-1/js/TweenLite.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+  <link rel="icon" href="{% static 'img/base/favIcon.png' %}" sizes="16x16" type="image/png">
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+    integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <link rel="icon" type="image/x-icon" href="../static/title3.png">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+  {% comment %}
+  <script src="https://use.fontawesome.com/4ecc3dbb0b.js" /> {% endcomment %}
+  <title>Register | SARC, IIT Bombay</title>
+  <style>
+    .navbar-nav .nav-item .nav-link {
+      padding: 0.6em 1em!important;
+      font-size: 120%;
+      font-weight: bold;
+      color: rgb(17, 211, 17);
+      letter-spacing: 1px;
+      font-family: 'Gothic A1', sans-serif;
+  }
+  .btn-outline-light{
+    border-radius: 50%;
+    width : 40px;
+  }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+ <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</head>
+
+{% comment %} <body style="background-image:url('../static/fire.png')"> {% endcomment %}
+<body style="background-color: #389583;">
+  <input type="checkbox" id="active">
+    <label for="active" class="menu-btn"><i class="fas fa-bars"></i></label>
+    <div class="wrapper">
+      <ul>
+<li><a href="/">Home</a></li>
+<li><a href="/savedata_new">Register</a></li>
+<li><a href="https://team22.sarc-iitb.org/contact/">Team</a></li>
+</ul>
+</div>
+
+
+    <div class="form_wrapper">
+      <div class="form_container">
+        <br>
+        <div class="title_container">
+          <h2>Apply as a Mentor for Placement Mentoring Program</h2>
+        </div>
+        <div class="row clearfix">
+          <div class="">
+            <form method="POST" action="savedata_new"> {% csrf_token %}
+              <div class="input_field">
+                <input type="text" name="fullname" placeholder="Full Name" required />
+              </div>
+              <div class="input_field"> 
+                <input type="email" name="email" placeholder="Email" required />
+              </div>
+              <div class="input_field"> 
+                <input type="text" name="rollno" placeholder="Roll No" required />
+              </div>
+              <select name="department" id="department" style="width: 100%; padding: 6px; border: 1px solid #ccc;" onchange="yesnoCheck(this);">
+                <option select-disabled="true">--Department--</option>
+            <option data-value="Aerospace Department">Aerospace Department</option>
+            <option data-value="BSBE Department">BSBE Department</option>
+            <option data-value="Chemical Department">Chemical Department</option>
+            <option data-value="Civil Department">Civil Department</option>
+            <option data-value="CSE Department">CSE Department</option>
+            <option data-value="Earth Science Department">Earth Science Department</option>
+            <option value="Electrical Department">Electrical Department</option>
+            <option data-value="Energy Department">Energy Department</option>
+            <option data-value="ESED Department">ESED Department</option>
+            <option data-value="HSS Department">HSS Department</option>
+            <option data-value="IEOR Department">IEOR Department</option>
+            <option data-value="MEMS Department">MEMS Department</option>
+            <option data-value="Mechanical Department">Mechanical Department</option>
+            <option data-value="Chemistry Department">Chemistry Department</option>
+            <option data-value="Mathematics Department">Mathematics Department</option>
+            <option data-value="Physics Department">Physics/EP Department</option>
+            <option data-value="Management Department">School of Management Department</option>
+            <option id="other_dep" data-value="Other Department">Other Department</option>
+          </select>
+          <div class="input_field">
+            <input type="text" id="other_department" style="width: 100%; padding: 6px; border: 1px solid #ccc; display: none;" name="other_department" placeholder="In case you have chosen other in department"/>
+          </div>
+              {% comment %} <div class='input_field'> Degree* </div> {% endcomment %}
+              <select name="degree" style="width: 100%; padding: 6px; border: 1px solid #ccc;" onchange="yesnoCheck(this);">
+                <option select-disabled="true">--Degree--</option>
+                <option data-value="B.Tech">B.Tech</option>
+                <option data-value="B.S">B.S</option>
+                <option data-value="Dual Degree">Dual Degree</option>
+                <option data-value="M.Tech">M.Tech</option>
+                <option data-value="M.Sc">M.sc</option>
+                <option data-value="PhD">PhD</option>
+                <option id="other_degree" data-value="Other Degree">Other Degree</option>
+              </select>
+              <div class="input_field">
+                <input type="text" id="degree_other" style="width: 100%; padding: 6px; border: 1px solid #ccc; display: none;" name="degree_other" placeholder="In case you have chosen other in degree"/>
+              </div>
+              <div class="input_field"> 
+                <input type="text" name="contact" placeholder="Contact Number" required />
+              </div>
+              <div class="input_field"> 
+                <input type="text" name="graduation_year" placeholder="Year of Graduation" required />
+              </div>
+              <div class="input_field"> 
+                <input type="text" name="designation" placeholder="Designation (with Organization's Name)" required />
+              </div>
+              <div class="input_field"> 
+                <input type="text" name="experience" placeholder="Past Experience (Job/Internship/Project/POR)" required />
+              </div>
+              <div class='form-label'>Fields in which you are willing to provide mentorship (Enter preferences)</div>
+              <div>
+              <select class="input_field" name="pref1" style="width: 100%; padding: 6px; border: 1px solid #ccc;">
+                <option select-disabled="true">--Preference 1--</option>
+                <option data-value="Analytics">Analytics</option>
+                <option data-value="Consultancy">Consultancy</option>
+                <option data-value="Finance">Finance</option>
+                <option data-value="FMCG">FMCG</option>
+                <option data-value="IT/Software">IT/Software</option>
+                <option data-value="Product Management">Product Management</option>
+                <option data-value="Other">Other</option>
+              </select>
+              <select class="input_field" name="pref2" style="width: 100%; padding: 6px; border: 1px solid #ccc;">
+                <option select-disabled="true">--Preference 2--</option>
+                <option data-value="Analytics">Analytics</option>
+                <option data-value="Consultancy">Consultancy</option>
+                <option data-value="Finance">Finance</option>
+                <option data-value="FMCG">FMCG</option>
+                <option data-value="IT/Software">IT/Software</option>
+                <option data-value="Product Management">Product Management</option>
+                <option data-value="Other">Other</option>
+              </select>
+            </div>
+            Any other preferences (Click on the fields)<br>
+                <div class="form-check form-check-inline">
+                <input class="form-check-input checkvalue" type="checkbox" id="analytics" name="analytics" value="Analytics">
+                <label style="font-size: 14px; text-decoration:underline;" class="form-check-label" for="analytics">Analytics</label>
+                </div>
+                <div class="form-check form-check-inline">
+                <input class="form-check-input checkvalue" type="checkbox" id="consultancy" name="consultancy" value="Consultancy">
+                <label style="font-size: 14px; text-decoration:underline;" class="form-check-label" for="consultancy">Consultancy</label>
+                </div>
+                <div class="form-check form-check-inline">
+                <input class="form-check-input checkvalue" type="checkbox" id="finance" name="finance" value="Finance" >
+                <label style="font-size: 14px; text-decoration:underline;" class="form-check-label" for="finance">Finance</label>
+                </div>
+                <div class="form-check form-check-inline">
+                <input class="form-check-input checkvalue" type="checkbox" id="FMCG"  name="FMCG" value="FMCG" >
+                <label style="font-size: 14px; text-decoration:underline;" class="form-check-label" for="FMCG">FMCG</label>
+                </div>
+                <div class="form-check form-check-inline">
+                <input class="form-check-input checkvalue" type="checkbox" id="software" name="software" value="IT/Software" >
+                <label style="font-size: 14px; text-decoration:underline;" class="form-check-label" for="software">IT/Software</label>
+                </div>
+                <div class="form-check form-check-inline"
+                  <input class="form-check-input checkvalue" type="checkbox" id="product_management" name="product_management" value="product_management" >
+                  <label style="font-size: 14px; text-decoration:underline;" class="form-check-label" for="product_management">Product Management</label>
+                </div>
+                <div class="mb-3">  
+                    <input type="text" class="form-control" id="profiles" name="profiles">
+                </div>
+                <div>
+              <div class='form-label'>Only for those who wish to provide mentorship in <b>Core</b></div>
+                <select class="input_field" name="core" style="width: 100%; padding: 6px; border: 1px solid #ccc;" onchange="yesnoCheck(this);">
+                  <option select-disabled="true">--Core--</option>
+                  <option id="aerospace" data-value="Aerospace">Aerospace</option>
+                  <option id="chemical" data-value="Chemical">Chemical</option>
+                  <option id="bsbe" data-value="BSBE">BSBE</option>
+                  <option id="chemistry" data-value="Chemistry">Chemistry</option>
+                  <option id="civil" data-value="Civil">Civil</option>
+                  <option id="cse" data-value="CSE">CSE</option>
+                  <option id="electrical" data-value="Electrical">Electrical</option>
+                  <option id="energy" data-value="Energy">Energy</option>
+                  <option id="mechanical" data-value="Mechanical">Mechanical</option> 
+                  <option data-value="IEOR">IEOR</option>
+                  <option data-value="Maths">Maths</option>
+                  <option data-value="MEMS">MEMS</option>
+                  <option data-value="Earth Science">Earth Science</option>
+                  <option data-value="Engineering Physics">Engineering Physics</option>
+                  <option data-value="Other">Other</option>
+                </select>
+                <select class="input_field" name="aerospace" id="subaerospace" style="width: 100%; padding: 6px; border: 1px solid #ccc; display: none;">
+                  <option select-disabled="true">--Aerospace--</option>
+                  <option data-value="Aerodynamics">Aerodynamics</option>
+                  <option data-value="Aerospace Structures">Aerospace Structures</option>
+                  <option data-value="Dynamics and Controls">Dynamics and Controls</option>
+                  <option data-value="Propulsion">Propulsion</option>
+                  <option data-value="Reasearch">Research</option>
+                  <option data-value="Other">Other in Aerospace</option>
+                </select>
+                <select class="input_field" name="chemical" id="subchemical" style="width: 100%; padding: 6px; border: 1px solid #ccc; display: none;">
+                  <option select-disabled="true">--Chemical--</option>
+                  <option data-value="thermodynamics">Thermodynamics</option>
+                  <option data-value="transport phenomena">Transport Phenomena</option>
+                  <option data-value="process design & analysis">Process design & analysis</option>
+                  <option data-value="Reasearch">Research</option>
+                  <option data-value="Other">Other in Chemical</option>
+                </select>
+                <select class="input_field" name="bsbe" id="subbsbe" style="width: 100%; padding: 6px; border: 1px solid #ccc; display: none;">
+                  <option select-disabled="true">--BSBE--</option>
+                  <option data-value="core biotechnology">Core Biotechnology</option>
+                  <option data-value="pharmaceutical">Pharmaceutical</option>
+                  <option data-value="Reasearch">Research</option>
+                  <option data-value="Other">Other in BSBE</option>
+                </select>
+                <select class="input_field" name="earthscience" id="subearth" style="width: 100%; padding: 6px; border: 1px solid #ccc; display: none;">
+                  <option select-disabled="true">--Earth Science--</option>
+                  <option data-value="Coal, Oil & Gas">Coal, Oil & Gas</option>
+                  <option data-value="Reasearch">Research</option>
+                  <option data-value="Other">Other in Earth Science</option>
+                </select>
+                <select class="input_field" name="EP" id="subep" style="width: 100%; padding: 6px; border: 1px solid #ccc; display: none;">
+                  <option select-disabled="true">--Engineering Physics--</option>
+                  <option data-value="Semiconductors">Semiconductors</option>
+                  <option data-value="Reasearch">Research</option>
+                  <option data-value="Other">Other in EP</option>
+                </select>
+                <select class="input_field" name="mems" id="submems" style="width: 100%; padding: 6px; border: 1px solid #ccc; display: none;">
+                  <option select-disabled="true">--MEMS--</option>
+                  <option data-value="Reasearch">Research</option>
+                  <option data-value="Other">Other in MEMS</option>
+                </select>
+                <select class="input_field" name="maths" id="submaths" style="width: 100%; padding: 6px; border: 1px solid #ccc; display: none;">
+                  <option select-disabled="true">--Maths--</option>
+                  <option data-value="Reasearch">Research</option>
+                  <option data-value="Other">Other in Maths</option>
+                </select>
+                <select class="input_field" name="ieor" id="subieor" style="width: 100%; padding: 6px; border: 1px solid #ccc; display: none;">
+                  <option select-disabled="true">--IEOR--</option>
+                  <option data-value="Reasearch">Research</option>
+                  <option data-value="Other">Other in IEOR</option>
+                </select>
+                <select class="input_field" name="civil" id="subcivil" style="width: 100%; padding: 6px; border: 1px solid #ccc; display: none;">
+                  <option select-disabled="true">--Civil--</option>
+                  <option data-value="Construction Technology and Management">Construction Technology and Management</option>
+                  <option data-value="Structural Engineering">Structural Engineering</option>
+                  <option data-value="Reasearch">Research</option>
+                  <option data-value="Other">Other in Civil</option>
+                </select>
+                <select class="input_field" name="chemistry" id="subchemistry" style="width: 100%; padding: 6px; border: 1px solid #ccc; display: none;">
+                  <option select-disabled="true">--Chemistry--</option>
+                  <option data-value="coal, oil & gas">Coal, Oil & Gas</option>
+                  <option data-value="cosmetics & paint industries">Cosmetics & Paint Industries</option>
+                  <option data-value="pharmaceuticals">Pharmaceuticals</option>
+                  <option data-value="Reasearch">Research</option>
+                  <option data-value="Other">Other in Chemistry</option>
+                </select>
+                <select class="input_field" name="electrical" id="subelectrical" style="width: 100%; padding: 6px; border: 1px solid #ccc; display: none;">
+                  <option select-disabled="true">--Electrical--</option>
+                  <option data-value="Design Engineering">Design Engineering</option>
+                  <option data-value="Control Systems Engineering">Control Systems Engineering</option>
+                  <option data-value="Power Systems Engineering">Power Systems Engineering</option>
+                  <option data-value="Reasearch">Research</option>
+                  <option data-value="Other">Other in Electrical</option>
+                </select>
+                <select class="input_field" name="energy" id="subenergy" style="width: 100%; padding: 6px; border: 1px solid #ccc; display: none;">
+                  <option select-disabled="true">--Energy--</option>
+                  <option data-value="Renewable Energy">Renewable Energy</option>
+                  <option data-value="Batteries">Batteries</option>
+                  <option data-value="EV">EV</option>
+                  <option data-value="Electrical Grid">Electrical Grid</option>
+                  <option data-value="Energy Policy">Energy Policy</option>
+                  <option data-value="Reasearch">Research</option>
+                  <option data-value="Other">Other in Energy</option>
+                </select>
+                <select class="input_field" name="mechanical" id="submechanical" style="width: 100%; padding: 6px; border: 1px solid #ccc; display: none;">
+                  <option select-disabled="true">--Mechanical--</option>
+                  <option data-value="Mechanical core">Mechanical core</option>
+                  <option data-value="Aerospace">Aerospace</option>
+                  <option data-value="Simulations">Simulations</option>
+                  <option data-value="Reasearch">Research</option>
+                  <option data-value="Other">Other in Mechanical</option>
+                </select>
+                <div class="input_field">
+                    <input type="text" class="form-control" id="other_mentorship" name="other_mentorship" placeholder='Others (Please Specify)'>
+                </div>
+                </div>             
+                <div class="input_field">
+                <input type="text" class="form-control" id="no_of_mentees" name="no_of_mentees" required placeholder="Preferred number of mentees">
+              </div>
+              <div class="input_field">
+                <input type="text" class="form-control" id="referral" name="referral" placeholder="Any other batchmate who you would like to refer (Their name and contact number) ">
+              </div>
+                <textarea style="width:100%; padding: 5px; border: 1px solid #ccc;" name="suggestion" placeholder="Suggestions (We love to hear from you)"></textarea>
+                <div class="mb-3">
+                  <ul>
+                    <li>I will support the mentee to the best of my abilities.</li>
+                    <li>I will be responsive to the mentee's doubts and queries.</li>
+                    <li>I will provide adequate feedback to SARC (through feedback forms).</li>
+                  </ul>
+                  <input class="form-check-input" type="radio" name="Iagree" id="Iagree" checked>
+                  <label class="form-check-label" for="Iagree">
+                  By registering, I agree to the above terms and conditions
+                  </label>
+                </div>
+              <input class="button" type="submit" value="Register"/>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="text-center text-white" style="background-color:#133c4a;">
+    <div class="container p-4">
+      <!-- Section: Social media -->
+      <section class="mb-4">
+        <!-- Facebook -->
+        <a class="btn btn-outline-light btn-floating m-1" href="https://www.facebook.com/SARC.IITB" role="button"
+          ><i class="fab fa-facebook-f"></i
+        ></a>
+        <a class="btn btn-outline-light btn-floating m-1" href="https://www.instagram.com/sarc_iitb/" role="button"
+        ><i class="fab fa-instagram"></i></a>
+  
+        <!-- Youtube -->
+        <a class="btn btn-outline-light btn-floating m-1" href="https://www.youtube.com/user/SARCIIT" role="button"
+          ><i style="margin-left:-1px;" class="fab fa-youtube"></i
+        ></a>
+  
+        <!-- Linkedin -->
+        <a class="btn btn-outline-light btn-floating m-1" href="https://www.linkedin.com/company/student-alumni-relations-cell/" role="button"
+          ><i class="fab fa-linkedin-in"></i
+        ></a>
+  
+      </section>
+      <!-- Section: Social media -->
+  
+    </div>
+    <!-- Copyright -->
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0); color:#d7e2e1;">
+      © 2022 Made with 💙 by
+      <span style="color:#d7e2e1;">SARC</span>
+    </div>
+    <!-- Copyright -->
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous">
+    </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous">
+  </script>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script type="text/javascript" src="{% static 'home.js' %}"></script>
+  <script>
+    $(document).ready(function () {
+      $('.dropdown-toggle').dropdown();
+    });
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous">
+  </script>
+  <script src="https://use.fontawesome.com/4ecc3dbb0b.js" />
+  <script src="https://codepen.io/shshaw/pen/QmZYMG.js"></script>
+  <script src="{% static 'form.js' %}"></script>
+  <script>
+    $(document).ready(function () {
+      $('.dropdown-toggle').dropdown();
+    });
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous">
+  </script>
+  <script>
+    $(document).ready(function () {
+      $('.checkvalue').click(function () {
+        var txt = '';
+        $('.checkvalue:checked').each(function () {
+          txt += $(this).val() + ','
+        });
+        $('#profiles').val(txt);
+      });
+    });
+  </script>
+<script type="text/javascript">
+    function yesnoCheck(that) {
+        if(that.value == "Other Department") {
+          document.getElementById("other_department").style.display="block";
+        } else
+        if(that.value == "Other Degree") {
+          document.getElementById("degree_other").style.display = "block";
+        } else
+        if (that.value == "Aerospace") {
+          console.log("check");
+            document.getElementById("subaerospace").style.display = "block";
+        } else if (that.value == "Chemical"){
+            document.getElementById("subchemical").style.display = "block";
+        }
+        else if (that.value == "BSBE"){
+            document.getElementById("subbsbe").style.display = "block";
+        }
+        else if (that.value == "Chemistry"){
+            document.getElementById("subchemistry").style.display = "block";
+        }
+        else if (that.value == "Electrical"){
+            document.getElementById("subelectrical").style.display = "block";
+        }
+        else if (that.value == "Energy"){
+            document.getElementById("subenergy").style.display = "block";
+        }
+        else if (that.value == "Mechanical"){
+            document.getElementById("submechanical").style.display = "block";
+        }
+        else if (that.value == "Civil"){
+            document.getElementById("subcivil").style.display = "block";
+        }
+        else if (that.value == "Earth Science"){
+            document.getElementById("subearth").style.display = "block";
+        }
+        else if (that.value == "Engineering Physics"){
+            document.getElementById("subep").style.display = "block";
+        }
+        else if (that.value == "IEOR"){
+            document.getElementById("subieor").style.display = "block";
+        }
+        else if (that.value == "MEMS"){
+            document.getElementById("submems").style.display = "block";
+        }
+        else if (that.value == "Maths"){
+            document.getElementById("submaths").style.display = "block";
+        }
+    }
+</script>
+  </body>
+
+</html>
