@@ -2,6 +2,7 @@ staticfiles/
 db.sqlite3
 menteeeinfo/migrations/
 menteeeinfo/__pycache__/
+migrations/
 
 pmep/__pycache__/
 pmep/migrations/

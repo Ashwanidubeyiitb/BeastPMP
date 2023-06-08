@@ -51,6 +51,100 @@
   <script src="https://use.fontawesome.com/4ecc3dbb0b.js" /> {% endcomment %}
   <title>Register | SARC, IIT Bombay</title>
   <style>
+
+  :root {
+      --switches-bg-color: goldenrod;
+      --switches-label-color: white ;
+      --switch-bg-color: white;
+      --switch-text-color: goldenrod ;
+  }
+  
+  
+  .switches-container {
+      width: 100%;
+      position: relative;
+      display: flex;
+      padding: 0;
+      position: relative;
+      background: var(--switches-bg-color);
+      line-height: 3rem;
+      border-radius: 3rem;
+      margin-bottom: 20px;
+  }
+  
+  .switches-container input {
+      visibility: hidden;
+      position: absolute;
+      top: 0;
+  }
+  
+  .switches-container label {
+      width: 50%;
+      padding: 0;
+      {% comment %} margin: 0; {% endcomment %}
+      font-size: 100%;
+      text-align: center;
+      cursor: pointer;
+      color: var(--switches-label-color);
+  }
+  
+  /* switch highlighters wrapper (sliding left / right) 
+      - need wrapper to enable the even margins around the highlight box
+  */
+  .switch-wrapper {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 50%;
+      padding: 0.15rem;
+      z-index: 3;
+      transition: transform .5s cubic-bezier(.77, 0, .175, 1);
+      /* transition: transform 1s; */
+  }
+  
+  /* switch box highlighter */
+  .switch {
+      border-radius: 3rem;
+      background: var(--switch-bg-color);
+      height: 100%;
+  }
+  
+  /* switch box labels
+      - default setup
+      - toggle afterwards based on radio:checked status 
+  */
+  .switch div {
+      width: 100%;
+      text-align: center;
+      opacity: 0;
+      display: block;
+      color: var(--switch-text-color) ;
+      transition: opacity .2s cubic-bezier(.77, 0, .175, 1) .125s;
+      will-change: opacity;
+      position: absolute;
+      top: 0;
+      left: 0;
+  }
+  
+  /* slide the switch box from right to left */
+  .switches-container input:nth-of-type(1):checked~.switch-wrapper {
+      transform: translateX(0%);
+  }
+  
+  /* slide the switch box from left to right */
+  .switches-container input:nth-of-type(2):checked~.switch-wrapper {
+      transform: translateX(100%);
+  }
+  
+  /* toggle the switch box labels - first checkbox:checked - show first switch div */
+  .switches-container input:nth-of-type(1):checked~.switch-wrapper .switch div:nth-of-type(1) {
+      opacity: 1;
+  }
+  
+  /* toggle the switch box labels - second checkbox:checked - show second switch div */
+  .switches-container input:nth-of-type(2):checked~.switch-wrapper .switch div:nth-of-type(2) {
+      opacity: 1;
+  }
     .navbar-nav .nav-item .nav-link {
       padding: 0.6em 1em!important;
       font-size: 120%;
@@ -100,40 +194,21 @@
               <div class="input_field"> 
                 <input type="text" name="rollno" placeholder="Roll No" required />
               </div>
-              <select name="department" id="department" style="width: 100%; padding: 6px; border: 1px solid #ccc;" onchange="yesnoCheck(this);">
-                <option select-disabled="true">--Department--</option>
-            <option data-value="Aerospace Department">Aerospace Department</option>
-            <option data-value="BSBE Department">BSBE Department</option>
-            <option data-value="Chemical Department">Chemical Department</option>
-            <option data-value="Civil Department">Civil Department</option>
-            <option data-value="CSE Department">CSE Department</option>
-            <option data-value="Earth Science Department">Earth Science Department</option>
-            <option value="Electrical Department">Electrical Department</option>
-            <option data-value="Energy Department">Energy Department</option>
-            <option data-value="ESED Department">ESED Department</option>
-            <option data-value="HSS Department">HSS Department</option>
-            <option data-value="IEOR Department">IEOR Department</option>
-            <option data-value="MEMS Department">MEMS Department</option>
-            <option data-value="Mechanical Department">Mechanical Department</option>
-            <option data-value="Chemistry Department">Chemistry Department</option>
-            <option data-value="Mathematics Department">Mathematics Department</option>
-            <option data-value="Physics Department">Physics/EP Department</option>
-            <option data-value="Management Department">School of Management Department</option>
-            <option id="other_dep" data-value="Other Department">Other Department</option>
-          </select>
+              <select name="department" id="department" style="width: 100%; padding: 6px; border: 1px solid #ccc;" onchange="showOtherDepartment(this);" required>
+              {% for key, value in options.BRANCH_CHOICES %}
+                <option select-disabled="true">{{value}}</option>
+              {% endfor %}
+              </select>
+
           <div class="input_field">
-            <input type="text" id="other_department" style="width: 100%; padding: 6px; border: 1px solid #ccc; display: none;" name="other_department" placeholder="In case you have chosen other in department"/>
+            <input id="other_department" type="text" style="width: 100%; padding: 6px; border: 1px solid #ccc; display: none;" name="other_department" placeholder="In case you have chosen other in department"/>
           </div>
+
               {% comment %} <div class='input_field'> Degree* </div> {% endcomment %}
-              <select name="degree" style="width: 100%; padding: 6px; border: 1px solid #ccc;" onchange="yesnoCheck(this);">
-                <option select-disabled="true">--Degree--</option>
-                <option data-value="B.Tech">B.Tech</option>
-                <option data-value="B.S">B.S</option>
-                <option data-value="Dual Degree">Dual Degree</option>
-                <option data-value="M.Tech">M.Tech</option>
-                <option data-value="M.Sc">M.sc</option>
-                <option data-value="PhD">PhD</option>
-                <option id="other_degree" data-value="Other Degree">Other Degree</option>
+              <select onchange="showOtherDegree(this);" name="degree" style="width: 100%; padding: 6px; border: 1px solid #ccc;" required>
+                {% for key, value in options.DEGREE_CHOICES %}
+                <option select-disabled="true">{{value}}</option>
+              {% endfor %}
               </select>
               <div class="input_field">
                 <input type="text" id="degree_other" style="width: 100%; padding: 6px; border: 1px solid #ccc; display: none;" name="degree_other" placeholder="In case you have chosen other in degree"/>
@@ -141,181 +216,106 @@
               <div class="input_field"> 
                 <input type="text" name="contact" placeholder="Contact Number" required />
               </div>
-              <div class="input_field"> 
+              <div class="input_field">
                 <input type="text" name="graduation_year" placeholder="Year of Graduation" required />
               </div>
-              <div class="input_field"> 
-                <input type="text" name="designation" placeholder="Designation (with Organization's Name)" required />
-              </div>
-              <div class="input_field"> 
-                <input type="text" name="experience" placeholder="Past Experience (Job/Internship/Project/POR)" required />
-              </div>
-              <div class='form-label'>Fields in which you are willing to provide mentorship (Enter preferences)</div>
-              <div>
-              <select class="input_field" name="pref1" style="width: 100%; padding: 6px; border: 1px solid #ccc;">
-                <option select-disabled="true">--Preference 1--</option>
-                <option data-value="Analytics">Analytics</option>
-                <option data-value="Consultancy">Consultancy</option>
-                <option data-value="Finance">Finance</option>
-                <option data-value="FMCG">FMCG</option>
-                <option data-value="IT/Software">IT/Software</option>
-                <option data-value="Product Management">Product Management</option>
-                <option data-value="Other">Other</option>
-              </select>
-              <select class="input_field" name="pref2" style="width: 100%; padding: 6px; border: 1px solid #ccc;">
-                <option select-disabled="true">--Preference 2--</option>
-                <option data-value="Analytics">Analytics</option>
-                <option data-value="Consultancy">Consultancy</option>
-                <option data-value="Finance">Finance</option>
-                <option data-value="FMCG">FMCG</option>
-                <option data-value="IT/Software">IT/Software</option>
-                <option data-value="Product Management">Product Management</option>
-                <option data-value="Other">Other</option>
-              </select>
-            </div>
-            Any other preferences (Click on the fields)<br>
-                <div class="form-check form-check-inline">
-                <input class="form-check-input checkvalue" type="checkbox" id="analytics" name="analytics" value="Analytics">
-                <label style="font-size: 14px; text-decoration:underline;" class="form-check-label" for="analytics">Analytics</label>
+
+
+              {% comment %} <select class="input_field" name="placementOrGrad" onchange="togglePlacementGrad(this);" style="width: 100%; padding: 6px; border: 1px solid #ccc;">
+                {% for key, value in options.OPTIONS %}
+                <option select-disabled="true">{{value}}</option>
+                {% endfor %}
+              </select> {% endcomment %}
+
+                <div class="switches-container">
+                  <input type="radio" id="placement" name="placementOrGrad" value="Placement" checked="checked" />
+                  <input type="radio" id="grad" name="placementOrGrad" value="Grad Mentoring" />
+                  <label for="placement">Placement</label>
+                  <label for="grad">Grad Mentoring</label>
+                  <div class="switch-wrapper">
+                    <div class="switch">
+                      <div>Placement</div>
+                      <div>Grad Mentoring</div>
+                    </div>
+                  </div>
                 </div>
-                <div class="form-check form-check-inline">
-                <input class="form-check-input checkvalue" type="checkbox" id="consultancy" name="consultancy" value="Consultancy">
-                <label style="font-size: 14px; text-decoration:underline;" class="form-check-label" for="consultancy">Consultancy</label>
-                </div>
-                <div class="form-check form-check-inline">
-                <input class="form-check-input checkvalue" type="checkbox" id="finance" name="finance" value="Finance" >
-                <label style="font-size: 14px; text-decoration:underline;" class="form-check-label" for="finance">Finance</label>
-                </div>
-                <div class="form-check form-check-inline">
-                <input class="form-check-input checkvalue" type="checkbox" id="FMCG"  name="FMCG" value="FMCG" >
-                <label style="font-size: 14px; text-decoration:underline;" class="form-check-label" for="FMCG">FMCG</label>
-                </div>
-                <div class="form-check form-check-inline">
-                <input class="form-check-input checkvalue" type="checkbox" id="software" name="software" value="IT/Software" >
-                <label style="font-size: 14px; text-decoration:underline;" class="form-check-label" for="software">IT/Software</label>
-                </div>
-                <div class="form-check form-check-inline"
-                  <input class="form-check-input checkvalue" type="checkbox" id="product_management" name="product_management" value="product_management" >
-                  <label style="font-size: 14px; text-decoration:underline;" class="form-check-label" for="product_management">Product Management</label>
-                </div>
-                <div class="mb-3">  
-                    <input type="text" class="form-control" id="profiles" name="profiles">
-                </div>
-                <div>
-              <div class='form-label'>Only for those who wish to provide mentorship in <b>Core</b></div>
-                <select class="input_field" name="core" style="width: 100%; padding: 6px; border: 1px solid #ccc;" onchange="yesnoCheck(this);">
-                  <option select-disabled="true">--Core--</option>
-                  <option id="aerospace" data-value="Aerospace">Aerospace</option>
-                  <option id="chemical" data-value="Chemical">Chemical</option>
-                  <option id="bsbe" data-value="BSBE">BSBE</option>
-                  <option id="chemistry" data-value="Chemistry">Chemistry</option>
-                  <option id="civil" data-value="Civil">Civil</option>
-                  <option id="cse" data-value="CSE">CSE</option>
-                  <option id="electrical" data-value="Electrical">Electrical</option>
-                  <option id="energy" data-value="Energy">Energy</option>
-                  <option id="mechanical" data-value="Mechanical">Mechanical</option> 
-                  <option data-value="IEOR">IEOR</option>
-                  <option data-value="Maths">Maths</option>
-                  <option data-value="MEMS">MEMS</option>
-                  <option data-value="Earth Science">Earth Science</option>
-                  <option data-value="Engineering Physics">Engineering Physics</option>
-                  <option data-value="Other">Other</option>
-                </select>
-                <select class="input_field" name="aerospace" id="subaerospace" style="width: 100%; padding: 6px; border: 1px solid #ccc; display: none;">
-                  <option select-disabled="true">--Aerospace--</option>
-                  <option data-value="Aerodynamics">Aerodynamics</option>
-                  <option data-value="Aerospace Structures">Aerospace Structures</option>
-                  <option data-value="Dynamics and Controls">Dynamics and Controls</option>
-                  <option data-value="Propulsion">Propulsion</option>
-                  <option data-value="Reasearch">Research</option>
-                  <option data-value="Other">Other in Aerospace</option>
-                </select>
-                <select class="input_field" name="chemical" id="subchemical" style="width: 100%; padding: 6px; border: 1px solid #ccc; display: none;">
-                  <option select-disabled="true">--Chemical--</option>
-                  <option data-value="thermodynamics">Thermodynamics</option>
-                  <option data-value="transport phenomena">Transport Phenomena</option>
-                  <option data-value="process design & analysis">Process design & analysis</option>
-                  <option data-value="Reasearch">Research</option>
-                  <option data-value="Other">Other in Chemical</option>
-                </select>
-                <select class="input_field" name="bsbe" id="subbsbe" style="width: 100%; padding: 6px; border: 1px solid #ccc; display: none;">
-                  <option select-disabled="true">--BSBE--</option>
-                  <option data-value="core biotechnology">Core Biotechnology</option>
-                  <option data-value="pharmaceutical">Pharmaceutical</option>
-                  <option data-value="Reasearch">Research</option>
-                  <option data-value="Other">Other in BSBE</option>
-                </select>
-                <select class="input_field" name="earthscience" id="subearth" style="width: 100%; padding: 6px; border: 1px solid #ccc; display: none;">
-                  <option select-disabled="true">--Earth Science--</option>
-                  <option data-value="Coal, Oil & Gas">Coal, Oil & Gas</option>
-                  <option data-value="Reasearch">Research</option>
-                  <option data-value="Other">Other in Earth Science</option>
-                </select>
-                <select class="input_field" name="EP" id="subep" style="width: 100%; padding: 6px; border: 1px solid #ccc; display: none;">
-                  <option select-disabled="true">--Engineering Physics--</option>
-                  <option data-value="Semiconductors">Semiconductors</option>
-                  <option data-value="Reasearch">Research</option>
-                  <option data-value="Other">Other in EP</option>
-                </select>
-                <select class="input_field" name="mems" id="submems" style="width: 100%; padding: 6px; border: 1px solid #ccc; display: none;">
-                  <option select-disabled="true">--MEMS--</option>
-                  <option data-value="Reasearch">Research</option>
-                  <option data-value="Other">Other in MEMS</option>
-                </select>
-                <select class="input_field" name="maths" id="submaths" style="width: 100%; padding: 6px; border: 1px solid #ccc; display: none;">
-                  <option select-disabled="true">--Maths--</option>
-                  <option data-value="Reasearch">Research</option>
-                  <option data-value="Other">Other in Maths</option>
-                </select>
-                <select class="input_field" name="ieor" id="subieor" style="width: 100%; padding: 6px; border: 1px solid #ccc; display: none;">
-                  <option select-disabled="true">--IEOR--</option>
-                  <option data-value="Reasearch">Research</option>
-                  <option data-value="Other">Other in IEOR</option>
-                </select>
-                <select class="input_field" name="civil" id="subcivil" style="width: 100%; padding: 6px; border: 1px solid #ccc; display: none;">
-                  <option select-disabled="true">--Civil--</option>
-                  <option data-value="Construction Technology and Management">Construction Technology and Management</option>
-                  <option data-value="Structural Engineering">Structural Engineering</option>
-                  <option data-value="Reasearch">Research</option>
-                  <option data-value="Other">Other in Civil</option>
-                </select>
-                <select class="input_field" name="chemistry" id="subchemistry" style="width: 100%; padding: 6px; border: 1px solid #ccc; display: none;">
-                  <option select-disabled="true">--Chemistry--</option>
-                  <option data-value="coal, oil & gas">Coal, Oil & Gas</option>
-                  <option data-value="cosmetics & paint industries">Cosmetics & Paint Industries</option>
-                  <option data-value="pharmaceuticals">Pharmaceuticals</option>
-                  <option data-value="Reasearch">Research</option>
-                  <option data-value="Other">Other in Chemistry</option>
-                </select>
-                <select class="input_field" name="electrical" id="subelectrical" style="width: 100%; padding: 6px; border: 1px solid #ccc; display: none;">
-                  <option select-disabled="true">--Electrical--</option>
-                  <option data-value="Design Engineering">Design Engineering</option>
-                  <option data-value="Control Systems Engineering">Control Systems Engineering</option>
-                  <option data-value="Power Systems Engineering">Power Systems Engineering</option>
-                  <option data-value="Reasearch">Research</option>
-                  <option data-value="Other">Other in Electrical</option>
-                </select>
-                <select class="input_field" name="energy" id="subenergy" style="width: 100%; padding: 6px; border: 1px solid #ccc; display: none;">
-                  <option select-disabled="true">--Energy--</option>
-                  <option data-value="Renewable Energy">Renewable Energy</option>
-                  <option data-value="Batteries">Batteries</option>
-                  <option data-value="EV">EV</option>
-                  <option data-value="Electrical Grid">Electrical Grid</option>
-                  <option data-value="Energy Policy">Energy Policy</option>
-                  <option data-value="Reasearch">Research</option>
-                  <option data-value="Other">Other in Energy</option>
-                </select>
-                <select class="input_field" name="mechanical" id="submechanical" style="width: 100%; padding: 6px; border: 1px solid #ccc; display: none;">
-                  <option select-disabled="true">--Mechanical--</option>
-                  <option data-value="Mechanical core">Mechanical core</option>
-                  <option data-value="Aerospace">Aerospace</option>
-                  <option data-value="Simulations">Simulations</option>
-                  <option data-value="Reasearch">Research</option>
-                  <option data-value="Other">Other in Mechanical</option>
-                </select>
+
+
+              <div id="placementDiv" style="display: block;">
+                <div class="input_field"> 
+                  <input type="text" name="designation" placeholder="Designation" required />
+                </div> 
                 <div class="input_field">
-                    <input type="text" class="form-control" id="other_mentorship" name="other_mentorship" placeholder='Others (Please Specify)'>
+                  <input type="text" name="company_name" placeholder="Company/Organization Name" required />
+                </div> 
+                <div class="input_field"> 
+                  <input type="text" name="experience" placeholder="Past Experience (Job/Internship/Project/POR)" required />
+                </div> 
+
+
+
+                <div class='form-label'>Fields in which you are willing to provide mentorship (Enter preferences)</div>
+                <div>
+                  <select onchange="checkCoreSelect(this)" class="input_field pref" name="pref1" style="width: 100%; padding: 6px; border: 1px solid #ccc;">
+                  {% for key, value in options.PLACEMENT_FIELDS %}
+                    <option select-disabled="true">{{value}}</option>
+                  {% endfor %}
+                  </select>
+                  <select onchange="checkCoreSelect(this)" class="input_field pref" name="pref2" style="width: 100%; padding: 6px; border: 1px solid #ccc;">
+                      {% for key, value in options.PLACEMENT_FIELDS %}
+                      <option select-disabled="true">{{value}}</option>
+                      {% endfor %}
+                  </select>
+                  <select onchange="checkCoreSelect(this)" class="input_field pref" name="pref3" style="width: 100%; padding: 6px; border: 1px solid #ccc;">
+                    {% for key, value in options.PLACEMENT_FIELDS %}
+                      <option select-disabled="true">{{value}}</option>
+                    {% endfor %}
+                  </select>
                 </div>
+              </div>
+
+              <div id="gradMentoring" style="display: none;">
+                <div class="input_field"> 
+                  <input type="text" name="university_name" placeholder="University Name" required />
+                </div>
+                <div class="input_field"> 
+                  <input type="text" name="experience" placeholder="Past Experience" required />
+                </div> 
+                <div class='form-label'>Fields in which you are willing to provide mentorship (Enter preferences)</div>
+              <div>
+
+
+              <select onchange="checkCoreSelect(this)" class="input_field pref" name="pref1" style="width: 100%; padding: 6px; border: 1px solid #ccc;">
+                {% for key, value in options.HIGHERSTUDIES_FIELDS %}
+                <option select-disabled="true">{{value}}</option>
+              {% endfor %}
+              </select>
+              <select onchange="checkCoreSelect(this)" class="input_field pref" name="pref2" style="width: 100%; padding: 6px; border: 1px solid #ccc;">
+                {% for key, value in options.HIGHERSTUDIES_FIELDS %}
+                <option select-disabled="true">{{value}}</option>
+              {% endfor %}
+              </select>
+              </div>
+            </div>
+
+
+              {% comment %} <div class='form-label'>Only for those who wish to provide mentorship in <b>Core</b></div> {% endcomment %}
+                <select id="core" class="input_field" name="core" style="width: 100%; padding: 6px; border: 1px solid #ccc; display: none;" onchange="showSubdivisionOptions(this, {{options.BRANCH_SUBDIVISION_CHOICES}});">
+                  <option select-disabled="true">--Core--</option>
+                  {% for key, value in options.BRANCH_CHOICES %}
+                <option value={{key}} select-disabled="true">{{value}}</option>
+              {% endfor %}
+                </select>
+                
+                <select class="input_field" name="subdivisions" id="subdivisions" style="width: 100%; padding: 6px; border: 1px solid #ccc; display: none;">
+
+                </select>
+            
+                
+                <div id="other_mentorship" class="input_field" style="display: none;">
+                    <input type="text" class="form-control"  name="other_mentorship" placeholder='Others (Please Specify)'>
+                </div>
+
                 </div>             
                 <div class="input_field">
                 <input type="text" class="form-control" id="no_of_mentees" name="no_of_mentees" required placeholder="Preferred number of mentees">
@@ -336,6 +336,10 @@
                   </label>
                 </div>
               <input class="button" type="submit" value="Register"/>
+
+
+
+
             </form>
           </div>
         </div>
@@ -383,11 +387,13 @@
 
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script type="text/javascript" src="{% static 'home.js' %}"></script>
+
   <script>
     $(document).ready(function () {
       $('.dropdown-toggle').dropdown();
     });
   </script>
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous">
   </script>
@@ -403,6 +409,7 @@
     integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous">
   </script>
   <script>
+   
     $(document).ready(function () {
       $('.checkvalue').click(function () {
         var txt = '';
@@ -412,55 +419,117 @@
         $('#profiles').val(txt);
       });
     });
+
+
+    $(document).ready(function () {
+
+      var placementDiv = document.getElementById('placementDiv');
+      var gradDiv = document.getElementById('gradMentoring');
+
+      $('input[name="placementOrGrad"]').change(function() {
+        console.log("working properly")
+
+        console.log($(this).val());
+        if ($(this).val() === 'Placement') {
+          console.log("coming in placement")
+          placementDiv.style.display = 'block';
+          gradDiv.style.display = 'none';
+        } else {
+          placementDiv.style.display = 'none';
+          gradDiv.style.display = 'block';
+        }
+      });
+    });
+
+
   </script>
 <script type="text/javascript">
-    function yesnoCheck(that) {
-        if(that.value == "Other Department") {
-          document.getElementById("other_department").style.display="block";
-        } else
-        if(that.value == "Other Degree") {
-          document.getElementById("degree_other").style.display = "block";
-        } else
-        if (that.value == "Aerospace") {
-          console.log("check");
-            document.getElementById("subaerospace").style.display = "block";
-        } else if (that.value == "Chemical"){
-            document.getElementById("subchemical").style.display = "block";
-        }
-        else if (that.value == "BSBE"){
-            document.getElementById("subbsbe").style.display = "block";
-        }
-        else if (that.value == "Chemistry"){
-            document.getElementById("subchemistry").style.display = "block";
-        }
-        else if (that.value == "Electrical"){
-            document.getElementById("subelectrical").style.display = "block";
-        }
-        else if (that.value == "Energy"){
-            document.getElementById("subenergy").style.display = "block";
-        }
-        else if (that.value == "Mechanical"){
-            document.getElementById("submechanical").style.display = "block";
-        }
-        else if (that.value == "Civil"){
-            document.getElementById("subcivil").style.display = "block";
-        }
-        else if (that.value == "Earth Science"){
-            document.getElementById("subearth").style.display = "block";
-        }
-        else if (that.value == "Engineering Physics"){
-            document.getElementById("subep").style.display = "block";
-        }
-        else if (that.value == "IEOR"){
-            document.getElementById("subieor").style.display = "block";
-        }
-        else if (that.value == "MEMS"){
-            document.getElementById("submems").style.display = "block";
-        }
-        else if (that.value == "Maths"){
-            document.getElementById("submaths").style.display = "block";
-        }
+
+  function checkCoreSelect(that){
+
+    var allDivs = document.getElementsByClassName('pref')
+
+    var core = document.getElementById("core")
+    
+    if(that.value == "Core"){
+      core.style.display = "block";
     }
+    
+    else{
+      var test = false;
+      for(var i=0; i<allDivs.length; i++){
+        if(allDivs[i].value === 'Core'){
+          test = true;
+          break;
+        }
+      }
+      if(!test){
+        core.style.display = "none";
+      }
+    }
+  }
+
+  function showOtherDepartment(that){
+    if(that.value === 'Other (If not mentioned above)'){
+      var check = document.getElementById("other_department")
+      check.style.display = "block";
+    }else{
+      document.getElementById("other_department").style.display = "none";
+    }
+  }
+
+  function showOtherDegree(that){
+    if(that.value === 'Other Degree'){
+      var check = document.getElementById("degree_other")
+      check.style.display = "block";
+    }else{
+      document.getElementById("degree_other").style.display = "none";
+    }
+  }
+
+
+  function showSubdivisionOptions(that, branchSubdivisionChoices) {
+
+    var subdivisionSelect = document.getElementById("subdivisions");
+    var selectedBranch = that.value;
+    console.log(branchSubdivisionChoices)
+    var options = branchSubdivisionChoices[selectedBranch];
+    subdivisionSelect.innerHTML = ''; // Clear previous options
+    if (options) {
+      if(options.length == 1){
+        if(that.value.toString() === "other"){
+          document.getElementById("other_mentorship").style.display = "block";
+          subdivisionSelect.style.display = "none";
+          return;
+        }else{
+          var option = document.createElement("option");
+          option.text = options[0];
+          subdivisionSelect.appendChild(option);
+        }
+      }else{
+        document.getElementById("other_mentorship").style.display = "none";
+        var option = document.createElement("option");
+        option.text = "--" + options[0] + "--";
+        subdivisionSelect.appendChild(option);
+      }
+      for (var i = 1; i < options.length; i++) {
+        var option = document.createElement("option");
+        option.text = options[i];
+        subdivisionSelect.appendChild(option);
+      }
+      if(options.length != 1){
+        subdivisionSelect.style.display = "block";
+      }
+    } else {
+      subdivisionSelect.style.display = "none";
+    }
+
+    document.getElementById("other_mentorship").style.display = "none";
+
+  }
+
+
+   
 </script>
   </body>
 
