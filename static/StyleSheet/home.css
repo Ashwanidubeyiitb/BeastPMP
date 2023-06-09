@@ -351,6 +351,44 @@ body {
     left: 35%;
 }
 
+.headBox0 {
+    position: relative;
+    height: 10%;
+    top: 20%;
+    text-align: center !important;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 450%;
+    display: flex;
+    left: 25%;
+}
+
+.headBox1 {
+    position: relative;
+    height: 10%;
+    margin-top: 55%;
+    text-align: center !important;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 450%;
+    display: flex;
+    left: 45%;
+}
+
+.headBox2 {
+    position: relative;
+    height: 10%;
+    margin-top: 10%;
+    text-align: center !important;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 450%;
+    display: flex;
+    left: 32%;
+}
 
 
 /* About section */
@@ -389,7 +427,7 @@ body {
     .hexagon {
         width: 21vh;
         height: 22vh;
-        background: #87C240;
+        background: #D5877D;
         position: relative;
         clip-path: polygon(0% 25%, 0% 75%, 50% 100%, 100% 75%, 100% 25%, 50% 0%);
     }
@@ -456,7 +494,7 @@ body {
 .mentees,
 .mentors,
 .departments {
-    color: white;
+    color: black;
     font-size: 1.5rem;
     font-weight: bold;
     margin-top: 1rem;
@@ -473,6 +511,7 @@ body {
 /* Mentor section */
 
 .container {
+    margin-top: 15%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -481,12 +520,12 @@ body {
 .row {
     display: flex;
     justify-content: center;
-    margin-bottom: -10px;
+    margin-bottom: -60px;
 }
 
 .circle {
-    width: 200px;
-    height: 200px;
+    width: 400px;
+    height: 400px;
     border-radius: 50%;
     background-color: #E7BEAE;;
     display: flex;
@@ -496,8 +535,14 @@ body {
     cursor: pointer;
     transition: all 0.3s ease-in-out;
     margin-right: 100px;
+    margin-left: 100px;
 }
-
+.circle p{
+    
+    text-align: center;
+    font-size: 20px;
+    padding: 10px;
+}
 .circle.center {
     width: 400px;
     height: 400px;
@@ -863,7 +908,7 @@ body {
 /* FAQ section */
 .ques {
     font-size: 1.5rem;
-    color: #87C240;
+    color: #E7BEAE;
 }
 
 .ans {
@@ -903,8 +948,8 @@ body {
 }
 
 .faq {
-    background-color: #DBF4A7;
-    border: 1px solid #DBF4A7;
+    background-color: #E7BEAE;;
+    border: 4px solid #D5877D;
     margin: 20px 0;
     padding: 20px;
     position: relative;
@@ -914,15 +959,15 @@ body {
 }
 
 .faq.active {
-    background-color: #DBF4A7;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1), 0 3px 6px rgba(0, 0, 0, 0.1);
+    background-color: #D5877D;
+    
 }
 
 .faq.active::before,
 .faq.active::after {
     content: '\f075';
     font-family: 'Poppins';
-    color: #2ecc71;
+    color: #D5877D;
     font-size: 7rem;
     position: absolute;
     opacity: 0.2;
@@ -1014,12 +1059,16 @@ body {
     }
 
     .testimonials {
-        background: #2F9491;
+        background: #D5877D;
+        border-radius: 10px;
         text-align: center;
         width: 95%;
         max-width: 1000px;
         padding: 2rem;
         margin: 0.5rem auto;
+        height: 750px;
+        border-right: 8px solid #E7BEAE;
+        border-bottom: 8px solid #E7BEAE;
     }
 
     .title {
@@ -1053,7 +1102,9 @@ body {
     }
 
     .slide-box .comment {
-        background-color: #DBF4A7;
+        background-color: #E8E3E3;
+        margin-top: 7%;
+        border-radius: 30px;
         color: black;
         font-size: 18px;
         padding: 1rem 1.5rem;
@@ -1071,7 +1122,7 @@ body {
         bottom: -10px;
         height: 20px;
         width: 20px;
-        background-color: #DBF4A7;
+        background-color: #624F48;
         transform: translateX(-50%) rotate(45deg);
         box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.15);
     }
@@ -1082,7 +1133,7 @@ body {
     }
 
     .slide-box .name {
-        font-size: 1rem;
+        font-size: 1.5rem;
         color: white;
     }
 
@@ -1097,9 +1148,9 @@ body {
         z-index: 5;
         top: 50%;
         transform: translateY(-50%);
-        height: 40px;
+        height: 30px;
         width: 40px;
-        background-color: #2F9491;
+        background-color: #D5877D;
         line-height: 40px;
         color: #333;
 
@@ -1157,6 +1208,7 @@ body {
 
     .name {
         font-weight: bold;
+        font-size: 100px;
     }
 
     .photo {
@@ -1307,6 +1359,49 @@ body {
 
 /* Contact section */
 
+   .team-members {
+       display: flex;
+       justify-content: center;
+       
+   }
+
+   .member {
+       text-align: center;
+   }
+
+   .member-photo {
+       border-radius: 50%;
+       width: 250px;
+       height: 250px;
+       object-fit: cover;
+       margin-bottom: 10px;
+       margin-right: 100px;
+       margin-left: 100px;
+       margin-top: 10%;
+   }
+   .member-photo:hover {
+       box-shadow: 0 0 20px 15px #D5877D;
+   }
+
+   .member-name {
+       margin-bottom: 5px;
+       font-size: 25px;
+   }
+
+    .member-details{
+        margin-bottom: 5px;
+        font-size: 17px;
+    }
+
+   .social-media a {
+       margin-right: 5px;
+       font-size: 25px;
+       color: #000;
+   }
+
+   .social-media a:hover {
+       color: #D5877D;
+   }
 
 
 @media (min-width : 801px) {
