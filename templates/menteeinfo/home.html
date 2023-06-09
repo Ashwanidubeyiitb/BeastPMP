@@ -9,6 +9,16 @@
     <!-- Bootstrap CSS -->
     {% comment %} <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous"> {% endcomment %}
     <link rel="icon" href="{% static 'img/favIcon.png' %}" sizes="16x16" type="image/png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+  </script>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link type='text/css' rel="stylesheet" href='{% static '../static/StyleSheet/home.css' %}'>
     <script  src='../static/javascript/index.js'></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -102,7 +112,7 @@
         <br>
         <div>
        <a href="/mentorReg">
-         <button id="sign-in" class="btn" style="position: relative; padding-left: 30px; padding-right: 30px; top: 80vh; left: 42vw; font-size:18px;">REGISTER</button>
+         <button id="sign-in" class="bttn" style="position: relative; padding-left: 30px; padding-right: 30px; top: 80vh; left: 42vw; font-size:18px;">REGISTER</button>
         </a>
         </div>
   </div>
@@ -199,7 +209,7 @@ Ensure regular feedback to our team as well.</p>
 
     {% comment %} section for FAQ {% endcomment %}
     <div class=' faqs'>
-        <div class='headBox1' id='faq'>FAQs</div>
+        <div id='faq' class='headBox1'>FAQs</div>
         {% comment %} <div class="illustration1"><img src="../static/img/headboxbg.png" style="width: 290px; height: 290px;"></div> {% endcomment %}
         <div class="faq-container">
             <div class="faq ">
@@ -293,7 +303,7 @@ Ensure regular feedback to our team as well.</p>
 
 
     {% comment %} section of testimonials {% endcomment %}
-        <div class='headBox2'>TESTIMONIALS</div>
+        <div class='headBox2' id="testimonials">TESTIMONIALS</div>
         {% comment %} <div class="illustration2" style="position: relative; top: -29px; left: -10px; z-index: -1;"><img src="../static/img/headboxbg.png" style="width: 290px; height: 290px;"></div> {% endcomment %}
         <div class="testimonials" style="position: relative; top: 12px; margin-bottom: 150px; background-color: #D5877D;" id="testimonials">
             <div class="slider-container">
@@ -325,17 +335,7 @@ Ensure regular feedback to our team as well.</p>
                         <h4 class="job">Chemical 2020</h4>
                     </div>
                     
-                    <div class="slide-box">
-                        
-                        
-                    </div>
-
-                    <div class="slide-box">
-                        
-                        <!-- Testi Two -->
-                        
-                        
-                    </div>
+                    
                 </div>
         
                 <a href="#!" class="control-slider btn-left">
@@ -353,29 +353,61 @@ Ensure regular feedback to our team as well.</p>
    
     <div class="team-members">
     <div class="member">
-      <img src="../static/img/Aakrit_Mentor.jpg" alt="Team Member 1" class="member-photo">
+      <img src="../static/img/aghraj.jpg" alt="Team Member 1" class="member-photo">
       <h3 class="member-name">Agrajah Bhobe</h3>
       <p class="member-details">Core Team Member, Hostel and Department Affairs</p>
       <p class="member-details">Contact Number - +91 83296 91276</p>
       <div class="social-media">
-        <a href="https://www.facebook.com/johndoe" target="_blank"><i class="fab fa-facebook"></i></a>
-        <a href="https://www.linkedin.com/johndoe" target="_blank"><i class="fab fa-linkedin"></i></a>
-        <a href="https://www.instagram.com/johndoe" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
+        <a href="https://www.linkedin.com/in/agrajah-bhobe-27a326236" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://instagram.com/agrajah_bhobe?igshid=MzRlODBiNWFlZA==" target="_blank"><i class="fab fa-instagram"></i></a>
       </div>
     </div>
     <div class="member">
-      <img src="../static/img/Aakrit_Mentor.jpg" alt="Team Member 2" class="member-photo">
+      <img src="../static/img/garv.png" alt="Team Member 2" class="member-photo">
       <h3 class="member-name">Garv Gupta</h3>
       <p class="member-details">Core Team Member, Hostel and Department Affairs</p>
       <p class="member-details">Contact Number: +91 99535 60809</p>
       <div class="social-media">
-        <a href="https://www.facebook.com/janesmith" target="_blank"><i class="fab fa-facebook"></i></a>
-        <a href="https://www.twitter.com/janesmith" target="_blank"><i class="fab fa-linkedin"></i></a>
-        <a href="https://www.instagram.com/janesmith" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.facebook.com/Garvcosmo" target="_blank"><i class="fab fa-facebook"></i></a>
+        <a href="https://www.linkedin.com/in/garv-gupta-425596242?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BTO0FU%2FPlTbm8rvmUBaxwLg%3D%3D" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://instagram.com/garvcosmo?igshid=MzRlODBiNWFlZA==" target="_blank"><i class="fab fa-instagram"></i></a>
       </div>
     </div>
   </div>
    </div>
+   <footer class="text-center text-white" style="background-color:#624F48;">
+    <div class="container p-4">
+      <!-- Section: Social media -->
+      <section class="mb-4">
+        <!-- Facebook -->
+        <a class="btn btn-outline-light btn-floating m-1" href="https://www.facebook.com/SARC.IITB" role="button"
+          ><i class="fab fa-facebook-f"></i
+        ></a>
+        <a class="btn btn-outline-light btn-floating m-1" href="https://www.instagram.com/sarc_iitb/" role="button"
+        ><i class="fab fa-instagram"></i></a>
+  
+        <!-- Youtube -->
+        <a class="btn btn-outline-light btn-floating m-1" href="https://www.youtube.com/user/SARCIIT" role="button"
+          ><i style="margin-left:-1px;" class="fab fa-youtube"></i
+        ></a>
+  
+        <!-- Linkedin -->
+        <a class="btn btn-outline-light btn-floating m-1" href="https://www.linkedin.com/company/student-alumni-relations-cell/" role="button"
+          ><i class="fab fa-linkedin-in"></i
+        ></a>
+  
+      </section>
+      <!-- Section: Social media -->
+  
+    </div>
+    <!-- Copyright -->
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0); color:#d7e2e1;">
+      © 2023 Made with 💙 by
+      <span style="color:#d7e2e1;">SARC</span>
+    </div>
+    <!-- Copyright -->
+  </footer>
 
         <!-- <div class='container1'>
             <div class='photo1 '>

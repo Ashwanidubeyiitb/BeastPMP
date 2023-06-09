@@ -86,7 +86,7 @@ body {
     
 }
 
-.btn {
+.bttn {
     background-color: black;
     border-top: 6px solid #624F48;
     border-radius: 0;
@@ -101,7 +101,7 @@ body {
     color: #fff;
 }
 
-.btn:hover {
+.bttn:hover {
     background: #624F48;
     color: #fff;
 }
@@ -381,7 +381,7 @@ body {
     font-weight: 400;
     font-size: 450%;
     display: flex;
-    left: 45%;
+    justify-content: center;
 }
 
 .headBox2 {
@@ -394,7 +394,7 @@ body {
     font-weight: 400;
     font-size: 450%;
     display: flex;
-    left: 32%;
+    justify-content: center;
 }
 
 
@@ -984,7 +984,7 @@ body {
 }
 
 .faq.active::before {
-    color: #3498db;
+    color: transparent;
     top: -10px;
     left: -30px;
     transform: rotateY(180deg);
@@ -1097,8 +1097,8 @@ body {
 
     .slider {
         display: flex;
-        flex: 0 4 1;
-        width: 400%;
+        flex: 0 2 1;
+        width: 200%;
         /* Depends On slide-box Length * 100 */
         transition: all 0.5s linear;
     }
@@ -1160,7 +1160,6 @@ body {
         background-color: #D5877D;
         line-height: 40px;
         color: #333;
-
     }
 
     .btn-left {
