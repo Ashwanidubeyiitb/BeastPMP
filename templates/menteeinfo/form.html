@@ -53,10 +53,10 @@
   <style>
 
   :root {
-      --switches-bg-color: goldenrod;
+      --switches-bg-color: #624F48;
       --switches-label-color: white ;
       --switch-bg-color: white;
-      --switch-text-color: goldenrod ;
+      --switch-text-color: #624F48 ;
   }
   
   
@@ -164,14 +164,14 @@
 </head>
 
 {% comment %} <body style="background-image:url('../static/fire.png')"> {% endcomment %}
-<body style="background-color: #389583;">
-  <input type="checkbox" id="active">
+<body>
+  <input style="display: none;" type="checkbox" id="active">
     <label for="active" class="menu-btn"><i class="fas fa-bars"></i></label>
     <div class="wrapper">
       <ul>
 <li><a href="/">Home</a></li>
-<li><a href="/savedata_new">Register</a></li>
-<li><a href="https://team22.sarc-iitb.org/contact/">Team</a></li>
+<li><a href="/mentorReg">Register</a></li>
+{% comment %} <li><a href="http://team23.sarc-iitb.org">Team</a></li> {% endcomment %}
 </ul>
 </div>
 
@@ -184,7 +184,7 @@
         </div>
         <div class="row clearfix">
           <div class="">
-            <form method="POST" action="savedata_new"> {% csrf_token %}
+            <form method="POST" action="mentorReg"> {% csrf_token %}
               <div class="input_field">
                 <input type="text" name="fullname" placeholder="Full Name" required />
               </div>
@@ -195,8 +195,9 @@
                 <input type="text" name="rollno" placeholder="Roll No" required />
               </div>
               <select name="department" id="department" style="width: 100%; padding: 6px; border: 1px solid #ccc;" onchange="showOtherDepartment(this);" required>
+                <option value="" select-disabled="true"> --Branch-- </option>
               {% for key, value in options.BRANCH_CHOICES %}
-                <option select-disabled="true">{{value}}</option>
+                <option value={{key}}>{{value}}</option>
               {% endfor %}
               </select>
 
@@ -206,8 +207,9 @@
 
               {% comment %} <div class='input_field'> Degree* </div> {% endcomment %}
               <select onchange="showOtherDegree(this);" name="degree" style="width: 100%; padding: 6px; border: 1px solid #ccc;" required>
+                <option value="" select-disabled="true"> --Degree-- </option>
                 {% for key, value in options.DEGREE_CHOICES %}
-                <option select-disabled="true">{{value}}</option>
+                <option value={{key}}>{{value}}</option>
               {% endfor %}
               </select>
               <div class="input_field">
@@ -228,8 +230,8 @@
               </select> {% endcomment %}
 
                 <div class="switches-container">
-                  <input type="radio" id="placement" name="placementOrGrad" value="Placement" checked="checked" />
-                  <input type="radio" id="grad" name="placementOrGrad" value="Grad Mentoring" />
+                  <input type="radio" id="placement" name="placementOrGrad" value="placement" checked="checked" />
+                  <input type="radio" id="grad" name="placementOrGrad" value="gradmentoring" />
                   <label for="placement">Placement</label>
                   <label for="grad">Grad Mentoring</label>
                   <div class="switch-wrapper">
@@ -242,33 +244,37 @@
 
 
               <div id="placementDiv" style="display: block;">
+
                 <div class="input_field"> 
-                  <input type="text" name="designation" placeholder="Designation" required />
+                  <input type="text" name="designation" placeholder="Designation"  />
                 </div> 
                 <div class="input_field">
-                  <input type="text" name="company_name" placeholder="Company/Organization Name" required />
+                  <input type="text" name="company_name" placeholder="Company/Organization Name"  />
                 </div> 
                 <div class="input_field"> 
-                  <input type="text" name="experience" placeholder="Past Experience (Job/Internship/Project/POR)" required />
+                  <input type="text" name="placementExperience" placeholder="Past Experience (Job/Internship/Project/POR)"/>
                 </div> 
 
 
 
                 <div class='form-label'>Fields in which you are willing to provide mentorship (Enter preferences)</div>
                 <div>
-                  <select onchange="checkCoreSelect(this)" class="input_field pref" name="pref1" style="width: 100%; padding: 6px; border: 1px solid #ccc;">
+                  <select onchange="checkCoreSelect(this)" class="input_field pref" name="placementPref1" style="width: 100%; padding: 6px; border: 1px solid #ccc;">
+                    <option value="" select-disabled="true"> --Preference 1-- </option>
                   {% for key, value in options.PLACEMENT_FIELDS %}
-                    <option select-disabled="true">{{value}}</option>
+                    <option value={{key}}>{{value}}</option>
                   {% endfor %}
                   </select>
-                  <select onchange="checkCoreSelect(this)" class="input_field pref" name="pref2" style="width: 100%; padding: 6px; border: 1px solid #ccc;">
+                  <select onchange="checkCoreSelect(this)" class="input_field pref" name="placementPref2" style="width: 100%; padding: 6px; border: 1px solid #ccc;">
+                    <option value="" select-disabled="true"> --Preference 2-- </option>
                       {% for key, value in options.PLACEMENT_FIELDS %}
-                      <option select-disabled="true">{{value}}</option>
+                      <option value={{key}}>{{value}}</option>
                       {% endfor %}
                   </select>
-                  <select onchange="checkCoreSelect(this)" class="input_field pref" name="pref3" style="width: 100%; padding: 6px; border: 1px solid #ccc;">
+                  <select onchange="checkCoreSelect(this)" class="input_field pref" name="placementPref3" style="width: 100%; padding: 6px; border: 1px solid #ccc;">
+                    <option value="" select-disabled="true"> --Preference 3-- </option>
                     {% for key, value in options.PLACEMENT_FIELDS %}
-                      <option select-disabled="true">{{value}}</option>
+                      <option value={{key}}>{{value}}</option>
                     {% endfor %}
                   </select>
                 </div>
@@ -276,23 +282,25 @@
 
               <div id="gradMentoring" style="display: none;">
                 <div class="input_field"> 
-                  <input type="text" name="university_name" placeholder="University Name" required />
+                  <input type="text" name="university_name" placeholder="University Name" />
                 </div>
                 <div class="input_field"> 
-                  <input type="text" name="experience" placeholder="Past Experience" required />
+                  <input type="text" name="gradExperience" placeholder="Past Experience" />
                 </div> 
                 <div class='form-label'>Fields in which you are willing to provide mentorship (Enter preferences)</div>
               <div>
 
 
-              <select onchange="checkCoreSelect(this)" class="input_field pref" name="pref1" style="width: 100%; padding: 6px; border: 1px solid #ccc;">
+              <select onchange="checkCoreSelect(this)" class="input_field pref" name="gradPref1" style="width: 100%; padding: 6px; border: 1px solid #ccc;">
+                <option value="" select-disabled="true"> --Preference 1-- </option>
                 {% for key, value in options.HIGHERSTUDIES_FIELDS %}
-                <option select-disabled="true">{{value}}</option>
+                <option value={{key}}>{{value}}</option>
               {% endfor %}
               </select>
-              <select onchange="checkCoreSelect(this)" class="input_field pref" name="pref2" style="width: 100%; padding: 6px; border: 1px solid #ccc;">
+              <select onchange="checkCoreSelect(this)" class="input_field pref" name="gradPref2" style="width: 100%; padding: 6px; border: 1px solid #ccc;">
+                <option value="" select-disabled="true"> --Preference 2-- </option>
                 {% for key, value in options.HIGHERSTUDIES_FIELDS %}
-                <option select-disabled="true">{{value}}</option>
+                <option value={{key}}>{{value}}</option>
               {% endfor %}
               </select>
               </div>
@@ -301,14 +309,14 @@
 
               {% comment %} <div class='form-label'>Only for those who wish to provide mentorship in <b>Core</b></div> {% endcomment %}
                 <select id="core" class="input_field" name="core" style="width: 100%; padding: 6px; border: 1px solid #ccc; display: none;" onchange="showSubdivisionOptions(this, {{options.BRANCH_SUBDIVISION_CHOICES}});">
-                  <option select-disabled="true">--Core--</option>
+                  <option value="" select-disabled="true">--Core--</option>
                   {% for key, value in options.BRANCH_CHOICES %}
-                <option value={{key}} select-disabled="true">{{value}}</option>
+                <option value={{key}}>{{value}}</option>
               {% endfor %}
                 </select>
                 
                 <select class="input_field" name="subdivisions" id="subdivisions" style="width: 100%; padding: 6px; border: 1px solid #ccc; display: none;">
-
+                  <option value="" select-disabled="true"></option>
                 </select>
             
                 
@@ -330,23 +338,19 @@
                     <li>I will be responsive to the mentee's doubts and queries.</li>
                     <li>I will provide adequate feedback to SARC (through feedback forms).</li>
                   </ul>
-                  <input class="form-check-input" type="radio" name="Iagree" id="Iagree" checked>
+                  <input class="form-check-input" type="checkbox" name="Iagree" id="Iagree" required>
                   <label class="form-check-label" for="Iagree">
                   By registering, I agree to the above terms and conditions
                   </label>
                 </div>
               <input class="button" type="submit" value="Register"/>
-
-
-
-
             </form>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <footer class="text-center text-white" style="background-color:#133c4a;">
+  <footer class="text-center text-white" style="background-color:#624F48;">
     <div class="container p-4">
       <!-- Section: Social media -->
       <section class="mb-4">
@@ -427,10 +431,9 @@
       var gradDiv = document.getElementById('gradMentoring');
 
       $('input[name="placementOrGrad"]').change(function() {
-        console.log("working properly")
 
         console.log($(this).val());
-        if ($(this).val() === 'Placement') {
+        if ($(this).val() === 'placement') {
           console.log("coming in placement")
           placementDiv.style.display = 'block';
           gradDiv.style.display = 'none';
@@ -451,14 +454,14 @@
 
     var core = document.getElementById("core")
     
-    if(that.value == "Core"){
+    if(that.value == "core"){
       core.style.display = "block";
     }
     
     else{
       var test = false;
       for(var i=0; i<allDivs.length; i++){
-        if(allDivs[i].value === 'Core'){
+        if(allDivs[i].value === 'core'){
           test = true;
           break;
         }
@@ -470,7 +473,7 @@
   }
 
   function showOtherDepartment(that){
-    if(that.value === 'Other (If not mentioned above)'){
+    if(that.value === 'other'){
       var check = document.getElementById("other_department")
       check.style.display = "block";
     }else{
@@ -479,7 +482,7 @@
   }
 
   function showOtherDegree(that){
-    if(that.value === 'Other Degree'){
+    if(that.value === 'other_degree'){
       var check = document.getElementById("degree_other")
       check.style.display = "block";
     }else{
@@ -492,7 +495,6 @@
 
     var subdivisionSelect = document.getElementById("subdivisions");
     var selectedBranch = that.value;
-    console.log(branchSubdivisionChoices)
     var options = branchSubdivisionChoices[selectedBranch];
     subdivisionSelect.innerHTML = ''; // Clear previous options
     if (options) {
@@ -509,6 +511,7 @@
       }else{
         document.getElementById("other_mentorship").style.display = "none";
         var option = document.createElement("option");
+        option.setAttribute('select-disabled', 'true');
         option.text = "--" + options[0] + "--";
         subdivisionSelect.appendChild(option);
       }

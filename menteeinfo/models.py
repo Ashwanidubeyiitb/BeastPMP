@@ -48,9 +48,9 @@ class Registration(models.Model):
     fullname=models.CharField( max_length=255)
     rollno=models.CharField(max_length=9)
     department=models.CharField( max_length=255, choices=BRANCH_CHOICES)
-    department_other=models.CharField(max_length=255, blank=True)
+    department_other=models.CharField(max_length=255, blank=True, null=True)
     degree=models.CharField( max_length=255, choices=DEGREE_CHOICES)
-    degree_other=models.CharField( max_length=255, blank=True)
+    degree_other=models.CharField( max_length=255, blank=True, null=True)
     # graduation_year=models.CharField( max_length=10)
     graduation_year = models.IntegerField()
     experience=models.TextField()
@@ -65,33 +65,24 @@ class Registration(models.Model):
     experience=models.TextField()
     
     
-    field_pref1 = models.CharField(max_length=255, choices=PLACEMENT_FIELDS)
-    field_pref2 = models.CharField(max_length=255, choices=PLACEMENT_FIELDS)
+    field_pref1 = models.CharField(max_length=255, choices=PLACEMENT_FIELDS, null=True)
+    field_pref2 = models.CharField(max_length=255, choices=PLACEMENT_FIELDS, null=True)
+    field_pref3 = models.CharField(max_length=255, choices=PLACEMENT_FIELDS, null=True)
     
 
     
-    university_name=models.CharField(max_length=255, blank=True)
+    university_name=models.CharField(max_length=255, blank=True, null=True)
 
     
-    branch = models.CharField(max_length=255, choices=BRANCH_CHOICES)
-    branch_subdivision = models.CharField(max_length=255, choices=[], blank=True)
+    branch = models.CharField(max_length=255, choices=BRANCH_CHOICES, null=True)
+    branch_subdivision = models.CharField(max_length=255, blank=True, null=True)
 
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self._update_branch_subdivision_choices()
-
-    def _update_branch_subdivision_choices(self):
-        self._meta.get_field('branch_subdivision').choices = BRANCH_SUBDIVISION_CHOICES.get(self.branch, [])
-
-    def save(self, *args, **kwargs):
-        self._update_branch_subdivision_choices()
-        super().save(*args, **kwargs)
     
-    preferred_mentees = models.IntegerField()
+    preferred_mentees = models.IntegerField(null=True)
     
-    suggestions=models.TextField(blank=True)
+    suggestions=models.TextField(blank=True, null=True)
     
-    alumni_recommendations = models.TextField(blank=True)
+    alumni_recommendations = models.TextField(blank=True, null=True)
 
     # no_of_mentees=models.CharField(max_length=255)
     # referral=models.CharField(max_length=255)

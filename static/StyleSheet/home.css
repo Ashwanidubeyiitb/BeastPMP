@@ -20,7 +20,7 @@
 body {
     margin: 0px;
     padding: 0px;
-    background: #2F9491;
+    background: #cfba8a;
     overflow-x: hidden;
     font-family: 'Poppins';
 }
@@ -33,7 +33,9 @@ body {
     place-items: center;
     height: 10vh;
     width: 12rem;
-    background: #87C240;
+    background: #624F48
+
+    ;
     color: #222629;
     font-size: 1.2rem;
     text-decoration: none;
@@ -41,7 +43,9 @@ body {
 }
 
 .register:hover {
-    background: #c0ec89;
+    background: #624F48
+
+    ;
     color: #222629;
 }
 
@@ -98,7 +102,9 @@ body {
     box-shadow: 0 1px 5px 1px rgba(0, 0, 0, 0.2);
     width: 100vw;
     position: fixed;
-    background-color: #DBF4A7;
+    background-color:#624F48
+
+    ;
     transition: all 0.5s ease-in-out;
     z-index: 200;
 }
@@ -115,7 +121,7 @@ body {
 
 .nav__link {
     margin: 0 10px;
-    color: black;
+    color: white;
     padding: 5px 15px;
     border-radius: 100px;
     transition: all 0.5s ease-in-out;
@@ -144,7 +150,7 @@ body {
 
 @media (min-width : 800px) {
     .pmp h1 {
-        color: #F9F9ED;
+        color: black;
         font-family: 'Poppins';
         font-style: normal;
         font-weight: 400;

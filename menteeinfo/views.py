@@ -122,24 +122,25 @@ def export(request):
 	response = HttpResponse(content_type = 'text/csv')
 	writer = csv.writer(response)
 	writer.writerow([
-    'fullname',
-    'rollno',
-    'department',
-    'other_department',
+    'Fullname',
+    'Roll No',
+    'Department',
+    'Other department',
     'degree',
-    'other_degree',
-    'graduation_year',
-    'contact',
-    'email',
-    'option',
-    'designation',
+    'Other Degree',
+    'Graduation Year',
+    'Contact',
+    'Email',
+    'Option',
+    'Designation',
     'Company Name',
     'University Name',
     'experience',
     'Preference 1',
     'Preference 2',
-    'Branch',
-    'Branch Subdivision',
+    'Preference 3',
+    'Core',
+    'Core Subdivision',
     'Preferred mentees',
     'Suggestions',
     'Recommendations',
@@ -161,6 +162,7 @@ def export(request):
     'experience',
     'field_pref1',
     'field_pref2',
+    'field_pref3',
     'branch',
     'branch_subdivision',
     'preferred_mentees',
@@ -189,7 +191,7 @@ def mentorReg(request):
         fullname=request.POST.get('fullname')
         rollno=request.POST.get('rollno')
         department=request.POST.get('department')
-        department_other=request.POST.get('department_other')
+        department_other=request.POST.get('other_department')
         degree=request.POST.get('degree')
         degree_other=request.POST.get('degree_other')
         graduation_year=request.POST.get('graduation_year')
@@ -199,33 +201,46 @@ def mentorReg(request):
         
         placementOrGrad = request.POST.get('placementOrGrad')
         
+        field_pref3 = "NA"
         
+        if(placementOrGrad == 'placement'):
+            experience=request.POST.get('placementExperience')
+            field_pref1=request.POST.get('placementPref1')
+            field_pref2=request.POST.get('placementPref2')
+            field_pref3=request.POST.get('placementPref3')
+        else:
+            experience=request.POST.get('gradExperience')
+            field_pref1=request.POST.get('gradPref1')
+            field_pref2=request.POST.get('gradPref2')
+
+            
         designation=request.POST.get('designation')
-        company_name  = request.POST.get('company_name')
-        experience=request.POST.get('experience')
+        company_name=request.POST.get('company_name')
         
-        university=request.POST.get('university')
+        university=request.POST.get('university_name')
         
-        suggestions=request.POST.get('suggestions')
+        suggestions=request.POST.get('suggestion')
         
-        recommendations=request.POST.get('recommendations')
+        recommendations=request.POST.get('referral')
         
 
-        field_pref1=request.POST.get('field_pref1')
-        field_pref2=request.POST.get('field_pref2')
+       
+    
         
-        core_branch=request.POST.get('core_branch')
-        branch_subdivision=request.POST.get('branch_subdivision')
+        core_branch=request.POST.get('core')
+        branch_subdivision=request.POST.get('subdivisions')
+        
+        print(branch_subdivision)
         
         
-        preferred_mentees = request.POST.get('preferred_mentees')
+        preferred_mentees = request.POST.get('no_of_mentees')
         
         
-        registration = Registration(fullname=fullname, email=email, department=department, rollno=rollno, department_other=department_other,
-                                    degree=degree, degree_other=degree_other, graduation_year=graduation_year, 
-                                    contact=contact, placementOrGrade=placementOrGrad, designation=designation, company_name=company_name
-                                    , experience=experience, field_pref1=field_pref1, field_pref2=field_pref2, branch=core_branch, branch_subdivision=branch_subdivision
-                                    , preferred_mentees=preferred_mentees, university_name=university, suggestions=suggestions, alumni_recommendations=recommendations)
+        registration = Registration(fullname=fullname or "NA", email=email or "NA", department=department or "NA", rollno=rollno or "NA", department_other=department_other or "NA",
+                                    degree=degree or "NA", degree_other=degree_other or "NA", graduation_year=graduation_year or "NA", field_pref3=field_pref3 or "NA",
+                                    contact=contact or "NA", placementOrGrad=placementOrGrad or "NA", designation=designation or "NA", company_name=company_name or "NA"
+                                    , experience=experience or "NA", field_pref1=field_pref1 or "NA", field_pref2=field_pref2 or "NA", branch=(core_branch or "NA"), branch_subdivision=(branch_subdivision or "NA")
+                                    , preferred_mentees=preferred_mentees or "NA", university_name=(university or "NA"), suggestions=suggestions or "NA", alumni_recommendations=recommendations or "NA")
         
         
         

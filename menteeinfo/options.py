@@ -48,125 +48,144 @@ BRANCH_CHOICES = [
     ('other', 'Other (If not mentioned above)'),
 ]
 
+
+
+
 BRANCH_SUBDIVISION_CHOICES = {
     'aero': [
-        ('aero', 'Aerospace'),
-        ('aerodynamics', 'Aerodynamics'),
-        ('aerostructures', 'Aerospace structures'),
-        ('dynamics', 'Dynamics and controls'),
-        ('propulsion', 'Aerospace Propulsion'),
-    ],
-    'cse': [
-        ('cse', 'Computer Science'),
-        ('research', 'Research'),
-    ],
-    'ee': [
-        ('ee', 'Electrical'),
-        ('power', 'Power systems'),
-        ('control', 'Control systems'),
-        ('communication', 'Communication systems and signal processing'),
-        ('design', 'Design engineering'),
-        ('microelectronics', 'Microelectronics and nanotechnology'),
-        ('semiconductors', 'Semiconductors'),
-    ],
-    'mech': [
-        ('mech', 'Mechanical'),
-        ('thermal', 'Thermal and Fluid engineering'),
-        ('manufacturing', 'Manufacturing engineering'),
-        ('design', 'Design and optimization (CAD, FEA)'),
-        ('autoaero', 'Automotive and Aerospace'),
-        ('mechatronics', 'Mechatronics'),
-    ],
-    'chem': [
-        ('chem', 'Chemistry'),
-        ('pharmaceutical', 'Pharmaceutical'),
-        ('computational', 'Computational Chemistry'),
-        ('cosmetics', 'Cosmetics and Paint industry'),
-        ('coal', 'Coal, Oil and Gas'),
-    ],
-    'biosci': [
-        ('biosci', 'Biosciences'),
-        ('biomechanics', 'Biomechanics'),
-        ('immunology', 'Immunology and Drug Discovery'),
-        ('research', 'Research (Molecular/Cell biology)'),
-        ('genetics', 'Genetics and Genomics'),
-    ],
-    'che': [
-        ('che', 'Chemical'),
-        ('transport', 'Transport phenomena'),
-        ('thermo', 'Thermodynamics'),
-        ('nanotech', 'Nanotechnology'),
-        ('polymer', 'Polymer science'),
-        ('process', 'Process design and analysis'),
-    ],
-    'ieor': [
-        ('ieor', 'IEOR'),
-        ('optimization', 'Optimization models'),
-        ('stochastic', 'Stochastic models'),
-        ('game', 'Game theory'),
-        ('simulation', 'Simulation models'),
-        ('supplychain', 'Supply chain analysis'),
-    ],
-    'metallurgy': [
-        ('metallurgy', 'Metallurgy'),
-        ('thermodynamics', 'Metallurgical Thermodynamics and Kinetics'),
-        ('phase', 'Phase Transformations & Heat Treatment of Materials'),
-        ('welding', 'Welding & Manufacturing'),
-        ('characteristics', 'Material Science Characteristics'),
-        ('surface', 'Surface Engineering'),
-        ('ironsteel', 'Iron & Steel'),
-    ],
-    'engphy': [
-        ('engphy', 'EP'),
-        ('highenergy', 'High Energy Physics'),
-        ('condensed', 'Condensed Matter Physics'),
-        ('softmatter', 'Soft Matter Physics'),
-        ('optics', 'Optics & Photonics'),
-        ('astronomy', 'Astronomy, Cosmology & Gravity'),
-    ],
-    'envsci': [
-        ('envsci', 'Environmental'),
-        ('air', 'Air Quality Management and Pollution Control'),
-        ('modeling', 'Environmental System Modelling'),
-        ('waste', 'Solid and Hazardous Waste Management'),
-        ('water', 'Water and Wastewater Treatment Reuse and Management'),
-    ],
-    'energy': [
-        ('energy', 'Energy'),
-        ('renewable', 'Renewable energy'),
-        ('batteries', 'Batteries'),
-        ('ev', 'EV'),
-        ('grid', 'Electrical grid'),
-        ('policy', 'Energy policy'),
-    ],
-    'math': [
-        ('math', 'Mathematics'),
-        ('research', 'Research'),
-    ],
-    'civil': [
-        ('civil', 'Civil'),
-        ('construction', 'Construction Technology and Management'),
-        ('structural', 'Structural Engineering'),
-        ('disaster', 'Disaster Resilience and Risk Management'),
-        ('transport', 'Transport engineering'),
-        ('urban', 'Urban planning'),
-    ],
-    'earthsci': [
-        ('earthsci', 'Earth Sciences'),
-        ('oceanography', 'Oceanography and Hydrology'),
-        ('remote', 'Remote sensing and GIS'),
-        ('geology', 'Geology'),
-        ('climatology', 'Climatology'),
-    ],
-    'rural': [
-        ('rural', 'Rural'),
-        ('technology', 'Technology for Rural Areas'),
-    ],
-    'design': [
-        ('design', 'Design'),
-    ],
-    'other': [
-        ('other', 'Other (If not mentioned above)'),
-    ],
-}
+        ('Aerospace', 'Aerospace'),
+('Aerodynamics', 'Aerodynamics'),
+('Aerospace structures', 'Aerospace structures'),
+('Dynamics and controls', 'Dynamics and controls'),
+('Aerospace Propulsion', 'Aerospace Propulsion'),
+],
 
+'cse': [
+('Computer Science', 'Computer Science'),
+('Research', 'Research'),
+],
+
+'ee': [
+('Electrical', 'Electrical'),
+('Power systems', 'Power systems'),
+('Control systems', 'Control systems'),
+('Communication systems and signal processing', 'Communication systems and signal processing'),
+('Design engineering', 'Design engineering'),
+('Microelectronics and nanotechnology', 'Microelectronics and nanotechnology'),
+('Semiconductors', 'Semiconductors'),
+],
+
+'mech': [
+('Mechanical', 'Mechanical'),
+('Thermal and Fluid engineering', 'Thermal and Fluid engineering'),
+('Manufacturing engineering', 'Manufacturing engineering'),
+('Design and optimization (CAD, FEA)', 'Design and optimization (CAD, FEA)'),
+('Automotive and Aerospace', 'Automotive and Aerospace'),
+('Mechatronics', 'Mechatronics'),
+],
+
+'chem': [
+('Chemistry', 'Chemistry'),
+('Pharmaceutical', 'Pharmaceutical'),
+('Computational Chemistry', 'Computational Chemistry'),
+('Cosmetics and Paint industry', 'Cosmetics and Paint industry'),
+('Coal, Oil and Gas', 'Coal, Oil and Gas'),
+],
+
+'biosci': [
+('Biosciences', 'Biosciences'),
+('Biomechanics', 'Biomechanics'),
+('Immunology and Drug Discovery', 'Immunology and Drug Discovery'),
+('Research (Molecular/Cell biology)', 'Research (Molecular/Cell biology)'),
+('Genetics and Genomics', 'Genetics and Genomics'),
+],
+
+'che': [
+('Chemical', 'Chemical'),
+('Transport phenomena', 'Transport phenomena'),
+('Thermodynamics', 'Thermodynamics'),
+('Nanotechnology', 'Nanotechnology'),
+('Polymer science', 'Polymer science'),
+('Process design and analysis', 'Process design and analysis'),
+],
+
+'ieor': [
+('IEOR', 'IEOR'),
+('Optimization models', 'Optimization models'),
+('Stochastic models', 'Stochastic models'),
+('Game theory', 'Game theory'),
+('Simulation models', 'Simulation models'),
+('Supply chain analysis', 'Supply chain analysis'),
+],
+
+'metallurgy': [
+('Metallurgy', 'Metallurgy'),
+('Metallurgical Thermodynamics and Kinetics', 'Metallurgical Thermodynamics and Kinetics'),
+('Phase Transformations & Heat Treatment of Materials', 'Phase Transformations & Heat Treatment of Materials'),
+('Welding & Manufacturing', 'Welding & Manufacturing'),
+('Material Science Characteristics', 'Material Science Characteristics'),
+('Surface Engineering', 'Surface Engineering'),
+('Iron & Steel', 'Iron & Steel'),
+],
+
+'engphy': [
+('EP', 'EP'),
+('High Energy Physics', 'High Energy Physics'),
+('Condensed Matter Physics', 'Condensed Matter Physics'),
+('Soft Matter Physics', 'Soft Matter Physics'),
+('Optics & Photonics', 'Optics & Photonics'),
+('Astronomy, Cosmology & Gravity', 'Astronomy, Cosmology & Gravity'),
+],
+
+'envsci': [
+('Environmental', 'Environmental'),
+('Air Quality Management and Pollution Control', 'Air Quality Management and Pollution Control'),
+('Environmental System Modelling', 'Environmental System Modelling'),
+('Solid and Hazardous Waste Management', 'Solid and Hazardous Waste Management'),
+('Water and Wastewater Treatment Reuse and Management', 'Water and Wastewater Treatment Reuse and Management'),
+],
+
+'energy': [
+('Energy', 'Energy'),
+('Renewable energy', 'Renewable energy'),
+('Batteries', 'Batteries'),
+('EV', 'EV'),
+('Electrical grid', 'Electrical grid'),
+('Energy policy', 'Energy policy'),
+],
+
+'math': [
+('Mathematics', 'Mathematics'),
+('Research', 'Research'),
+],
+
+'civil': [
+('Civil', 'Civil'),
+('Construction Technology and Management', 'Construction Technology and Management'),
+('Structural Engineering', 'Structural Engineering'),
+('Disaster Resilience and Risk Management', 'Disaster Resilience and Risk Management'),
+('Transport engineering', 'Transport engineering'),
+('Urban planning', 'Urban planning'),
+],
+
+'earthsci': [
+('Earth Sciences', 'Earth Sciences'),
+('Oceanography and Hydrology', 'Oceanography and Hydrology'),
+('Remote sensing and GIS', 'Remote sensing and GIS'),
+('Geology', 'Geology'),
+('Climatology', 'Climatology'),
+],
+
+'rural': [
+('Rural', 'Rural'),
+('Technology for Rural Areas', 'Technology for Rural Areas'),
+],
+
+'design': [
+('Design', 'Design'),
+],
+
+'other': [
+('Other (If not mentioned above)', 'Other (If not mentioned above)'),
+]
+}
