@@ -4,6 +4,7 @@ from .models import Registration
 from django.core.exceptions import ValidationError
 import csv
 from rest_framework.decorators import api_view
+from . import options
 
 # # from .resources import MentorResource
 # # from django.contrib import messages
@@ -120,14 +121,52 @@ from rest_framework.decorators import api_view
 def export(request):
 	response = HttpResponse(content_type = 'text/csv')
 	writer = csv.writer(response)
-	writer.writerow(['fullname', 'rollno', 'department', 'other_department', 'degree', 'degree_other', 'graduation_year', 'designation', 
-    'experience', 'contact', 'email', 'profiles', 'pref1', 'pref2', 'core', 'aerospace', 'chemical', 'bsbe', 'earthscience', 'ep',
-    'civil','mems','maths','ieor','chemistry','electrical', 'energy','mechanical','other_mentorship', 'no_of_mentees',
-    'referral', 'suggestions'])
-	for registration in Registration.objects.all().values_list('fullname', 'rollno', 'department', 'other_department', 'degree', 'degree_other', 'graduation_year', 'designation', 
-    'experience', 'contact', 'email', 'profiles', 'pref1', 'pref2', 'core', 'aerospace', 'chemical', 'bsbe', 'earthscience', 'ep',
-    'civil','mems','maths','ieor','chemistry','electrical', 'energy','mechanical','other_mentorship', 'no_of_mentees',
-    'referral', 'suggestions'):
+	writer.writerow([
+    'fullname',
+    'rollno',
+    'department',
+    'other_department',
+    'degree',
+    'other_degree',
+    'graduation_year',
+    'contact',
+    'email',
+    'option',
+    'designation',
+    'Company Name',
+    'University Name',
+    'experience',
+    'Preference 1',
+    'Preference 2',
+    'Branch',
+    'Branch Subdivision',
+    'Preferred mentees',
+    'Suggestions',
+    'Recommendations',
+])
+	for registration in Registration.objects.all().values_list(
+    'fullname',
+    'rollno',
+    'department',
+    'department_other',
+    'degree',
+    'degree_other',
+    'graduation_year',
+    'contact',
+    'email',
+    'placementOrGrad',
+    'designation', 
+    'company_name',
+    'university_name',
+    'experience',
+    'field_pref1',
+    'field_pref2',
+    'branch',
+    'branch_subdivision',
+    'preferred_mentees',
+    'suggestions',
+    'alumni_recommendations'
+    ):
 		writer.writerow(registration)
 	
 	response['Content-Disposition'] = 'attachment; filename="mentors_pmp23.csv"'
@@ -139,66 +178,114 @@ def index(request):
 def phonehome(request):
     return render(request, 'menteeinfo/phonehome.html')
 
-def savedata_new(request):
+def mentorReg(request):
+    
 
     def __str__(self):
         return self.fullname
 
     if request.method == 'POST':
+        
         fullname=request.POST.get('fullname')
         rollno=request.POST.get('rollno')
         department=request.POST.get('department')
+        department_other=request.POST.get('department_other')
         degree=request.POST.get('degree')
         degree_other=request.POST.get('degree_other')
         graduation_year=request.POST.get('graduation_year')
-        designation=request.POST.get('designation')
-        experience=request.POST.get('experience')
         contact=request.POST.get('contact')
         email=request.POST.get('email')
-       
-        profiles=request.POST.get('profiles')
-        pref1=request.POST.get('pref1')
-        pref2=request.POST.get('pref2')
-        core=request.POST.get('core')
-        aerospace = request.POST.get('aerospace')
-        chemical = request.POST.get('chemical')
-        bsbe = request.POST.get('bsbe')
-        earthscience = request.POST.get('earthscience')
-        ep = request.POST.get('EP')
-        mems = request.POST.get('mems')
-        maths = request.POST.get('maths')
-        ieor = request.POST.get('ieor')
-        civil = request.POST.get('civil')
-        chemistry = request.POST.get('chemistry')
-        electrical = request.POST.get('electrical')
-        energy = request.POST.get('energy')
-        mechanical = request.POST.get('mechanical')
-        other_mentorship=request.POST.get('other_mentorship')
-        other_department = request.POST.get('other_department')
-        no_of_mentees=request.POST.get('no_of_mentees')
-        referral=request.POST.get('referral')
-        suggestions=request.POST.get('suggestion')
+        
+        
+        placementOrGrad = request.POST.get('placementOrGrad')
+        
+        
+        designation=request.POST.get('designation')
+        company_name  = request.POST.get('company_name')
+        experience=request.POST.get('experience')
+        
+        university=request.POST.get('university')
+        
+        suggestions=request.POST.get('suggestions')
+        
+        recommendations=request.POST.get('recommendations')
+        
 
-        registration=Registration(fullname=fullname, rollno=rollno, department=department, degree=degree, degree_other=degree_other, graduation_year=graduation_year, designation=designation, experience=experience, contact=contact,  email=email, profiles=profiles, pref1=pref1, pref2=pref2, core=core,
-        aerospace=aerospace,
-        chemical = chemical,
-        bsbe = bsbe,
-        earthscience = earthscience,
-        ep=ep,
-        mems = mems,
-        maths=maths,
-        ieor=ieor,
-        civil=civil,
-        chemistry = chemistry,
-        electrical=electrical,
-        energy=energy,
-        mechanical=mechanical,
-        other_mentorship=other_mentorship ,
-        other_department = other_department,
-        no_of_mentees=no_of_mentees, referral=referral,  suggestions=suggestions)
+        field_pref1=request.POST.get('field_pref1')
+        field_pref2=request.POST.get('field_pref2')
+        
+        core_branch=request.POST.get('core_branch')
+        branch_subdivision=request.POST.get('branch_subdivision')
+        
+        
+        preferred_mentees = request.POST.get('preferred_mentees')
+        
+        
+        registration = Registration(fullname=fullname, email=email, department=department, rollno=rollno, department_other=department_other,
+                                    degree=degree, degree_other=degree_other, graduation_year=graduation_year, 
+                                    contact=contact, placementOrGrade=placementOrGrad, designation=designation, company_name=company_name
+                                    , experience=experience, field_pref1=field_pref1, field_pref2=field_pref2, branch=core_branch, branch_subdivision=branch_subdivision
+                                    , preferred_mentees=preferred_mentees, university_name=university, suggestions=suggestions, alumni_recommendations=recommendations)
+        
+        
+        
         registration.save()
-        return redirect('thanks')
-    return render(request, 'menteeinfo/form.html')
+        
+        return render(request, 'menteeinfo/thank.html')
+        
+       
+        # profiles=request.POST.get('profiles')
+        # pref1=request.POST.get('pref1')
+        # pref2=request.POST.get('pref2')
+        # core=request.POST.get('core')
+        # aerospace = request.POST.get('aerospace')
+        # chemical = request.POST.get('chemical')
+        # bsbe = request.POST.get('bsbe')
+        # earthscience = request.POST.get('earthscience')
+        # ep = request.POST.get('EP')
+        # mems = request.POST.get('mems')
+        # maths = request.POST.get('maths')
+        # ieor = request.POST.get('ieor')
+        # civil = request.POST.get('civil')
+        # chemistry = request.POST.get('chemistry')
+        # electrical = request.POST.get('electrical')
+        # energy = request.POST.get('energy')
+        # mechanical = request.POST.get('mechanical')
+        # other_mentorship=request.POST.get('other_mentorship')
+        # other_department = request.POST.get('other_department')
+        # no_of_mentees=request.POST.get('no_of_mentees')
+        # referral=request.POST.get('referral')
+        # suggestions=request.POST.get('suggestion')
+        
+        
+
+        # registration=Registration(fullname=fullname, rollno=rollno, department=department, degree=degree, degree_other=degree_other, graduation_year=graduation_year, designation=designation, experience=experience, contact=contact,  email=email, profiles=profiles, pref1=pref1, pref2=pref2, core=core,
+        # aerospace=aerospace,
+        # chemical = chemical,
+        # bsbe = bsbe,
+        # earthscience = earthscience,
+        # ep=ep,
+        # mems = mems,
+        # maths=maths,
+        # ieor=ieor,
+        # civil=civil,
+        # chemistry = chemistry,
+        # electrical=electrical,
+        # energy=energy,
+        # mechanical=mechanical,
+        # other_mentorship=other_mentorship ,
+        # other_department = other_department,
+        # no_of_mentees=no_of_mentees, referral=referral,  suggestions=suggestions)
+        # registration.save()
+        # return redirect('api/thanks')
+        # thank(request)
+        # return render(request, 'menteeinfo/thank.html')
+        
+    context = {
+        'options': options.__dict__,
+    }
+        
+    return render(request, 'menteeinfo/form.html', context)
 
 def thank(request):
     return render(request, 'menteeinfo/thank.html')

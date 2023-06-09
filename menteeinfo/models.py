@@ -1,4 +1,5 @@
 from django.db import models
+from .options import *
 
 # Create your models here.
 # class Mentee(models.Model):
@@ -46,36 +47,73 @@ class Registration(models.Model):
     id=models.AutoField(primary_key=True)
     fullname=models.CharField( max_length=255)
     rollno=models.CharField(max_length=9)
-    department=models.CharField( max_length=255)
-    degree=models.CharField( max_length=255)
-    degree_other=models.CharField( max_length=255)
-    graduation_year=models.CharField( max_length=10)
-    designation=models.CharField( max_length=255)
+    department=models.CharField( max_length=255, choices=BRANCH_CHOICES)
+    department_other=models.CharField(max_length=255, blank=True)
+    degree=models.CharField( max_length=255, choices=DEGREE_CHOICES)
+    degree_other=models.CharField( max_length=255, blank=True)
+    # graduation_year=models.CharField( max_length=10)
+    graduation_year = models.IntegerField()
     experience=models.TextField()
     contact=models.CharField( max_length=12)
     email=models.CharField(max_length=255)
-    no_of_mentees=models.CharField(max_length=255)
-    referral=models.CharField(max_length=255)
-    suggestions=models.TextField()
-    profiles=models.CharField(max_length=255)
-    pref1=models.CharField(max_length=255)
-    pref2=models.CharField(max_length=255)
-    core=models.CharField(max_length=100)
-    aerospace = models.CharField(max_length=100)
-    chemical = models.CharField(max_length=100)
-    bsbe = models.CharField(max_length=100)
-    earthscience = models.CharField(max_length=100)
-    ep = models.CharField(max_length=100)
-    mems = models.CharField(max_length=100)
-    maths = models.CharField(max_length=100)
-    ieor = models.CharField(max_length=100)
-    civil = models.CharField(max_length=100)
-    chemistry = models.CharField(max_length=100)
-    electrical = models.CharField(max_length=100)
-    energy = models.CharField(max_length=100)
-    mechanical = models.CharField(max_length=100)
-    other_mentorship=models.CharField(max_length=100)
-    other_department = models.CharField(max_length=100, default="None")
+    
+    placementOrGrad = models.CharField(max_length=255, choices=OPTIONS)
+    
+    
+    designation=models.CharField(max_length=255, blank=True)
+    company_name=models.CharField(max_length=255, blank=True)
+    experience=models.TextField()
+    
+    
+    field_pref1 = models.CharField(max_length=255, choices=PLACEMENT_FIELDS)
+    field_pref2 = models.CharField(max_length=255, choices=PLACEMENT_FIELDS)
+    
+
+    
+    university_name=models.CharField(max_length=255, blank=True)
+
+    
+    branch = models.CharField(max_length=255, choices=BRANCH_CHOICES)
+    branch_subdivision = models.CharField(max_length=255, choices=[], blank=True)
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self._update_branch_subdivision_choices()
+
+    def _update_branch_subdivision_choices(self):
+        self._meta.get_field('branch_subdivision').choices = BRANCH_SUBDIVISION_CHOICES.get(self.branch, [])
+
+    def save(self, *args, **kwargs):
+        self._update_branch_subdivision_choices()
+        super().save(*args, **kwargs)
+    
+    preferred_mentees = models.IntegerField()
+    
+    suggestions=models.TextField(blank=True)
+    
+    alumni_recommendations = models.TextField(blank=True)
+
+    # no_of_mentees=models.CharField(max_length=255)
+    # referral=models.CharField(max_length=255)
+    # profiles=models.CharField(max_length=255)
+    # pref1=models.CharField(max_length=255)
+    # pref2=models.CharField(max_length=255)
+    # core=models.CharField(max_length=100)
+    # aerospace = models.CharField(max_length=100)
+    # chemical = models.CharField(max_length=100)
+    # bsbe = models.CharField(max_length=100)
+    # earthscience = models.CharField(max_length=100)
+    # ep = models.CharField(max_length=100)
+    # mems = models.CharField(max_length=100)
+    # maths = models.CharField(max_length=100)
+    # ieor = models.CharField(max_length=100)
+    # civil = models.CharField(max_length=100)
+    # chemistry = models.CharField(max_length=100)
+    # electrical = models.CharField(max_length=100)
+    # energy = models.CharField(max_length=100)
+    # mechanical = models.CharField(max_length=100)
+    # other_mentorship=models.CharField(max_length=100)
+    # other_department = models.CharField(max_length=100, default="None")
 
     def __str__(self):
-        return self.fullname+"_"+self.pref1
+        return self.fullname+"_"+self.field_pref1
