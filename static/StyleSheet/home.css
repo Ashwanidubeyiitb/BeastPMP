@@ -20,7 +20,7 @@
 body {
     margin: 0px;
     padding: 0px;
-    background: #2F9491;
+    background: #D9CDB3;
     overflow-x: hidden;
     font-family: 'Poppins';
 }
@@ -32,7 +32,6 @@ body {
     display: grid;
     place-items: center;
     height: 10vh;
-    width: 12rem;
     background: #87C240;
     color: #222629;
     font-size: 1.2rem;
@@ -71,23 +70,35 @@ body {
     top: 20vh;
     text-align: center;
 }
+.pmp h1{
+    color: black !important;
+}
+
+.pmp h2{
+    font-size: 250%;
+    text-align: center !important;
+    margin-top: 3%;
+    
+}
 
 .btn {
-    background: none;
-    border: 2px solid white;
-    border-radius: 150px;
+    background-color: black;
+    border-top: 6px solid #624F48;
+    border-radius: 0;
     align-self: center;
-    width: 150px;
-    padding: 8px 16px;
-    color: white;
+    width: 150%;
+    padding: 20px 30px;
+    color: black;
     font-weight: bold;
     cursor: pointer;
     transition: all 0.1s ease-in-out 0.1s;
+    left: 350%;
+    color: #fff;
 }
 
 .btn:hover {
-    background: #DBF4A7;
-    color: black;
+    background: #624F48;
+    color: #fff;
 }
 
 .navbar {
@@ -98,7 +109,7 @@ body {
     box-shadow: 0 1px 5px 1px rgba(0, 0, 0, 0.2);
     width: 100vw;
     position: fixed;
-    background-color: #DBF4A7;
+    background-color: #624F48;
     transition: all 0.5s ease-in-out;
     z-index: 200;
 }
@@ -115,7 +126,7 @@ body {
 
 .nav__link {
     margin: 0 10px;
-    color: black;
+    color: white;
     padding: 5px 15px;
     border-radius: 100px;
     transition: all 0.5s ease-in-out;
@@ -329,21 +340,15 @@ body {
 
 .headBox {
     position: relative;
-    width: 416px;
-    height: 88px;
-    left: 73px;
-    top: 59px;
-
+    height: 10%;
+    top: 10%;
+    text-align: center !important;
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 400;
-    font-size: 64px;
-    /* line-height: 88px; */
-    /* identical to box height */
-
+    font-size: 450%;
     display: flex;
-    align-items: center;
-    background-image: url(headboxbg.png);
+    left: 35%;
 }
 
 
@@ -359,8 +364,8 @@ body {
         z-index: 5;
         text-align: justify;
         font-size: 1.9rem;
-        color: white;
-        margin: 6% 10% 0% 10%;
+        color: black;
+        margin: 8% 10% 0% 10%;
     }
 
     .illustration {
@@ -466,6 +471,46 @@ body {
 
 
 /* Mentor section */
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.row {
+    display: flex;
+    justify-content: center;
+    margin-bottom: -10px;
+}
+
+.circle {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background-color: #E7BEAE;;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    margin-right: 100px;
+}
+
+.circle.center {
+    width: 400px;
+    height: 400px;
+    font-size: 48px;
+    margin-right: 60px;
+    position: relative;
+    top: -50px;
+}
+
+.circle.invisible {
+    opacity: 0;
+    pointer-events: none;
+}
 @media(min-width:1200px) {
     .section3 {
         width: 100vw;
