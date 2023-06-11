@@ -361,7 +361,8 @@ body {
 .headBox0 {
     position: relative;
     height: 10%;
-    top: 20%;
+    top: 30%;
+    margin-bottom: 20%;
     text-align: center !important;
     font-family: 'Poppins';
     font-style: normal;
@@ -450,7 +451,7 @@ body {
         display: grid;
         place-content: center;
         color: #222629;
-        font-size: 1.5rem;
+        font-size: 2rem;
         font-weight: bold;
     }
 }
@@ -502,7 +503,7 @@ body {
 .mentors,
 .departments {
     color: black;
-    font-size: 1.5rem;
+    font-size: 2rem;
     font-weight: bold;
     margin-top: 1rem;
 
@@ -1110,7 +1111,7 @@ body {
 
     .slide-box .comment {
         background-color: #E8E3E3;
-        margin-top: 7%;
+        margin-top: 3%;
         border-radius: 30px;
         color: black;
         font-size: 18px;
