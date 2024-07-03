@@ -15,11 +15,30 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
   <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
- 
-    <meta name="keywords" content="SARC, Student Alumni Relations Cell, SARC-IITB, sarc, sarc-iitb, sarc iitb, SARC iitb, SARC IITB, SARC IITB Coordie, HTML, CSS, javascript">
-    <link rel="shortcut icon" href="{% static 'img/logo1.png' %}" sizes="16x16" type="image/png">
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  <meta name="keywords" content="SARC, Student Alumni Relations Cell, SARC-IITB, sarc, sarc-iitb, sarc iitb, SARC iitb, SARC IITB, SARC IITB Coordie, HTML, CSS, javascript">
+  <link rel="shortcut icon" href="{% static 'img/logo1.png' %}" sizes="16x16" type="image/png">
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+  <script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", function() {
+      const placementTab = document.getElementById('placement-tab');
+      const gradMentoringTab = document.getElementById('grad-mentoring-tab');
+      const placementFieldset = document.getElementById('placement-fieldset');
+      const gradMentoringFieldset = document.getElementById('grad-mentoring-fieldset');
+    
+      placementTab.addEventListener('click', function() {
+        placementFieldset.style.display = 'block';
+        gradMentoringFieldset.style.display = 'none';
+      });
+    
+      gradMentoringTab.addEventListener('click', function() {
+        placementFieldset.style.display = 'none';
+        gradMentoringFieldset.style.display = 'block';
+      });
+    });
+  </script>
+
   <script type="text/javascript">
     function CheckDegree(val) {
       var element = document.getElementById('degree_other');
@@ -36,37 +55,36 @@
       else
         element.style.display = 'none';
     }
-
   </script>
-    
 </head>
 
-<body>
+<body style="background-color: #d9cdb3;">
   <div class="container-fluid px-0">
-
-    <header style="color: #222629;">PLACEMENT MENTORING PROGRAM</header>
+    <header style="color: #fff; background-color: #624f48;">PLACEMENT MENTORING PROGRAM</header>
   </div>
-  <div class="container" id="t01">
+
+  <div class="container" id="t01" style="background-color: #d9cdb3;">
     <div class="row justify-content-center">
       <div class="col-11 text-center p-0 mt-3 mb-2">
-        <div class="card px-0 pt-4 pb-0 mt-3 mb-3" id="t01">
-          <h2 id="heading">MENTEE REGISTRATION FORM</h2>
+        <div class="card px-0 pt-4 pb-0 mt-3 mb-3" id="t01" style="background-color: #d9cdb3;">
+          <h2 id="heading" style="color: #fff">MENTEE REGISTRATION FORM</h2>
           <form id="msform" action="regcom/" method="POST">
             <!-- progressbar -->{% csrf_token %}
             <ul id="progressbar">
-              <li class="active" id="account"><strong>Personal Details</strong></li>
+              <li class="active" id="account" style="color: #624f48;"><strong>Personal Details</strong></li>
               <li id="personal"><strong>Choose your Mentors</strong></li>
               <li id="confirm"><strong>Finish</strong></li>
             </ul>
+
             <!-- fieldsets -->
-            <fieldset>
-              <div class="form-card" id="t01">
-                <div class="row">
-                 
-                </div> <label class="fieldlabels">Name</label> <input type="text" name="full_name"
-                  placeholder="John Doe" id="name" />
-                <label class="fieldlabels">Roll No</label> <input type="text" name="roll_no" placeholder="180010000"
-                  id="roll_no" class="form-control" />
+            <!-- first registration page -->
+            <fieldset style="background-color: #d9cdb3;"> 
+              <div class="form-card" id="t01" style="background-color: #d9cdb3;">
+                <div class="row"></div>
+                <label class="fieldlabels">Name</label>
+                <input type="text" name="full_name" placeholder="John Doe" id="name" />
+                <label class="fieldlabels">Roll No</label>
+                <input type="text" name="roll_no" placeholder="180010000" id="roll_no" class="form-control" />
                 <label class="fieldlabels">Department</label>
                 <select class="form-select my-3" aria-label="Department" name='department' id='department' onchange='CheckDept(this.value);'> 
                   <optgroup style="font-family: 'helvetica','Times New Roman';">
@@ -111,9 +129,7 @@
                 </div>
 
                 <label class="fieldlabels">Contact Number</label>
-                <input type="text" class="form-control" id="contact" name="contact" placeholder="Contact Number"
-                  >
-
+                <input type="text" class="form-control" id="contact" name="contact" placeholder="Contact Number">
                 <label class="fieldlabels">Email </label>
                 <input type="text" name="email_id" placeholder="180010000@iitb.ac.in" id="email_id" />
                 <label class="fieldlabels">Statement of Purpose</label>
@@ -131,17 +147,30 @@
                   </ul>
                 </div>
               </div>
-
-
-              <input type="button" name="next" class="next action-button" value="Next" id="next_button" />
+              <input type="button" name="next" class="next action-button" value="Next" id="next_button" style="background-color: #624f48; color: #fff"/>
             </fieldset>
-            <fieldset>
-              <div class="form-card" id="t01">
-                <div class="row">
-                 
 
-                </div> <br><br>
-                <div class="bs-example">
+            <!-- Placement vs gradMentoring -->
+             <fieldset style="background-color: #d9cdb3;">
+              <div class="form-card" id="t01" style="background-color: #d9cdb3;">
+                <div class="row"></div>
+                <ul class="nav nav-tabs" style="background-color: #d9cdb3;">
+                  <li class="nav-item" style="background-color: #d9cdb3; border-color: #624f48">
+                    <a class="nav-link" href="#" id="placement-tab" data-toggle="tab" style="background-color: #624f48; color: #fff">PLACEMENT</a>
+                  </li>
+                  <li class="nav-item" style="background-color: #d9cdb3; border-color: #624f48">
+                    <a class="nav-link" href="#" id="grad-mentoring-tab" data-toggle="tab" style="background-color: #624f48; color: #fff">GRAD MENTORING</a>
+                  </li>
+                </ul>
+              </div>
+            </fieldset>
+
+            <!-- Placement Mentoring Fieldset -->
+            <fieldset id="placement-fieldset" style="display: none; background-color: #d9cdb3;">
+              <div class="form-card" id="t01" style="background-color: #d9cdb3;">
+                <div class="row"></div>
+                <br><br>
+                <div class="bs-example" style="background-color: #d9cdb3;">
                   <ul class="nav nav-tabs">
                     <li class="nav-item">
                       <a class="nav-link active" aria-current="core" href="#core" data-toggle="tab">CORE</a>
@@ -462,36 +491,125 @@
                 <input type="text" name="preference_4" placeholder="Fourth Preference Mentor's id">
                 <label class="fieldlabels">Fifth Preference: </label>
                 <input type="text" name="preference_5" placeholder="Fifth Preference Mentor's id">
-
               </div> 
               <button type="but" name="previous" class="previous action-button-previous" value="Previous">Previous</button> 
               <button type="submit" name="next" class="next action-button" value="Next">Submit</button> 
+            </fieldset>
 
-              <!-- <input type="button" name="previous" class="previous action-button-previous" value="Previous" /> >
+            <!-- Grad Mentoring Fieldset -->
+            <fieldset id="grad-mentoring-fieldset" style="display: none;">
+              <div class="form-card" id="t01">
+                <div class="row"></div>
+                <br><br>
+                <div class="bs-example">
+                  <ul class="nav nav-tabs">
+                    <li class="nav-item">
+                      <a class="nav-link active" aria-current="core" href="#core" data-toggle="tab">CORE</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#management" data-toggle="tab">MANAGEMENT</a>
+                    </li>
+                  </ul>
+
+                  <div class="tab-content">
+                    <div class="tab-pane fade show active" id="core">
+                      <div class="row" id="t05">
+                        {% for mentor in mentors_core %}
+                        <div class="col-sm-3" id="mentors">
+                          <div class="card text-white bg-dark mb-3" style="max-width: 18rem;" id="t06">
+                            <div class="card-header">Mentor id: {{mentor.id}}</div>
+                            <div class="card-body" style="height: 367.2px;">
+                              <h6 class="degree" style="color: #87c240;">{{mentor.university}} -
+                                {{mentor.subject}}</h4>
+                                <p class="card-text">{{mentor.experience}}</p>
+                            </div>
+                          </div>
+                        </div>
+                        {% endfor %}
+                        {% for mentor in mentors_Core %}
+                        <div class="col-sm-3" id="mentors">
+                          <div class="card text-white bg-dark mb-3" style="max-width: 18rem;" id="t06">
+                            <div class="card-header">Mentor id: {{mentor.id}}</div>
+                            <div class="card-body" style="height: 367.2px;">
+                              <h6 class="degree" style="color: #87c240;">{{mentor.university}} -
+                                {{mentor.subject}}</h4>
+                                <p class="card-text">{{mentor.experience}}</p>
+                            </div>
+                          </div>
+                        </div>
+                        {% endfor %}
+                      </div>
+                    </div>
+
+                    <div class="tab-pane fade show active" id="management">
+                      <div class="row" id="t05">
+                        {% for mentor in mentors_management %}
+                        <div class="col-sm-3" id="mentors">
+                          <div class="card text-white bg-dark mb-3" style="max-width: 18rem;" id="t06">
+                            <div class="card-header">Mentor id: {{mentor.id}}</div>
+                            <div class="card-body" style="height: 367.2px;">
+                              <h6 class="degree" style="color: #87c240;">{{mentor.university}} -
+                                {{mentor.subject}}</h4>
+                                <p class="card-text">{{mentor.experience}}</p>
+                            </div>
+                          </div>
+                        </div>
+                        {% endfor %}
+                        {% for mentor in mentors_Management %}
+                        <div class="col-sm-3" id="mentors">
+                          <div class="card text-white bg-dark mb-3" style="max-width: 18rem;" id="t06">
+                            <div class="card-header">Mentor id: {{mentor.id}}</div>
+                            <div class="card-body" style="height: 367.2px;">
+                              <h6 class="degree" style="color: #87c240;">{{mentor.university}} -
+                                {{mentor.subject}}</h4>
+                                <p class="card-text">{{mentor.experience}}</p>
+                            </div>
+                          </div>
+                        </div>
+                        {% endfor %}
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+
+                <label class="fieldlabels">First Preference: </label>
+                <input type="text" name="preference_1" placeholder="First Preference Mentor's id">
+                <label class="fieldlabels">Second Preference: </label>
+                <input type="text" name="preference_2" placeholder="Second Preference Mentor's id">
+                <label class="fieldlabels">Third Preference: </label>
+                <input type="text" name="preference_3" placeholder="Third Preference Mentor's id">
+                <label class="fieldlabels">Fourth Preference: </label>
+                <input type="text" name="preference_4" placeholder="Fourth Preference Mentor's id">
+                <label class="fieldlabels">Fifth Preference: </label>
+                <input type="text" name="preference_5" placeholder="Fifth Preference Mentor's id">
+              </div> 
+              <button type="but" name="previous" class="previous action-button-previous" value="Previous">Previous</button> 
+              <button type="submit" name="next" class="next action-button" value="Next">Submit</button> 
+            </fieldset>
+
+            <fieldset>
+              <div class="form-card" id="t01">
+                  <div class="row">
+                      <div class="col-7">
+                          <h2 class="fs-title">Finish:</h2>
+                      </div>
+                      <div class="col-5">
+                          <h2 class="steps">Step 3 - 3</h2>
+                      </div>
+                  </div> <br><br>
+                  <h2 class="purple-text text-center"><strong>SUCCESS !</strong></h2> <br>
+                  <div class="row justify-content-center">
+                      <div class="col-3"> <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDbya8UGy8MoCuSu8G24QLzfqxDm_xplQVekJIms0ikiz3NLi6KEsx4RInxNPrDCYOaiM&usqp=CAU" class="fit-image"> </div>
+                  </div> <br><br>
+                  <div class="row justify-content-center">
+                      <div class="col-7 text-center">
+                          <h5 class="purple-text text-center">You Have Successfully Signed Up</h5>
+                      </div>
+                  </div>
+              </div>
             </fieldset>
           </form>
-          {% comment %}
-          <!-- <fieldset>
-                            <div class="form-card" id="t01">
-                                <div class="row">
-                                    <div class="col-7">
-                                        <h2 class="fs-title">Finish:</h2>
-                                    </div>
-                                    <div class="col-5">
-                                        <h2 class="steps">Step 3 - 3</h2>
-                                    </div>
-                                </div> <br><br>
-                                <h2 class="purple-text text-center"><strong>SUCCESS !</strong></h2> <br>
-                                <div class="row justify-content-center">
-                                    <div class="col-3"> <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDbya8UGy8MoCuSu8G24QLzfqxDm_xplQVekJIms0ikiz3NLi6KEsx4RInxNPrDCYOaiM&usqp=CAU" class="fit-image"> </div>
-                                </div> <br><br>
-                                <div class="row justify-content-center">
-                                    <div class="col-7 text-center">
-                                        <h5 class="purple-text text-center">You Have Successfully Signed Up</h5>
-                                    </div>
-                                </div>
-                            </div>
-                        </fieldset> {% endcomment %}-->
         </div>
       </div>
     </div>

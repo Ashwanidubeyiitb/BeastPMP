@@ -31,7 +31,7 @@ $(document).ready(function () {
 
 				current_fs.css({
 					'display': 'none',
-					'position': 'relative'
+					'position': 'relative',
 				});
 				next_fs.css({ 'opacity': opacity });
 			},
@@ -87,4 +87,3 @@ $(document).ready(function () {
 	})
 
 });
-

@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, response
-from .models import Registration
+from .models import Registration, Mentee, Mentor, gradMentor
 from django.core.exceptions import ValidationError
 import csv
 from rest_framework.decorators import api_view
@@ -32,90 +32,104 @@ from . import options
 # def index(request):
 # 	return render(request, 'menteeinfo/index.html')
 
-# # Mentee registration
-# def register(request):
-# 	corementors = Mentor.objects.filter(field="Core")
-# 	Corementors = Mentor.objects.filter(field="core")
-# 	consultmentors = Mentor.objects.filter(field="Consultancy")
-# 	Consultmentors = Mentor.objects.filter(field="consultancy")
-# 	consulting = Mentor.objects.filter(field="consulting")
-# 	analyticmentors = Mentor.objects.filter(field="Analytics")
-# 	finmentors = Mentor.objects.filter(field="Finance")
-# 	finance = Mentor.objects.filter(field="finance")
-# 	csmentor = Mentor.objects.filter(field="IT/Software")
-# 	othermentors = Mentor.objects.filter(field="Other")
-# 	Othermentors = Mentor.objects.filter(field="Other")
-# 	Othersmentors = Mentor.objects.filter(field="Others")
-# 	chutiya = Mentor.objects.filter(field="FMCG(product management")
-# 	fmcg = Mentor.objects.filter(field="FMCG")
-# 	bhadwa = Mentor.objects.filter(field="Analytics,")
-# 	randi = Mentor.objects.filter(field="IT/Software,")
-# 	corecontrol = Mentor.objects.filter(field="Mechanical(core control)")
-# 	itsoftwar = Mentor.objects.filter(field="IT/Softwar")
-# 	# allmentors_sorted = allmentors.order_by['gray_out']
-# 	context = {
-# 		'mentors_list_core': corementors, 
-# 		'mentors_list_consult': consultmentors,
-# 		'mentors_list_analysis': analyticmentors,
-# 		'mentors_list_fin': finmentors,
-# 		'mentors_list_cs': csmentor,
-# 		'mentors_list_other': othermentors,
-# 		'mentors_list_fmcg': fmcg,
-# 		'mentors_list_Core': Corementors,
-# 		'mentors_list_Other': Othermentors,
-# 		'mentors_list_Others': Othersmentors,
-# 		'mentors_list_chutiya': chutiya,
-# 		'bhadwa': bhadwa,
-# 		'randi': randi,
-# 		'corecontrol': corecontrol,
-# 		'Consultmentors' : Consultmentors,
-# 		'consulting': consulting,
-# 		'finance': finance,
-# 		'itsoftwar': itsoftwar
+# Mentee registration
+def register(request):
+    corementors = Mentor.objects.filter(field="Core")
+    Corementors = Mentor.objects.filter(field="core")
+    consultmentors = Mentor.objects.filter(field="Consultancy")
+    Consultmentors = Mentor.objects.filter(field="consultancy")
+    consulting = Mentor.objects.filter(field="consulting")
+    analyticmentors = Mentor.objects.filter(field="Analytics")
+    finmentors = Mentor.objects.filter(field="Finance")
+    finance = Mentor.objects.filter(field="finance")
+    csmentor = Mentor.objects.filter(field="IT/Software")
+    othermentors = Mentor.objects.filter(field="Other")
+    Othermentors = Mentor.objects.filter(field="Other")
+    Othersmentors = Mentor.objects.filter(field="Others")
+    chutiya = Mentor.objects.filter(field="FMCG(product management")
+    fmcg = Mentor.objects.filter(field="FMCG")
+    bhadwa = Mentor.objects.filter(field="Analytics,")
+    randi = Mentor.objects.filter(field="IT/Software,")
+    corecontrol = Mentor.objects.filter(field="Mechanical(core control)")
+    itsoftwar = Mentor.objects.filter(field="IT/Softwar")
+    # allmentors_sorted = allmentors.order_by['gray_out']
+    context = {
+        'mentors_list_core': corementors, 
+        'mentors_list_consult': consultmentors,
+        'mentors_list_analysis': analyticmentors,
+        'mentors_list_fin': finmentors,
+        'mentors_list_cs': csmentor,
+        'mentors_list_other': othermentors,
+        'mentors_list_fmcg': fmcg,
+        'mentors_list_Core': Corementors,
+        'mentors_list_Other': Othermentors,
+        'mentors_list_Others': Othersmentors,
+        'mentors_list_chutiya': chutiya,
+        'bhadwa': bhadwa,
+        'randi': randi,
+        'corecontrol': corecontrol,
+        'Consultmentors': Consultmentors,
+        'consulting': consulting,
+        'finance': finance,
+        'itsoftwar': itsoftwar,
+    }
 
-# 	}
-# 	# dict=[]
-# 	# allmentors = Mentor.objects.all()
-# 	# for mentor in allmentors:
-		
-# 	# 	exp = mentor.experience
-# 	# 	explist = exp.split(",")
-# 	# 	dict[mentor.rollno] = explist
-# 	# print (dict[183020060])
-# 	return render(request, "menteeinfo/register.html", context)
-# # def mentorexp(request):
-# #     allmentors = Mentor.objects.all()
-# # 	for mentor in allmentors:
-# #     	exp = mentor.experience
+    # dict=[]
+    # allmentors = Mentor.objects.all()
+    # for mentor in allmentors:
+    #     exp = mentor.experience
+    #     explist = exp.split(",")
+    #     dict[mentor.rollno] = explist
+    # print (dict[183020060])
 
+    return render(request, "menteeinfo/register.html", context)
 
-# def menteereg(request):
-# 	if request.method == 'POST':
-# 		# full_name = request.POST.get('full_name')
-# 		roll_no = request.POST.get('roll_no')
-# 		department = request.POST.get('department')
-# 		degree = request.POST.get('degree')
-# 		degree_other= request.POST.get('degree_other')
-# 		contact_number = request.POST.get('contact')
-# 		email_id = request.POST.get('email_id')
-# 		preference_1 = request.POST.get('preference_1')
-# 		preference_2 = request.POST.get('preference_2')
-# 		preference_3 = request.POST.get('preference_3')
-# 		preference_4 = request.POST.get('preference_4')
-# 		preference_5 = request.POST.get('preference_5')
-# 		full_name = request.POST.get('full_name')
-# 		suggestion = request.POST.get('suggestion')	
+# def mentorexp(request):
+#     allmentors = Mentor.objects.all()
+# 	for mentor in allmentors:
+#     	exp = mentor.experience
 
-# 		SOP = request.POST.get('SOP')
-# 		mentee = Mentee(full_name = full_name, roll_no = roll_no,
-# 			department = department, degree = degree, degree_other= degree_other,
-# 			contact_number = contact_number, email_id = email_id,
-# 			preference_1 = preference_1, preference_2 = preference_2,
-# 			preference_3 = preference_3, preference_4 = preference_4, 
-# 			preference_5 = preference_5, suggestion = suggestion, SOP = SOP)
-# 		mentee.save()
-# 		context = {}
-# 	return render(request, 'menteeinfo/register_success.html', context)
+def gradRegister(request):
+    corementors = gradMentor.objects.filter(field="Core")
+    Corementors = gradMentor.objects.filter(field="core")
+    managementmentors = gradMentor.objects.filter(field="management")
+    Managementmentors = gradMentor.objects.filter(field="Management")
+    context = {
+        'mentors_core': corementors,        
+        'mentors_Core': Corementors,
+        'mentors_management': managementmentors,        
+        'mentors_Management': Managementmentors,
+    }
+
+    return render(request, "menteeinfo/register.html", context)
+
+def menteereg(request):
+	if request.method == 'POST':
+		full_name = request.POST.get('full_name')
+		roll_no = request.POST.get('roll_no')
+		department = request.POST.get('department')
+		degree = request.POST.get('degree')
+		degree_other= request.POST.get('degree_other')
+		contact_number = request.POST.get('contact')
+		email_id = request.POST.get('email_id')
+		preference_1 = request.POST.get('preference_1')
+		preference_2 = request.POST.get('preference_2')
+		preference_3 = request.POST.get('preference_3')
+		preference_4 = request.POST.get('preference_4')
+		preference_5 = request.POST.get('preference_5')
+		# full_name = request.POST.get('full_name')
+		suggestion = request.POST.get('suggestion')	
+
+		SOP = request.POST.get('SOP')
+		mentee = Mentee(full_name = full_name, roll_no = roll_no,
+			department = department, degree = degree, degree_other= degree_other,
+			contact_number = contact_number, email_id = email_id,
+			preference_1 = preference_1, preference_2 = preference_2,
+			preference_3 = preference_3, preference_4 = preference_4, 
+			preference_5 = preference_5, suggestion = suggestion, SOP = SOP)
+		mentee.save()
+		context = {}
+	return render(request, 'menteeinfo/register_success.html',)
 
 
 def export(request):
@@ -181,13 +195,10 @@ def phonehome(request):
     return render(request, 'menteeinfo/phonehome.html')
 
 def mentorReg(request):
-    
-
     def __str__(self):
         return self.fullname
 
-    if request.method == 'POST':
-        
+    if request.method == 'POST':        
         fullname=request.POST.get('fullname')
         rollno=request.POST.get('rollno')
         department=request.POST.get('department')
@@ -197,8 +208,6 @@ def mentorReg(request):
         graduation_year=request.POST.get('graduation_year')
         contact=request.POST.get('contact')
         email=request.POST.get('email')
-        
-        
         placementOrGrad = request.POST.get('placementOrGrad')
         
         field_pref3 = "NA"
@@ -216,17 +225,9 @@ def mentorReg(request):
             
         designation=request.POST.get('designation')
         company_name=request.POST.get('company_name')
-        
         university=request.POST.get('university_name')
-        
         suggestions=request.POST.get('suggestion')
-        
-        recommendations=request.POST.get('referral')
-        
-
-       
-    
-        
+        recommendations=request.POST.get('referral')        
         core_branch=request.POST.get('core')
         branch_subdivision=request.POST.get('subdivisions')
         
@@ -245,7 +246,6 @@ def mentorReg(request):
         
         
         registration.save()
-        
         return render(request, 'menteeinfo/thank.html')
         
        

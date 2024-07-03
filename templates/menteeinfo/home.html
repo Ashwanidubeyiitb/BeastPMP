@@ -7,18 +7,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap CSS -->
-    {% comment %} <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous"> {% endcomment %}
     <link rel="icon" href="{% static 'img/favIcon.png' %}" sizes="16x16" type="image/png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
-  </script>
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link type='text/css' rel="stylesheet" href='{% static '../static/StyleSheet/home.css' %}'>
     <script  src='../static/javascript/index.js'></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -84,34 +83,32 @@
         }
     </style>
   </head>
-  <body style="font-family: 'Poppins';">
 
+  <body style="font-family: 'Poppins';">
   <div class='flexcontainer'>
     <div class="navbar">
         <div class="logo">
             <img src="../static/img/logo.png" style="padding: 0.2rem; width: 7vw; height: auto;">
-        </div>
-    
+        </div>    
         <div class="nav__links">
             <a href="#about" class="nav__link">About</a>
-            <a href="#mentor" class="nav__link">Mentor</a>
+            <a href="#benefits" class="nav__link">Benefits</a>
             <a href="#faq" class="nav__link">FAQs</a>
             <a href="#testimonials" class="nav__link">Testimonials</a>
             <a href="#contact" class="nav__link">Contact</a>
         </div>
     </div>
-        <div>
-            <div class="pmp">
-                <h1>PLACEMENT</h1>
-                <h1>MENTORING</h1>
-                <h1>PROGRAM</h1>
-                <h2>Empowering journeys beyond Placements</h2>
-            </div>
-            {% comment %} <a class='register' href='step-one'>REGISTER</a> {% endcomment %}
+    <div>
+        <div class="pmp">
+            <h1>PLACEMENT</h1>
+            <h1>MENTORING</h1>
+            <h1>PROGRAM</h1>
+            <h2>FROM CLASSROOM TO BOARDROOM</h2>
         </div>
+    </div>
         <br>
         <div>
-       <a href="/mentorReg">
+       <a href="/registration">
          <button id="sign-in" class="bttn" style="position: relative; padding-left: 30px; padding-right: 30px; top: 80vh; left: 42vw; font-size:18px;">REGISTER</button>
         </a>
         </div>
@@ -121,12 +118,12 @@
     {% comment %} About section {% endcomment %}
     <div class="section5" id='about'>
         
-        <div class='headBox' >What is PMP?</div>
-        <div class='about-info'>The Placement Mentoring Program seeks to provide mentorship to final-year students in a variety of core and non-core sectors such as finance, analytics, consulting, IT/software, and so on, in order to help them with their placement process.  This year’s programme also includes mentorship for the graduating students who wish to pursue higher education. The programme does this through contributions from recently graduated batches who have gone through the similar placement procedure / higher studies preparation  and are thus familiar with the problems that may be encountered. The service connects mentors and mentees, allowing the latter to discuss the tactics to use when looking for work in a specific profession. PMP kicks off the initial interaction between the mentors and the mentees, which they may continue at their own pace and according to their requirements, with intermediate follow-ups to address any hurdles that may occur.
+        <div class='headBox' >About PMP</div>
+        <div class='about-info'>The Placement Mentoring Program seeks to provide mentorship to final-year students in a variety of core and non-core sectors such as finance, analytics, consulting, IT/software, and so on, in order to help them with their placement process.  This year’s programme also includes mentorship for the graduating students who wish to pursue higher education. The programme does this through contributions from recently graduated batches who have gone through the similar placement procedure/higher studies preparation  and are thus familiar with the problems that may be encountered. The service connects mentors and mentees, allowing the latter to discuss the tactics to use when looking for work in a specific profession. PMP kicks off the initial interaction between the mentors and the mentees, which they may continue at their own pace and according to their requirements, with intermediate follow-ups to address any hurdles that may occur.
 
 </div>
 
-     <div class="hexagons-div my-3">
+    <div class="hexagons-div my-3" style="height: 35vh;">
         <div class='hexagon-inner-div'>
             <div class="hexagon" ><span id='num1'>10+</span></div>
             <p class='departments'>Departments</p>
@@ -145,39 +142,27 @@
         </div> 
     </div>
 
+    <br /> <br /> <br /> <br /> <br /> <br />
     
-    <div class="section3" id='mentor' >
-        <
-       
-        <div class='headBox0'>ROLES OF A MENTOR</div>
+    <div class="section3" id='benefits'>       
+        <div class='headBox0' style="text-align: center;">BENEFITS</div>
         <div class="container">
-    <div class="row">
-      <div class="circle" onclick="toggleCenter(this)">
-       
-        <p>COUNSEL <br></br>Help the mentee during the entire course of preparation, starting from resume reviewing to the final placement process/grad school process.
-Pass on the valuable tips that helped you crack placements/grad school, so that the mentee can pass it on to their juniors in the future.
-        </p>
-      </div>
+        <div class="row">
+        <div class="circle" onclick="toggleCenter(this)">
+            <p><span style="font-weight: bold;">COUNSEL</span> <br /> Get help from alumni during the entire course of preparation, starting from resume reviewing to the final placement/grad school process. Get valuable tips and guidance from alumni’s experience that helped them crack
+                placements/ grad school.
+            </p>
+        </div>
     </div>
     <div class="row">
       <div class="circle" onclick="toggleCenter(this)">
-        <p>COMMUNICATION <br></br>Ensure regular communication in these stressful times with the mentee.
-Be responsive to their doubts/queries/messages. If you are busy, let the mentee know a suitable time to talk.
+        <p>COMMUNICATION <br />Empowers you with the ability to have regular communication with mentors in the stressful times of preparation. Get your doubts/queries solved from alumni who had walked through the same footsteps
         </p>
       </div>
       <div class="circle" onclick="toggleCenter(this)">
-        <p>EXPERIENCE <br></br>Provide them with resources to help them prepare well, if possible.
-Help them to not commit the same mistakes you might have.
+        <p>EVALUATION <br />Receive general fundae for preparing for your interviews, etc, and get feedback on your performance from alumni. Ensure regular feedback to our team as well throughout the entire process.
         </p>
       </div>
-    </div>
-    <div class="row">
-      <div class="circle" onclick="toggleCenter(this)">
-        
-        <p>EVALUATION <br></br>Give them general fundae for preparing for their interviews, etc, and provide feedback on their performance.
-Ensure regular feedback to our team as well.</p>
-
-    </div>
     </div>
   </div>
 
@@ -201,34 +186,13 @@ Ensure regular feedback to our team as well.</p>
         <div class="faq-container">
             <div class="faq ">
                 <h3 class="faq-title">
-                    Why should I become a mentor with PMP?
-                </h3>
-        
-                <p class="faq-text" style="font-size: 20px;">
-                    As an alumnus/alumna, this will be your first opportunity to aid the student community and future batches with your
-                    expertise and experience. As a PMP mentor, you will be able to actively contribute to the success of your juniors while
-                    also remaining linked to the institute.
-
-                </p>
-        
-                <button class="faq-toggle">
-                    <i class="material-icons" id="arrow" style="font-size:36px">expand_more</i>
-                    <i class="material-icons" id="clear">clear</i>
-                </button>
-            </div>
-        
-            <div class="faq">
-                <h3 class="faq-title">
                     What is the further procedure after I register?
-
                 </h3>
-                <p class="faq-text" style="font-size: 20px;">
-                    Mentees will be assigned to you in your desired professional sector when the mentor and mentee registrations are
-                    completed. You will have the option of selecting the number of mentees you wish to mentor. The dialogue will then be
-                    initiated by your respective mentees, and you will be able to decide on a course of action together. There will be a few
-                    follow-ups to help you work through any issues.
 
+                <p class="faq-text" style="font-size: 20px;">
+                    The allocation will occur on a first-come, first-served (FCFS) basis. After completing the entire registration process, the allocation process will commence within 2-3 weeks. If you have been assigned a mentor, you will receive mailers from SARC Coordinators. Additionally, in the first 2-3 email interactions, you will need to include us in CC. If you have any questions throughout the process, please feel free to contact us.
                 </p>
+        
                 <button class="faq-toggle">
                     <i class="material-icons" id="arrow" style="font-size:36px">expand_more</i>
                     <i class="material-icons" id="clear">clear</i>
@@ -237,46 +201,28 @@ Ensure regular feedback to our team as well.</p>
         
             <div class="faq">
                 <h3 class="faq-title">
-                    How will my personal details be used?
+                    What is Grad Mentoring?
                 </h3>
-                <p class="faq-text" style="font-size: 20px;">
-                    Names, roll numbers, and contact information will be kept private until the allocation procedure is completed. Your
-                    contact information will only be disclosed to the mentees who have been assigned to you. Only your job profile will be
-                    made public during mentee registration.
 
+                <p class="faq-text" style="font-size: 20px;">
+                    Placement Mentoring Program not just focuses on one particular set of graduating students that prioritize placements and their current decision lies in considering going for placements, we also include a considerable chunk of institute students that have intentions in pursuing higher education in various core fields and newer fields like management. Therefore we also include higher education to serve the maximum number of students in the institute.
                 </p>
+
                 <button class="faq-toggle">
                     <i class="material-icons" id="arrow" style="font-size:36px">expand_more</i>
                     <i class="material-icons" id="clear">clear</i>
                 </button>
             </div>
-
-            <div class="faq">
-                <h3 class="faq-title">
-                  What is new this time? 
-                </h3>
-                <p class="faq-text" style="font-size: 20px;">
-                    Placement Mentoring Program focuses on one particular set of graduating students that prioritize placements and their current decision lies in considering going for placements. We leave a considerable chunk of institute students that have intentions in pursuing higher education in various core fields and newer fields like management.  Therefore, this year we aim to enlarge the umbrella for PMP to include higher education as well as to serve the maximum number of students in the institute.
-
-
-                </p>
-                <button class="faq-toggle">
-                    <i class="material-icons" id="arrow" style="font-size:36px">expand_more</i>
-                    <i class="material-icons" id="clear">clear</i>
-                </button>
-            </div>
-    
         
             <div class="faq">
                 <h3 class="faq-title">
-                    How did this program benefit the mentee last year?
+                    How did this program benefit mentees last year?
                 </h3>
-                <p class="faq-text" style="font-size: 20px;">
-                    According to reports, the mentees profited greatly from the programme last year. The mentoring they received from their
-                    mentors was beneficial throughout the placement process. They were able to benefit from their mentor's experiences, and
-                    all of the helpful hints and recommendations assisted them with cracking placements and the whole process.
 
+                <p class="faq-text" style="font-size: 20px;">
+                    According to reports, the mentees profited greatly from the program last year. The mentoring they received from their mentors was beneficial throughout the placement process. They were able to gain insights from their mentor's experiences, and all of the helpful hints and recommendations assisted them in cracking placements and smoothening the whole process.
                 </p>
+
                 <button class="faq-toggle">
                     <i class="material-icons" id="arrow" style="font-size:36px">expand_more</i>
                     <i class="material-icons" id="clear">clear</i>
@@ -285,80 +231,106 @@ Ensure regular feedback to our team as well.</p>
         </div>
         </div>
     </div>
-    
-
-
 
     {% comment %} section of testimonials {% endcomment %}
         <div class='headBox2' id="testimonials">TESTIMONIALS</div>
-        {% comment %} <div class="illustration2" style="position: relative; top: -29px; left: -10px; z-index: -1;"><img src="../static/img/headboxbg.png" style="width: 290px; height: 290px;"></div> {% endcomment %}
-        <div class="testimonials" style="position: relative; top: 12px; margin-bottom: 150px; background-color: #D5877D;" id="testimonials">
+        <h2 class="slide-box-content" style="font-size: 40px; text-decoration: underline; text-align: center;">WHAT DO THE PARTICIPANTS HAVE TO SAY?</h2>
+        <div class="testimonials" style="position: relative; top: 12px; padding-top: 1px; margin-bottom: 200px; background-color: #D5877D;" id="testimonials">
             <div class="slider-container">
                 <div class="slider">
+                    <!-- Testi One -->                 
                     <div class="slide-box">
-                        <h2 class="slide-box-content" style="font-size: 40px; text-decoration: underline;">What the mentors have to say!</h2>
-                        <!-- Testi One -->
                         <p class="comment">
-                            "I had a great time mentoring my juniors that I was provided by the Placement Mentoring program. 
-                            I had a special sense of respect and appreciation for the mentorship programs of the institute and PMP was a perfect combination of providing that and using my experience of day-to-day life as a working professional.
-                             My mentees were both great and although they came with different challenges, they were very respectful of my suggestions, hard working and performed very well in the tough placement situation. It has been a very positive experience mentoring them and I still am connected with them and we regularly share our life updates and memes."
-
-
+                            How was your experience with your mentor during the Placement Mentoring Programme?
+                        </p>
+                        <p style="text-align: justify;">
+                            "He was very supportive and talked to me in detail about my interests and my preparation level. He told me some reference books to go through and also helped me in writing cover letters and getting some idea of company-specific interviews. We didn't follow any particular plan as such during the mentorship, I asked him whatever I had a doubt in, as and when needed. He was easy to approach, and I'm grateful he took time out of his busy schedule to guide and help me with my placements!"
                         </p>
                         <img
                             src="../static/img/Aakrit_Mentor.jpg" />
-                        <h3 class="name">Abhinav Jain</h3>
-                        <h4 class="job">Electrical Engineering Dual Degree 2021</h4>
+                        <h3 class="name">SAHIL GARG</h3>
+                        <h4 class="job">Electrical Engineering 2024</h4>
                     </div>
+
+                    <!-- Testi Two -->
                     <div class="slide-box">
-                        <h2 class="title">What the mentors have to say!</h2>
-                        <!-- Testi Two -->
                         <p class="comment">
-                            Being a Placement Mentor in the Placement Mentoring Program (PMP) has been a gratifying journey for me. For two years, I have had the privilege of witnessing the transformation of eager students into professionals, which has provided me a sense of fulfillment. The program's ability to create a safe and nurturing space for mentorship not only allowed me to share my experiences but also provided a platform for meaningful connections and personal growth. Kudos to the SARC team for continuing introducing and successfully conducting this program every year. I will encourage every student sitting in their placement year to take full advantage of this cool initiative.
-</p>
+                            How was your experience with your mentor during the Placement Mentoring Programme?
+                        </p>
+                        <p style="text-align: justify;">
+                            "My mentor gave me advice about applying to universities abroad for a PhD drawn from his own experiences. We had numerous meetings to discuss topics such as PhD in India vs PhD abroad, how the two might be different, what I should be aiming for in a PhD (finding a good advisor), what constitutes a good advisor vs a toxic advisor, etc. All of this was very helpful to me." I could just ping my mentor on Google chat anytime and he'd fix a date and time for a meeting. This was flexible enough to account for blockers on our ends. He was very approachable in the time we had our discussions, and the discussions were fruitful."
+                        </p>
                         <img
-                            src="../static/img/Ram Phal Suthar_Mentor.jpeg" />
-                        <h3 class="name">Nilesh Sonune</h3>
-                        <h4 class="job">Chemical 2020</h4>
+                            src="../static/img/Aakrit_Mentor.jpg" />
+                        <h3 class="name">PRITISH CHAKRABORTY</h3>
+                        <h4 class="job">Computer Science Engineering 2024</h4>
                     </div>
-                    
-                    
+
+                    <!-- Testi Three -->
+                    <div class="slide-box">
+                        <p class="comment">
+                            How was your experience with your mentor during the Placement Mentoring Programme?
+                        </p>
+                        <p style="text-align: justify;">
+                            "The placement mentorship program is a good way to keep a check on oneself, whether you are doing preparation upto the mark or not. It is really beneficial for people who have lesser connections with seniors in terms of the career path they are aiming for. Personally, I got a pretty good mentor, and I always kept having a chat with him amidst my placements. Of course the hard work is your own part, but it's a good method to get an update of our preparation. From getting my resumes reviewed to seeking help regarding DSA and strategies in relation to company tests, my mentor assisted me with most of the things."
+                        </p>                        
+                        <img
+                            src="../static/img/Aakrit_Mentor.jpg" />
+                        <h3 class="name">Goransh Gattani</h3>
+                        <h4 class="job">MEMS</h4>
+                    </div>
+
+                    <!-- Testi Four -->
+                    <div class="slide-box"> 
+                        <p class="comment">
+                            How was your experience with your mentor during the Placement Mentoring Programme?
+                        </p>
+                        <p style="text-align: justify;">
+                            "My mentor Archana, was MTech from the same branch Electrical Engineering, ICS discipline. She is placed in Google for DFT profile. I had very fruitful discussions with her. Especially regarding the topics that are important for placement and the priority of topics to prepare. I had periodic interaction with her. Most of the discussion was around the priority of topics and the sources for preparation. I was very comfortable interacting with Archana since she was from my batch (TA) (2021). Especially with the priority of topics, I knew how to go about the preparation and in what depth."
+                        </p>                        
+                        <img
+                            src="../static/img/Aakrit_Mentor.jpg" />
+                        <h3 class="name">Adarsh Sinha</h3>
+                        <h4 class="job">Electronic Systems discipline of Electrical Engineering</h4>
+                    </div>
                 </div>
         
-                <a href="#!" class="control-slider btn-left">
+                <a href="#!" class="control-slider btn-left" style="margin-left: -25px; background-color: transparent"> 
                     <i class="material-icons" id="arrow" style="font-size:36px">chevron_left</i>
                 </a>
-                <a href="#!" class="control-slider btn-right">
+                <a href="#!" class="control-slider btn-right" style="margin-right: -25px; background-color: transparent">
                     <i class="material-icons" id="arrow" style="font-size:36px">chevron_right</i>
                 </a>
             </div>
         </div>
+
         {% comment %} section for contact {% endcomment %}
         <div class='contact' id="contact" style="margin-top: -5vh;">
         <div class='headBox' id='faq'>CONTACT US</div>
-        {% comment %} <div class="illustration3"><img src="../static/img/headboxbg.png" style="width: 290px; height: 290px; position: relative; top: 166px; left: -10px; z-index: -1;"></div> {% endcomment %}
    
     <div class="team-members">
     <div class="member">
       <img src="../static/img/aghraj.jpg" alt="Team Member 1" class="member-photo">
-      <h3 class="member-name">Agrajah Bhobe</h3>
-      <p class="member-details">Core Team Member, Hostel and Department Affairs</p>
-      <p class="member-details">Contact Number - +91 83296 91276</p>
+      <h3 class="member-name">Bhakti Joshi</h3>
+      <p class="member-details">Core Team Member, <br/> Hostel and Department Affairs</p>
+      <p class="member-details"><i class="fas fa-phone"></i> +91 62644 42349 </p>
       <div class="social-media">
+        <a href="mailto:bhakti@sarciitb.org" target="_blank"><i class="fas fa-envelope"></i></a>
         <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
-        <a href="https://www.linkedin.com/in/agrajah-bhobe-27a326236" target="_blank"><i class="fab fa-linkedin"></i></a>
-        <a href="https://instagram.com/agrajah_bhobe?igshid=MzRlODBiNWFlZA==" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/bhakti-joshi-33b1b7252/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://www.instagram.com/bhaktijoshi_14" target="_blank"><i class="fab fa-instagram"></i></a>
       </div>
     </div>
     <div class="member">
       <img src="../static/img/garv.png" alt="Team Member 2" class="member-photo">
-      <h3 class="member-name">Garv Gupta</h3>
-      <p class="member-details">Core Team Member, Hostel and Department Affairs</p>
-      <p class="member-details">Contact Number: +91 99535 60809</p>
+      <h3 class="member-name">Ishan Grover</h3>
+      <p class="member-details">Core Team Member, <br/> Hostel and Department Affairs</p>
+      <p class="member-details"><i class="fas fa-phone"></i> +91 93406 66736</p>
       <div class="social-media">
-        <a href="https://www.facebook.com/Garvcosmo" target="_blank"><i class="fab fa-facebook"></i></a>
-        <a href="https://www.linkedin.com/in/garv-gupta-425596242?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BTO0FU%2FPlTbm8rvmUBaxwLg%3D%3D" target="_blank"><i class="fab fa-linkedin"></i></a>
-        <a href="https://instagram.com/garvcosmo?igshid=MzRlODBiNWFlZA==" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="mailto:ishan@sarciitb.org" target="_blank"><i class="fas fa-envelope"></i></a>
+        <a href="https://www.facebook.com/profile.php?id=100093298782746" target="_blank"><i class="fab fa-facebook"></i></a>
+        <a href="n: https://www.linkedin.com/in/ishan-grover-30b499256/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://www.instagram.com/ishan__grover" target="_blank"><i class="fab fa-instagram"></i></a>
       </div>
     </div>
   </div>
@@ -390,7 +362,7 @@ Ensure regular feedback to our team as well.</p>
     </div>
     <!-- Copyright -->
     <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0); color:#d7e2e1;">
-      © 2023 Made with 💙 by
+      © 2024 Made with 💙 by
       <span style="color:#d7e2e1;">SARC</span>
     </div>
     <!-- Copyright -->

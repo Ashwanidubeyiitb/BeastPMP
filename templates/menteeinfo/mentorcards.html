@@ -24,8 +24,6 @@
 </head>
 
 <body>
-  
-
   <ul class="menu">
     <li><a href="core.html" >Core</a></li>
     <li><a href="consult.html">Consult</a></li>
@@ -35,10 +33,10 @@
     <li><a href="others.html">Others</a></li>
     <li class="slider"></li>
   </ul>
-  <div class="container">
 
-  </div>
-<div class="row">
+  <div class="container"></div>
+
+  <div class="row">
     {% for mentor in mentors_list %}
     <div class="col">
       <div class="con">
@@ -54,12 +52,12 @@
       </div>
     </div>  
     {% endfor %}  
-</div>
-
+  </div>
   </div>
 </body>
 
 </html>
+
 <form action="register/" class="preferences" method="POST">
     {% csrf_token %}
     <input name="preference_1" placeholder="P1">
