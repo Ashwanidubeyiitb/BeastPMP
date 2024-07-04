@@ -20,6 +20,115 @@
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
+  <style>
+
+    :root {
+        --switches-bg-color: #624F48;
+        --switches-label-color: white ;
+        --switch-bg-color: white;
+        --switch-text-color: #624F48 ;
+    }
+    
+    
+    .switches-container {
+        width: 100%;
+        position: relative;
+        display: flex;
+        padding: 0;
+        position: relative;
+        background: var(--switches-bg-color);
+        line-height: 3rem;
+        border-radius: 3rem;
+        margin-bottom: 20px;
+    }
+    
+    .switches-container input {
+        visibility: hidden;
+        position: absolute;
+        top: 0;
+    }
+    
+    .switches-container label {
+        width: 50%;
+        padding: 0;
+        {% comment %} margin: 0; {% endcomment %}
+        font-size: 100%;
+        text-align: center;
+        cursor: pointer;
+        color: var(--switches-label-color);
+    }
+    
+    /* switch highlighters wrapper (sliding left / right) 
+        - need wrapper to enable the even margins around the highlight box
+    */
+    .switch-wrapper {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 50%;
+        padding: 0.15rem;
+        z-index: 3;
+        transition: transform .5s cubic-bezier(.77, 0, .175, 1);
+        /* transition: transform 1s; */
+    }
+    
+    /* switch box highlighter */
+    .switch {
+        border-radius: 3rem;
+        background: var(--switch-bg-color);
+        height: 100%;
+    }
+    
+    /* switch box labels
+        - default setup
+        - toggle afterwards based on radio:checked status 
+    */
+    .switch div {
+        width: 100%;
+        text-align: center;
+        opacity: 0;
+        display: block;
+        color: var(--switch-text-color) ;
+        transition: opacity .2s cubic-bezier(.77, 0, .175, 1) .125s;
+        will-change: opacity;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    
+    /* slide the switch box from right to left */
+    .switches-container input:nth-of-type(1):checked~.switch-wrapper {
+        transform: translateX(0%);
+    }
+    
+    /* slide the switch box from left to right */
+    .switches-container input:nth-of-type(2):checked~.switch-wrapper {
+        transform: translateX(100%);
+    }
+    
+    /* toggle the switch box labels - first checkbox:checked - show first switch div */
+    .switches-container input:nth-of-type(1):checked~.switch-wrapper .switch div:nth-of-type(1) {
+        opacity: 1;
+    }
+    
+    /* toggle the switch box labels - second checkbox:checked - show second switch div */
+    .switches-container input:nth-of-type(2):checked~.switch-wrapper .switch div:nth-of-type(2) {
+        opacity: 1;
+    }
+      .navbar-nav .nav-item .nav-link {
+        padding: 0.6em 1em!important;
+        font-size: 120%;
+        font-weight: bold;
+        color: rgb(17, 211, 17);
+        letter-spacing: 1px;
+        font-family: 'Gothic A1', sans-serif;
+    }
+    .btn-outline-light{
+      border-radius: 50%;
+      width : 40px;
+    }
+    </style>
+
   <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", function() {
       const placementTab = document.getElementById('placement-tab');
@@ -67,6 +176,46 @@
                 const allChecked = Array.from(checkboxes).every(checkbox => checkbox.checked);
                 nextButton.disabled = !allChecked;
               });
+      });
+    });
+  </script>
+
+  <script>
+    $(document).ready(function () {
+        var placementFieldset = document.getElementById('placement-fieldset');
+        var gradMentoringFieldset = document.getElementById('grad-mentoring-fieldset');
+
+        $('input[name="placementOrGradMentoring"]').change(function() {
+            if ($(this).val() === 'placement') {
+                placementFieldset.style.display = 'block';
+                gradMentoringFieldset.style.display = 'none';
+            } else {
+                placementFieldset.style.display = 'none';
+                gradMentoringFieldset.style.display = 'block';
+            }
+        });
+
+        // Trigger change event on page load to set the initial state correctly
+        $('input[name="placementOrGradMentoring"]:checked').trigger('change');
+    });
+  </script>
+
+  <script>
+    $(document).ready(function () {
+
+      var coreDiv = document.getElementById('coreDiv');
+      var noncoreDiv = document.getElementById('noncoreDiv');
+
+      $('input[name="coreOrNonCore"]').change(function() {
+
+        console.log($(this).val());
+        if ($(this).val() === 'core') {
+          coreDiv.style.display = 'block';
+          noncoreDiv.style.display = 'none';
+        } else {
+          coreDiv.style.display = 'none';
+          noncoreDiv.style.display = 'block';
+        }
       });
     });
   </script>
@@ -175,30 +324,97 @@
             </fieldset>
 
             <!-- Placement vs gradMentoring -->
-             <fieldset style="background-color: #d9cdb3;">
-              <div class="form-card" id="t01" style="background-color: #d9cdb3;">
-                <div class="row"></div>
-                <ul class="nav nav-tabs" style="background-color: #d9cdb3;">
+            <fieldset style="background-color: #d9cdb3;">
+              <div class="form-card" id="t01">
+                  <div class="row"></div>
+                  {% comment %} <ul class="nav nav-tabs" style="background-color: #d9cdb3;">
                   <li class="nav-item" style="background-color: #d9cdb3; border-color: #624f48">
                     <a class="nav-link show active" href="#" id="placement-tab" data-toggle="tab" style="background-color: #624f48; color: #fff">PLACEMENT</a>
                   </li>
                   <li class="nav-item" style="background-color: #d9cdb3; border-color: #624f48">
                     <a class="nav-link" href="#" id="grad-mentoring-tab" data-toggle="tab" style="background-color: #624f48; color: #fff">GRAD MENTORING</a>
                   </li>
-                </ul>
+                  </ul> {% endcomment %}
+                  <div class="switches-container">
+                    <input type="radio" id="placement" name="placementOrGradMentoring" value="placement" checked="checked" />
+                    <label for="placement">Placement</label>
+                    <input type="radio" id="gradMentoring" name="placementOrGradMentoring" value="gradmentoring" />
+                    <label for="gradMentoring">Grad Mentoring</label>
+                    <div class="switch-wrapper">
+                      <div class="switch">
+                        <div>Placement</div>
+                        <div>Grad Mentoring</div>
+                      </div>
+                    </div>
+                  </div>
               </div>
-            </fieldset>
+          </fieldset>
 
             <!-- Placement Mentoring Fieldset -->
             <fieldset class="show active" id="placement-fieldset" style="display: none; background-color: #d9cdb3;">
               <div class="form-card" id="t01" style="background-color: #d9cdb3;">
                 <div class="row"></div>
                 <br><br>
-                <div class="bs-example" style="background-color: #d9cdb3;">
+
+
+
+                <div class="switches-container">
+                  <input type="radio" id="Core" name="coreOrNonCore" value="core" checked="checked" />
+                  <input type="radio" id="NonCore" name="coreOrNonCore" value="nonCore" />
+                  <label for="Core">Core</label>
+                  <label for="NonCore">Non Core</label>
+                  <div class="switch-wrapper">
+                    <div class="switch">
+                      <div>Core</div>
+                      <div>Non Core</div>
+                    </div>
+                  </div>
+                </div>
+
+
+                <div id="coreDiv" style="display: block;">
+                  <div class="bs-example" style="background-color: #d9cdb3;">
+                    <div class="tab-content">  
+                      <div class="tab-pane fade show active" id="core">
+                        <div class="row" id="t05">
+                          {% for mentor in mentors_list_core %}
+                          <div class="col-sm-3" id="mentors">
+                            <div class="card text-white bg-dark mb-3" style="max-width: 18rem;" id="t06">
+                              <div class="card-header">Mentor id: {{mentor.id}}</div>
+                              <div class="card-body" style="height: 367.2px;">
+                                <h6 class="degree" style="color: #87c240;">{{mentor.department}} -
+                                  {{mentor.graduation_year}}</h4>
+                                  <h5 class="card-title">{{mentor.workprofile}}</h5>
+                                  <p class="card-text company"> @ {{mentor.company}}</p>
+                                  <p class="card-text">{{mentor.experience}}</p>
+                                   <p class="card-text">Specialization: {{mentor.specialization}}</p>
+                              </div>
+                            </div>
+                          </div>
+                          {% endfor %}
+                          {% for mentor in mentors_list_Core %}
+                          <div class="col-sm-3" id="mentors">
+                            <div class="card text-white bg-dark mb-3" style="max-width: 18rem;" id="t06">
+                              <div class="card-header">Mentor id: {{mentor.id}}</div>
+                              <div class="card-body" style="height: 367.2px;">
+                                <h6 class="degree" style="color: #87c240;">{{mentor.department}} -
+                                  {{mentor.graduation_year}}</h4>
+                                  <h5 class="card-title">{{mentor.workprofile}}</h5>
+                                  <p class="card-text company"> @ {{mentor.company}}</p>
+                                  <p class="card-text">{{mentor.experience}}</p>
+                                   <p class="card-text">Specialization: {{mentor.specialization}}</p>
+                              </div>
+                            </div>
+                          </div>
+                          {% endfor %}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div id="noncoreDiv" style="display: none;">
                   <ul class="nav nav-tabs">
-                    <li class="nav-item">
-                      <a class="nav-link active" aria-current="core" href="#core" data-toggle="tab">CORE</a>
-                    </li>
                     <li class="nav-item">
                       <a class="nav-link" href="#consult" data-toggle="tab">CONSULT</a>
                     </li>
@@ -215,44 +431,11 @@
                       <a class="nav-link" href="#others" data-toggle="tab">OTHERS</a>
                     </li>
                   </ul>
+                </div>
 
+                
+                <div class="bs-example" style="background-color: #d9cdb3;">
                   <div class="tab-content">
-                    <div class="tab-pane fade show active" id="core">
-                      <div class="row" id="t05">
-                        {% for mentor in mentors_list_core %}
-                        <div class="col-sm-3" id="mentors">
-                          <div class="card text-white bg-dark mb-3" style="max-width: 18rem;" id="t06">
-                            <div class="card-header">Mentor id: {{mentor.id}}</div>
-                            <div class="card-body" style="height: 367.2px;">
-                              <h6 class="degree" style="color: #87c240;">{{mentor.department}} -
-                                {{mentor.graduation_year}}</h4>
-                                <h5 class="card-title">{{mentor.workprofile}}</h5>
-                                <p class="card-text company"> @ {{mentor.company}}</p>
-                                <p class="card-text">{{mentor.experience}}</p>
-                                 <p class="card-text">Specialization: {{mentor.specialization}}</p>
-                            </div>
-                          </div>
-                        </div>
-                        {% endfor %}
-                        {% for mentor in mentors_list_Core %}
-                        <div class="col-sm-3" id="mentors">
-                          <div class="card text-white bg-dark mb-3" style="max-width: 18rem;" id="t06">
-                            <div class="card-header">Mentor id: {{mentor.id}}</div>
-                            <div class="card-body" style="height: 367.2px;">
-                              <h6 class="degree" style="color: #87c240;">{{mentor.department}} -
-                                {{mentor.graduation_year}}</h4>
-                                <h5 class="card-title">{{mentor.workprofile}}</h5>
-                                <p class="card-text company"> @ {{mentor.company}}</p>
-                                <p class="card-text">{{mentor.experience}}</p>
-                                 <p class="card-text">Specialization: {{mentor.specialization}}</p>
-                            </div>
-                          </div>
-                        </div>
-                        {% endfor %}
-                      </div>
-                    </div>
-
-
                     <div class="tab-pane fade" id="consult">
                       <div class="row" id="t05">
                         {% for mentor in mentors_list_consult %}

@@ -185,7 +185,8 @@
         </div>
         <div class="row clearfix">
           <div class="">
-            <form method="POST" action="mentorReg"> {% csrf_token %}
+            <form method="POST" action="mentorReg">
+              {% csrf_token %}
               <div class="input_field">
                 <input type="text" name="fullname" placeholder="Full Name" required />
               </div>
@@ -210,8 +211,8 @@
               <select onchange="showOtherDegree(this);" name="degree" style="width: 100%; padding: 6px; border: 1px solid #ccc;" required>
                 <option value="" select-disabled="true"> --Degree-- </option>
                 {% for key, value in options.DEGREE_CHOICES %}
-                <option value={{key}}>{{value}}</option>
-              {% endfor %}
+                  <option value={{key}}>{{value}}</option>
+                {% endfor %}
               </select>
               <div class="input_field">
                 <input type="text" id="degree_other" style="width: 100%; padding: 6px; border: 1px solid #ccc; display: none;" name="degree_other" placeholder="In case you have chosen other in degree"/>
@@ -230,18 +231,18 @@
                 {% endfor %}
               </select> {% endcomment %}
 
-                <div class="switches-container">
-                  <input type="radio" id="placement" name="placementOrGrad" value="placement" checked="checked" />
-                  <input type="radio" id="grad" name="placementOrGrad" value="gradmentoring" />
-                  <label for="placement">Placement</label>
-                  <label for="grad">Grad Mentoring</label>
-                  <div class="switch-wrapper">
-                    <div class="switch">
-                      <div>Placement</div>
-                      <div>Grad Mentoring</div>
-                    </div>
+              <div class="switches-container">
+                <input type="radio" id="placement" name="placementOrGrad" value="placement" checked="checked" />
+                <input type="radio" id="grad" name="placementOrGrad" value="gradmentoring" />
+                <label for="placement">Placement</label>
+                <label for="grad">Grad Mentoring</label>
+                <div class="switch-wrapper">
+                  <div class="switch">
+                    <div>Placement</div>
+                    <div>Grad Mentoring</div>
                   </div>
                 </div>
+              </div>
 
 
               <div id="placementDiv" style="display: block;">
@@ -255,8 +256,6 @@
                 <div class="input_field"> 
                   <input type="text" name="placementExperience" placeholder="Past Experience (Job/Internship/Project/POR)"/>
                 </div> 
-
-
 
                 <div class='form-label'>Fields in which you are willing to provide mentorship (Enter preferences)</div>
                 <div>
@@ -295,17 +294,17 @@
               <select onchange="checkCoreSelect(this)" class="input_field pref" name="gradPref1" style="width: 100%; padding: 6px; border: 1px solid #ccc;">
                 <option value="" select-disabled="true"> --Preference 1-- </option>
                 {% for key, value in options.HIGHERSTUDIES_FIELDS %}
-                <option value={{key}}>{{value}}</option>
-              {% endfor %}
+                  <option value={{key}}>{{value}}</option>
+                {% endfor %}
               </select>
               <select onchange="checkCoreSelect(this)" class="input_field pref" name="gradPref2" style="width: 100%; padding: 6px; border: 1px solid #ccc;">
                 <option value="" select-disabled="true"> --Preference 2-- </option>
                 {% for key, value in options.HIGHERSTUDIES_FIELDS %}
-                <option value={{key}}>{{value}}</option>
-              {% endfor %}
+                  <option value={{key}}>{{value}}</option>
+                  {% endfor %}
               </select>
-              </div>
             </div>
+          </div>
 
 
               {% comment %} <div class='form-label'>Only for those who wish to provide mentorship in <b>Core</b></div> {% endcomment %}

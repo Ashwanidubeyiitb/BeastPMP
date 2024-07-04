@@ -323,11 +323,12 @@
 
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, response
-from .models import Mentee, Mentor
+from .models import Mentee, Mentor, Registration
 from django.core.exceptions import ValidationError
 import csv
 from rest_framework.decorators import api_view
-from . import options
+# from . import options
+from .options import OPTIONS
 
 # # from .resources import MentorResource
 # # from django.contrib import messages
@@ -628,7 +629,8 @@ def mentorReg(request):
         # return render(request, 'menteeinfo/thank.html')
         
     context = {
-        'options': options._dict_,
+        # 'options': options._dict_,
+        'options': OPTIONS,
     }
         
     return render(request, 'menteeinfo/form.html', context)
