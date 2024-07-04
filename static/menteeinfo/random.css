@@ -314,15 +314,14 @@
       justify-content: space-evenly;
       border-bottom: 0px solid #dee2e6 !important;
   }
-
   
   .nav-link {
-    color:#222629;
+    color:#fff;
     font-size: 125%;
-    background: #87C240;
-    border: 5px solid #87C240;
+    background: #624f48;
+    border: 12px solid #624f48;
+    border-radius: 17px !important;
     text-align: center;
-    font-size: 100%;
   }
   .nav-link a {
     color: #222629;
@@ -360,7 +359,6 @@
   }
   
   .nav-item {
-    border: 20px solid #222629;
     text-align: center;
     font-size: 110%;
   }
@@ -371,4 +369,23 @@
   
   #t09 {
     margin-left: 15px;
+  }
+
+  @media (max-width: 1200px) {
+    .col-sm-3 {
+        flex: 1 1 calc(33.33% - 1rem);
+        max-width: calc(33.33% - 1rem);
+    }
+  }
+  @media (max-width: 992px) {
+      .col-sm-3 {
+          flex: 1 1 calc(50% - 1rem);
+          max-width: calc(50% - 1rem);
+      }
+  }
+  @media (max-width: 768px) {
+      .col-sm-3 {
+          flex: 1 1 calc(100% - 1rem);
+          max-width: calc(100% - 1rem);
+      }
   }

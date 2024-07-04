@@ -21,111 +21,120 @@
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
   <style>
-
-    :root {
-        --switches-bg-color: #624F48;
-        --switches-label-color: white ;
-        --switch-bg-color: white;
-        --switch-text-color: #624F48 ;
+    * {
+      font-family: 'Libre Bodoni', serif;
     }
-    
+    :root {
+      --switches-bg-color: #624F48;
+      --switches-label-color: white ;
+      --switch-bg-color: white;
+      --switch-text-color: #624F48 ;
+    }    
     
     .switches-container {
-        width: 100%;
-        position: relative;
-        display: flex;
-        padding: 0;
-        position: relative;
-        background: var(--switches-bg-color);
-        line-height: 3rem;
-        border-radius: 3rem;
-        margin-bottom: 20px;
+      width: 100%;
+      position: relative;
+      display: flex;
+      padding: 0;
+      position: relative;
+      background: var(--switches-bg-color);
+      line-height: 3rem;
+      border-radius: 3rem;
+      margin-bottom: 20px;
     }
     
     .switches-container input {
-        visibility: hidden;
-        position: absolute;
-        top: 0;
+      visibility: hidden;
+      position: absolute;
+      top: 0;
     }
     
     .switches-container label {
-        width: 50%;
-        padding: 0;
-        {% comment %} margin: 0; {% endcomment %}
-        font-size: 100%;
-        text-align: center;
-        cursor: pointer;
-        color: var(--switches-label-color);
+      width: 50%;
+      padding: 0;
+      {% comment %} margin: 0; {% endcomment %}
+      font-size: 100%;
+      text-align: center;
+      cursor: pointer;
+      background-color: transparent !important;
+      color: var(--switches-label-color);
     }
     
     /* switch highlighters wrapper (sliding left / right) 
-        - need wrapper to enable the even margins around the highlight box
+      - need wrapper to enable the even margins around the highlight box
     */
     .switch-wrapper {
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        width: 50%;
-        padding: 0.15rem;
-        z-index: 3;
-        transition: transform .5s cubic-bezier(.77, 0, .175, 1);
-        /* transition: transform 1s; */
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 50%;
+      padding: 0.15rem;
+      z-index: 3;
+      transition: transform .5s cubic-bezier(.77, 0, .175, 1);
+      /* transition: transform 1s; */
     }
     
     /* switch box highlighter */
     .switch {
-        border-radius: 3rem;
-        background: var(--switch-bg-color);
-        height: 100%;
+      border-radius: 3rem;
+      background: var(--switch-bg-color);
+      height: 100%;
     }
     
     /* switch box labels
-        - default setup
-        - toggle afterwards based on radio:checked status 
+      - default setup
+      - toggle afterwards based on radio:checked status 
     */
     .switch div {
-        width: 100%;
-        text-align: center;
-        opacity: 0;
-        display: block;
-        color: var(--switch-text-color) ;
-        transition: opacity .2s cubic-bezier(.77, 0, .175, 1) .125s;
-        will-change: opacity;
-        position: absolute;
-        top: 0;
-        left: 0;
+      width: 100%;
+      text-align: center;
+      opacity: 0;
+      display: block;
+      color: var(--switch-text-color) ;
+      transition: opacity .2s cubic-bezier(.77, 0, .175, 1) .125s;
+      will-change: opacity;
+      position: absolute;
+      top: 0;
+      left: 0;
     }
     
     /* slide the switch box from right to left */
     .switches-container input:nth-of-type(1):checked~.switch-wrapper {
-        transform: translateX(0%);
+      transform: translateX(0%);
     }
     
     /* slide the switch box from left to right */
     .switches-container input:nth-of-type(2):checked~.switch-wrapper {
-        transform: translateX(100%);
+      transform: translateX(100%);
     }
     
     /* toggle the switch box labels - first checkbox:checked - show first switch div */
     .switches-container input:nth-of-type(1):checked~.switch-wrapper .switch div:nth-of-type(1) {
-        opacity: 1;
+      opacity: 1;
     }
     
     /* toggle the switch box labels - second checkbox:checked - show second switch div */
     .switches-container input:nth-of-type(2):checked~.switch-wrapper .switch div:nth-of-type(2) {
-        opacity: 1;
+      opacity: 1;
     }
       .navbar-nav .nav-item .nav-link {
-        padding: 0.6em 1em!important;
-        font-size: 120%;
-        font-weight: bold;
-        color: rgb(17, 211, 17);
-        letter-spacing: 1px;
-        font-family: 'Gothic A1', sans-serif;
+      padding: 0.6em 1em!important;
+      font-size: 120%;
+      font-weight: bold;
+      color: rgb(17, 211, 17);
+      letter-spacing: 1px;
+      font-family: 'Gothic A1', sans-serif;
     }
     .btn-outline-light{
       border-radius: 50%;
       width : 40px;
+    }
+    .card{
+      transition: transform 0.3s ease;
+    } 
+    
+    .col-sm-3:hover {
+      transform: scale(1.05);
     }
     </style>
 
@@ -135,18 +144,32 @@
       const gradMentoringTab = document.getElementById('grad-mentoring-tab');
       const placementFieldset = document.getElementById('placement-fieldset');
       const gradMentoringFieldset = document.getElementById('grad-mentoring-fieldset');
+      const coreDiv = document.getElementById('coreDiv');
+      const noncoreDiv = document.getElementById('noncoreDiv');
   
       placementTab.addEventListener('click', function() {
         placementFieldset.style.display = 'block';
         gradMentoringFieldset.style.display = 'none';
+        resetMentorVisibility(core);
       });
   
       gradMentoringTab.addEventListener('click', function() {
         placementFieldset.style.display = 'none';
         gradMentoringFieldset.style.display = 'block';
+        resetMentorVisibility(noncore);
       });
+
+      function resetMentorVisibility(type) {
+        if (type === 'core') {
+          coreDiv.style.display = 'block';
+          noncoreDiv.style.display = 'none';
+        } else {
+          coreDiv.style.display = 'none';
+          noncoreDiv.style.display = 'block';
+        }
+      }
     });
-  </script>  
+  </script>
 
   <script type="text/javascript">
     function CheckDegree(val) {
@@ -215,6 +238,23 @@
         } else {
           coreDiv.style.display = 'none';
           noncoreDiv.style.display = 'block';
+        }
+      });
+    });
+  </script>
+    
+  <script>
+    $(document).ready(function () {
+      var Grad1 = document.getElementById('coreGrad');
+      var Grad2 = document.getElementById('managementGrad');
+
+      $('input[name="coreOrManagement"]').change(function() {
+        if ($(this).val() === 'coreGrad') {
+          Grad1.style.display = 'block';
+          Grad2.style.display = 'none';
+        } else {
+          Grad1.style.display = 'none';
+          Grad2.style.display = 'block';
         }
       });
     });
@@ -327,14 +367,6 @@
             <fieldset style="background-color: #d9cdb3;">
               <div class="form-card" id="t01">
                   <div class="row"></div>
-                  {% comment %} <ul class="nav nav-tabs" style="background-color: #d9cdb3;">
-                  <li class="nav-item" style="background-color: #d9cdb3; border-color: #624f48">
-                    <a class="nav-link show active" href="#" id="placement-tab" data-toggle="tab" style="background-color: #624f48; color: #fff">PLACEMENT</a>
-                  </li>
-                  <li class="nav-item" style="background-color: #d9cdb3; border-color: #624f48">
-                    <a class="nav-link" href="#" id="grad-mentoring-tab" data-toggle="tab" style="background-color: #624f48; color: #fff">GRAD MENTORING</a>
-                  </li>
-                  </ul> {% endcomment %}
                   <div class="switches-container">
                     <input type="radio" id="placement" name="placementOrGradMentoring" value="placement" checked="checked" />
                     <label for="placement">Placement</label>
@@ -347,458 +379,465 @@
                       </div>
                     </div>
                   </div>
-              </div>
-          </fieldset>
+              </div>          
 
-            <!-- Placement Mentoring Fieldset -->
-            <fieldset class="show active" id="placement-fieldset" style="display: none; background-color: #d9cdb3;">
-              <div class="form-card" id="t01" style="background-color: #d9cdb3;">
-                <div class="row"></div>
-                <br><br>
-
-
-
-                <div class="switches-container">
-                  <input type="radio" id="Core" name="coreOrNonCore" value="core" checked="checked" />
-                  <input type="radio" id="NonCore" name="coreOrNonCore" value="nonCore" />
-                  <label for="Core">Core</label>
-                  <label for="NonCore">Non Core</label>
-                  <div class="switch-wrapper">
-                    <div class="switch">
-                      <div>Core</div>
-                      <div>Non Core</div>
+              <!-- Placement Mentoring Fieldset -->
+              <fieldset class="show active" id="placement-fieldset" style="display: none; background-color: #d9cdb3;">
+                <div class="form-card" id="t01" style="background-color: #d9cdb3;">
+                  <div class="row"></div>
+                  <br><br>
+                  <div class="switches-container">
+                    <input type="radio" id="Core" name="coreOrNonCore" value="core" checked="checked" />
+                    <input type="radio" id="NonCore" name="coreOrNonCore" value="nonCore" />
+                    <label for="Core">Core</label>
+                    <label for="NonCore">Non Core</label>
+                    <div class="switch-wrapper">
+                      <div class="switch">
+                        <div>Core</div>
+                        <div>Non Core</div>
+                      </div>
                     </div>
                   </div>
-                </div>
 
-
-                <div id="coreDiv" style="display: block;">
-                  <div class="bs-example" style="background-color: #d9cdb3;">
-                    <div class="tab-content">  
-                      <div class="tab-pane fade show active" id="core">
-                        <div class="row" id="t05">
-                          {% for mentor in mentors_list_core %}
-                          <div class="col-sm-3" id="mentors">
-                            <div class="card text-white bg-dark mb-3" style="max-width: 18rem;" id="t06">
-                              <div class="card-header">Mentor id: {{mentor.id}}</div>
-                              <div class="card-body" style="height: 367.2px;">
-                                <h6 class="degree" style="color: #87c240;">{{mentor.department}} -
-                                  {{mentor.graduation_year}}</h4>
-                                  <h5 class="card-title">{{mentor.workprofile}}</h5>
-                                  <p class="card-text company"> @ {{mentor.company}}</p>
-                                  <p class="card-text">{{mentor.experience}}</p>
-                                   <p class="card-text">Specialization: {{mentor.specialization}}</p>
-                              </div>
-                            </div>
+                  <div id="coreDiv" style="display: block;">
+                    <div class="bs-example" style="background-color: #d9cdb3;">
+                      <div class="tab-content">  
+                        <div class="tab-pane fade show active" id="core">
+                          <div class="row" id="t05">
+                            {% for mentor in mentors_list_core %}
+                            <div class="col-sm-3" id="mentors" style=" margin-bottom: 3rem";>
+                              <div class="card" style="background-color: #624F48; border-radius: 25px; max-width: 18rem; height: 100%; color: #D3C7B7; padding: 1rem; font-family: 'Libre Bodoni', serif; position: relative; overflow: hidden;margin-bottom: 3rem; ">
+                                  <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 5px solid white; border-radius: 25px; box-sizing: border-box;"></div>
+                                  <div class="upper-card" style="box-sizing: border-box; border-radius: 25px; background-color: #715f56; margin: -0.4rem; padding: 0.4rem;">
+                                      <div class="card-header" style="background: none; border-bottom: none; font-weight: bold; color: #D9CDB3;">Mentor id: {{mentor.id}}</div>
+                                      <div class="card-header" style="background: none; color: #D9CDB3; border-bottom: none; font-weight: bold; text-align: center; font-size: 20px;">{{mentor.workprofile}}</div>
+                                      <div class="card-header" style="background: none; color: #D9CDB3; border-bottom: none; font-weight: bold; text-align: center; font-size: 25px;">@ {{mentor.company}}</div>
+                                  </div>
+                                  <div class="card-body" style="overflow-y: auto; padding: 1rem;">
+                                    <p class="card-text">Specialization: {{mentor.specialization}}</p>
+                                      <p class="card-text" style="text-align: left; color: #D9CDB3;">Experience: {{mentor.experience}}</p>
+                                  </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                            {% for mentor in mentors_list_Core %}
+                            <div class="col-sm-3" id="mentors" style=" margin-bottom: 3rem";>
+                              <div class="card" style="background-color: #624F48; border-radius: 25px; max-width: 18rem; height: 100%; color: #D3C7B7; padding: 1rem; font-family: 'Libre Bodoni', serif; position: relative; overflow: hidden;margin-bottom: 3rem; ">
+                                  <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 5px solid white; border-radius: 25px; box-sizing: border-box;"></div>
+                                  <div class="upper-card" style="box-sizing: border-box; border-radius: 25px; background-color: #715f56; margin: -0.4rem; padding: 0.4rem;">
+                                      <div class="card-header" style="background: none; border-bottom: none; font-weight: bold; color: #D9CDB3;">Mentor id: {{mentor.id}}</div>
+                                      <div class="card-header" style="background: none; color: #D9CDB3; border-bottom: none; font-weight: bold; text-align: center; font-size: 20px;">{{mentor.workprofile}}</div>
+                                      <div class="card-header" style="background: none; color: #D9CDB3; border-bottom: none; font-weight: bold; text-align: center; font-size: 25px;">@ {{mentor.company}}</div>
+                                  </div>
+                                  <div class="card-body" style="overflow-y: auto; padding: 1rem;">
+                                    <p class="card-text">Specialization: {{mentor.specialization}}</p>
+                                      <p class="card-text" style="text-align: left; color: #D9CDB3;">Experience: {{mentor.experience}}</p>
+                                  </div>
+                                </div>
+                            </div>
+                            {% endfor %}
                           </div>
-                          {% endfor %}
-                          {% for mentor in mentors_list_Core %}
-                          <div class="col-sm-3" id="mentors">
-                            <div class="card text-white bg-dark mb-3" style="max-width: 18rem;" id="t06">
-                              <div class="card-header">Mentor id: {{mentor.id}}</div>
-                              <div class="card-body" style="height: 367.2px;">
-                                <h6 class="degree" style="color: #87c240;">{{mentor.department}} -
-                                  {{mentor.graduation_year}}</h4>
-                                  <h5 class="card-title">{{mentor.workprofile}}</h5>
-                                  <p class="card-text company"> @ {{mentor.company}}</p>
-                                  <p class="card-text">{{mentor.experience}}</p>
-                                   <p class="card-text">Specialization: {{mentor.specialization}}</p>
-                              </div>
-                            </div>
-                          </div>
-                          {% endfor %}
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
 
-                <div id="noncoreDiv" style="display: none;">
-                  <ul class="nav nav-tabs">
-                    <li class="nav-item">
-                      <a class="nav-link" href="#consult" data-toggle="tab">CONSULT</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="#analytics" data-toggle="tab">ANALYTICS</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="#finance" data-toggle="tab">FINANCE</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="#software" data-toggle="tab">IT/SOFTWARE</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="#others" data-toggle="tab">OTHERS</a>
-                    </li>
-                  </ul>
-                </div>
-
-                
-                <div class="bs-example" style="background-color: #d9cdb3;">
-                  <div class="tab-content">
-                    <div class="tab-pane fade" id="consult">
-                      <div class="row" id="t05">
-                        {% for mentor in mentors_list_consult %}
-                        <div class="col-sm-3" id="mentors">
-                          <div class="card text-white bg-dark mb-3" style="max-width: 18rem;" id="t06">
-                            <div class="card-header">Mentor id: {{mentor.id}}</div>
-                            <div class="card-body" style="height: 367.2px;">
-                              <h6 class="degree" style="color: #87c240;">{{mentor.department}} -
-                                {{mentor.graduation_year}}</h4>
-                                <h5 class="card-title">{{mentor.workprofile}}</h5>
-                                <p class="card-text company"> @ {{mentor.company}}</p>
-                                <p class="card-text">{{mentor.experience}}</p>
-                                 <p class="card-text">Specialization: {{mentor.specialization}}</p>
-                            </div>
-                          </div>
-                        </div>
-                        {% endfor %}
-                        {% for mentor in consulting %}
-                        <div class="col-sm-3" id="mentors">
-                          <div class="card text-white bg-dark mb-3" style="max-width: 18rem;" id="t06">
-                            <div class="card-header">Mentor id: {{mentor.id}}</div>
-                            <div class="card-body" style="height: 367.2px;">
-                              <h6 class="degree" style="color: #87c240;">{{mentor.department}} -
-                                {{mentor.graduation_year}}</h4>
-                                <h5 class="card-title">{{mentor.workprofile}}</h5>
-                                <p class="card-text company"> @ {{mentor.company}}</p>
-                                <p class="card-text">{{mentor.experience}}</p>
-                                 <p class="card-text">Specialization: {{mentor.specialization}}</p>
-                            </div>
-                          </div>
-                        </div>
-                        {% endfor %}
-                        {% for mentor in Consultmentors %}
-                        <div class="col-sm-3" id="mentors">
-                          <div class="card text-white bg-dark mb-3" style="max-width: 18rem;" id="t06">
-                            <div class="card-header">Mentor id: {{mentor.id}}</div>
-                            <div class="card-body" style="height: 367.2px;">
-                              <h6 class="degree" style="color: #87c240;">{{mentor.department}} -
-                                {{mentor.graduation_year}}</h4>
-                                <h5 class="card-title">{{mentor.workprofile}}</h5>
-                                <p class="card-text company"> @ {{mentor.company}}</p>
-                                <p class="card-text">{{mentor.experience}}</p>
-                                 <p class="card-text">Specialization: {{mentor.specialization}}</p>
-                            </div>
-                          </div>
-                        </div>
-                        {% endfor %}
-                      </div>
-                    </div>
-
-                    <div class="tab-pane fade" id="analytics">
-                      <div class="row" id="t05">
-                        {% for mentor in mentors_list_analysis %}
-                        <div class="col-sm-3" id="mentors">
-                          <div class="card text-white bg-dark mb-3" style="max-width: 18rem;" id="t06">
-                            <div class="card-header">Mentor id: {{mentor.id}}</div>
-                            <div class="card-body" style="height: 367.2px;">
-                              <h6 class="degree" style="color: #87c240;">{{mentor.department}} -
-                                {{mentor.graduation_year}}</h4>
-                                <h5 class="card-title">{{mentor.workprofile}}</h5>
-                                <p class="card-text company"> @ {{mentor.company}}</p>
-                                <p class="card-text">{{mentor.experience}}</p>
-                                 <p class="card-text">Specialization: {{mentor.specialization}}</p>
-                            </div>
-                          </div>
-                        </div>
-                        {% endfor %}
-                        {% for mentor in bhadwa %}
-                        <div class="col-sm-3" id="mentors">
-                          <div class="card text-white bg-dark mb-3" style="max-width: 18rem;" id="t06">
-                            <div class="card-header">Mentor id: {{mentor.id}}</div>
-                            <div class="card-body" style="height: 367.2px;">
-                              <h6 class="degree" style="color: #87c240;">{{mentor.department}} -
-                                {{mentor.graduation_year}}</h4>
-                                <h5 class="card-title">{{mentor.workprofile}}</h5>
-                                <p class="card-text company"> @ {{mentor.company}}</p>
-                                <p class="card-text">{{mentor.experience}}</p>
-                                 <p class="card-text">Specialization: {{mentor.specialization}}</p>
-                            </div>
-                          </div>
-                        </div>
-                        {% endfor %}
-                      </div>
-                    </div>
-
-                    <div class="tab-pane fade" id="finance">
-                      <div class="row" id="t05">
-                        {% for mentor in mentors_list_fin %}
-                        <div class="col-sm-3" id="mentors">
-                          <div class="card text-white bg-dark mb-3" style="max-width: 18rem;" id="t06">
-                            <div class="card-header">Mentor id: {{mentor.id}}</div>
-                            <div class="card-body" style="height: 367.2px;">
-                              <h6 class="degree" style="color: #87c240;">{{mentor.department}} -
-                                {{mentor.graduation_year}}</h4>
-                                <h5 class="card-title">{{mentor.workprofile}}</h5>
-                                <p class="card-text company"> @ {{mentor.company}}</p>
-                                <p class="card-text">{{mentor.experience}}</p>
-                                 <p class="card-text">Specialization: {{mentor.specialization}}</p>
-                            </div>
-                          </div>
-                        </div>
-                        {% endfor %}
-                        {% for mentor in finance %}
-                        <div class="col-sm-3" id="mentors">
-                          <div class="card text-white bg-dark mb-3" style="max-width: 18rem;" id="t06">
-                            <div class="card-header">Mentor id: {{mentor.id}}</div>
-                            <div class="card-body" style="height: 367.2px;">
-                              <h6 class="degree" style="color: #87c240;">{{mentor.department}} -
-                                {{mentor.graduation_year}}</h4>
-                                <h5 class="card-title">{{mentor.workprofile}}</h5>
-                                <p class="card-text company"> @ {{mentor.company}}</p>
-                                <p class="card-text">{{mentor.experience}}</p>
-                                 <p class="card-text">Specialization: {{mentor.specialization}}</p>
-                            </div>
-                          </div>
-                        </div>
-                        {% endfor %}
-                      </div>
-                    </div>
-
-                    <div class="tab-pane fade" id="software">
-                      <div class="row" id="t05">
-                        {% for mentor in mentors_list_cs %}
-                        <div class="col-sm-3" id="mentors">
-                          <div class="card text-white bg-dark mb-3" style="max-width: 18rem;" id="t06">
-                            <div class="card-header">Mentor id: {{mentor.id}}</div>
-                            <div class="card-body" style="height: 367.2px;">
-                              <h6 class="degree" style="color: #87c240;">{{mentor.department}} -
-                                {{mentor.graduation_year}}</h4>
-                                <h5 class="card-title">{{mentor.workprofile}}</h5>
-                                <p class="card-text company"> @ {{mentor.company}}</p>
-                                <p class="card-text">{{mentor.experience}}</p>
-                                 <p class="card-text">Specialization: {{mentor.specialization}}</p>
-                            </div>
-                          </div>
-                        </div>
-                        {% endfor %}
-                        {% for mentor in itsoftwar %}
-                        <div class="col-sm-3" id="mentors">
-                          <div class="card text-white bg-dark mb-3" style="max-width: 18rem;" id="t06">
-                            <div class="card-header">Mentor id: {{mentor.id}}</div>
-                            <div class="card-body" style="height: 367.2px;">
-                              <h6 class="degree" style="color: #87c240;">{{mentor.department}} -
-                                {{mentor.graduation_year}}</h4>
-                                <h5 class="card-title">{{mentor.workprofile}}</h5>
-                                <p class="card-text company"> @ {{mentor.company}}</p>
-                                <p class="card-text">{{mentor.experience}}</p>
-                                 <p class="card-text">Specialization: {{mentor.specialization}}</p>
-                            </div>
-                          </div>
-                        </div>
-                        {% endfor %}
-                        {% for mentor in randi %}
-                        <div class="col-sm-3" id="mentors">
-                          <div class="card text-white bg-dark mb-3" style="max-width: 18rem;" id="t06">
-                            <div class="card-header">Mentor id: {{mentor.id}}</div>
-                            <div class="card-body" style="height: 367.2px;">
-                              <h6 class="degree" style="color: #87c240;">{{mentor.department}} -
-                                {{mentor.graduation_year}}</h4>
-                                <h5 class="card-title">{{mentor.workprofile}}</h5>
-                                <p class="card-text company"> @ {{mentor.company}}</p>
-                                <p class="card-text">{{mentor.experience}}</p>
-                                 <p class="card-text">Specialization: {{mentor.specialization}}</p>
-                            </div>
-                          </div>
-                        </div>
-                        {% endfor %}
-                      </div>
-                    </div>
-
-                    <div class="tab-pane fade" id="others">
-                      <div class="row" id="t05">
-                        {% for mentor in mentors_list_other %}
-                        <div class="col-sm-3" id="mentors">
-                          <div class="card text-white bg-dark mb-3" style="max-width: 18rem;" id="t06">
-                            <div class="card-header">Mentor id: {{mentor.id}}</div>
-                            <div class="card-body" style="height: 450px;">
-                              <h6 class="degree" style="color: #87c240;">{{mentor.department}} -
-                                {{mentor.graduation_year}}</h4>
-                                <h5 class="card-title">{{mentor.workprofile}}</h5>
-                                <p class="card-text company"> @ {{mentor.company}}</p>
-                                <p class="card-text">{{mentor.experience}}</p>
-                                 <p class="card-text">Specialization: {{mentor.specialization}}</p>
-                            </div>
-                          </div>
-                        </div>
-                        {% endfor %}
-                        {% for mentor in mentors_list_Other %}
-                        <div class="col-sm-3" id="mentors">
-                          <div class="card text-white bg-dark mb-3" style="max-width: 18rem;" id="t06">
-                            <div class="card-header">Mentor id: {{mentor.id}}</div>
-                            <div class="card-body" style="height: 450px;">
-                              <h6 class="degree" style="color: #87c240;">{{mentor.department}} -
-                                {{mentor.graduation_year}}</h4>
-                                <h5 class="card-title">{{mentor.workprofile}}</h5>
-                                <p class="card-text company"> @ {{mentor.company}}</p>
-                                <p class="card-text">{{mentor.experience}}</p>
-                                 <p class="card-text">Specialization: {{mentor.specialization}}</p>
-                            </div>
-                          </div>
-                        </div>
-                        {% endfor %}
-                        {% for mentor in mentors_list_Others %}
-                        <div class="col-sm-3" id="mentors">
-                          <div class="card text-white bg-dark mb-3" style="max-width: 18rem;" id="t06">
-                            <div class="card-header">Mentor id: {{mentor.id}}</div>
-                            <div class="card-body" style="height: 450px;">
-                              <h6 class="degree" style="color: #87c240;">{{mentor.department}} -
-                                {{mentor.graduation_year}}</h4>
-                                <h5 class="card-title">{{mentor.workprofile}}</h5>
-                                <p class="card-text company"> @ {{mentor.company}}</p>
-                                <p class="card-text">{{mentor.experience}}</p>
-                                 <p class="card-text">Specialization: {{mentor.specialization}}</p>
-                            </div>
-                          </div>
-                        </div>
-                        {% endfor %}
-                        {% for mentor in mentors_list_chutiya %}
-                        <div class="col-sm-3" id="mentors">
-                          <div class="card text-white bg-dark mb-3" style="max-width: 18rem;" id="t06">
-                            <div class="card-header">Mentor id: {{mentor.id}}</div>
-                            <div class="card-body" style="height: 450px;">
-                              <h6 class="degree" style="color: #87c240;">{{mentor.department}} -
-                                {{mentor.graduation_year}}</h4>
-                                <h5 class="card-title">{{mentor.workprofile}}</h5>
-                                <p class="card-text company"> @ {{mentor.company}}</p>
-                                <p class="card-text">{{mentor.experience}}</p>
-                                 <p class="card-text">Specialization: {{mentor.specialization}}</p>
-                            </div>
-                          </div>
-                        </div>
-                        {% endfor %}
-                        {% for mentor in mentors_list_fmcg %}
-                        <div class="col-sm-3" id="mentors">
-                          <div class="card text-white bg-dark mb-3" style="max-width: 18rem;" id="t06">
-                            <div class="card-header">Mentor id: {{mentor.id}}</div>
-                            <div class="card-body" style="height: 450px;">
-                              <h6 class="degree" style="color: #87c240;">{{mentor.department}} -
-                                {{mentor.graduation_year}}</h4>
-                                <h5 class="card-title">{{mentor.workprofile}}</h5>
-                                <p class="card-text company"> @ {{mentor.company}}</p>
-                                <p class="card-text">{{mentor.experience}}</p>
-                                <p class="card-text">Specialization: {{mentor.specialization}}</p>
-                            </div>
-                          </div>
-                        </div>
-                        {% endfor %}
-                      </div>
-                    </div>
-
-                  </div>
-                </div>
-                <form method="POST" action="regcom/">
-                  {% csrf_token %}
+                  <div id="noncoreDiv" style="display: none;">
+                    <ul class="nav nav-tabs">
+                      <li class="nav-item">
+                        <a class="nav-link" href="#consult" data-toggle="tab">CONSULT</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#analytics" data-toggle="tab">ANALYTICS</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#finance" data-toggle="tab">FINANCE</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#software" data-toggle="tab">IT/SOFTWARE</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#others" data-toggle="tab">OTHERS</a>
+                      </li>
+                    </ul>               
                   
-                    <label class="fieldlabels">First Preference: </label>
-                    <input type="text" id="preference_1" name="preference_1" placeholder="First Preference Mentor's id">
-                    <label class="fieldlabels">Second Preference: </label>
-                    <input type="text" id="preference_2" name="preference_2" placeholder="Second Preference Mentor's id">
-                    <label class="fieldlabels">Third Preference: </label>
-                    <input type="text" id="preference_3" name="preference_3" placeholder="Third Preference Mentor's id">
-                    <label class="fieldlabels">Fourth Preference: </label>
-                    <input type="text" id="preference_4" name="preference_4" placeholder="Fourth Preference Mentor's id">
-                    <label class="fieldlabels">Fifth Preference: </label>
-                    <input type="text" id="preference_5" name="preference_5" placeholder="Fifth Preference Mentor's id">
-                  </div>
-                  <button type="button" name="previous" class="previous action-button-previous" value="Previous">Previous</button> 
-                  <button type="submit" name="next" class="next action-button" value="Next">Submit</button>
-                </form>
-            </fieldset>
+                    <div class="bs-example" style="background-color: #d9cdb3;">
+                      <div class="tab-content">
+                        <div class="tab-pane fade" id="consult">
+                          <div class="row" id="t05">
+                            {% for mentor in mentors_list_consult %}
+                            <div class="col-sm-3" id="mentors" style=" margin-bottom: 3rem";>
+                              <div class="card" style="background-color: #624F48; border-radius: 25px; max-width: 18rem; height: 100%; color: #D3C7B7; padding: 1rem; font-family: 'Libre Bodoni', serif; position: relative; overflow: hidden;margin-bottom: 3rem ">
+                                <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 5px solid white; border-radius: 25px; box-sizing: border-box;"></div>
+                                <div class="upper-card" style="box-sizing: border-box; border-radius: 25px; background-color: #715f56; margin: -0.4rem; padding: 0.4rem;">
+                                    <div class="card-header" style="background: none; border-bottom: none; font-weight: bold; color: #D9CDB3;">Mentor id: {{mentor.id}}</div>
+                                    <div class="card-header" style="background: none; color: #D9CDB3; border-bottom: none; font-weight: bold; text-align: center; font-size: 20px;">{{mentor.workprofile}}</div>
+                                    <div class="card-header" style="background: none; color: #D9CDB3; border-bottom: none; font-weight: bold; text-align: center; font-size: 25px;">@ {{mentor.company}}</div>
+                                </div>
+                                <div class="card-body" style="overflow-y: auto; padding: 1rem;">
+                                    <p class="card-text" style="text-align: left; color: #D9CDB3;">Experience: {{mentor.experience}}</p>
+                                </div>
+                              </div>
+                            </div>
+                            {% endfor %}
+                            {% for mentor in consulting %}
+                            <div class="col-sm-3" id="mentors" style=" margin-bottom: 3rem";>
+                              <div class="card" style="background-color: #624F48; border-radius: 25px; max-width: 18rem; height: 100%; color: #D3C7B7; padding: 1rem; font-family: 'Libre Bodoni', serif; position: relative; overflow: hidden;margin-bottom: 3rem ">
+                                <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 5px solid white; border-radius: 25px; box-sizing: border-box;"></div>
+                                <div class="upper-card" style="box-sizing: border-box; border-radius: 25px; background-color: #715f56; margin: -0.4rem; padding: 0.4rem;">
+                                    <div class="card-header" style="background: none; border-bottom: none; font-weight: bold; color: #D9CDB3;">Mentor id: {{mentor.id}}</div>
+                                    <div class="card-header" style="background: none; color: #D9CDB3; border-bottom: none; font-weight: bold; text-align: center; font-size: 20px;">{{mentor.workprofile}}</div>
+                                    <div class="card-header" style="background: none; color: #D9CDB3; border-bottom: none; font-weight: bold; text-align: center; font-size: 25px;">@ {{mentor.company}}</div>
+                                </div>
+                                <div class="card-body" style="overflow-y: auto; padding: 1rem;">
+                                    <p class="card-text" style="text-align: left; color: #D9CDB3;">Experience: {{mentor.experience}}</p>
+                                </div>
+                              </div>
+                            </div>
+                            {% endfor %}
+                            {% for mentor in Consultmentors %}
+                            <div class="col-sm-3" id="mentors" style=" margin-bottom: 3rem";>
+                              <div class="card" style="background-color: #624F48; border-radius: 25px; max-width: 18rem; height: 100%; color: #D3C7B7; padding: 1rem; font-family: 'Libre Bodoni', serif; position: relative; overflow: hidden;margin-bottom: 3rem ">
+                                <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 5px solid white; border-radius: 25px; box-sizing: border-box;"></div>
+                                <div class="upper-card" style="box-sizing: border-box; border-radius: 25px; background-color: #715f56; margin: -0.4rem; padding: 0.4rem;">
+                                    <div class="card-header" style="background: none; border-bottom: none; font-weight: bold; color: #D9CDB3;">Mentor id: {{mentor.id}}</div>
+                                    <div class="card-header" style="background: none; color: #D9CDB3; border-bottom: none; font-weight: bold; text-align: center; font-size: 20px;">{{mentor.workprofile}}</div>
+                                    <div class="card-header" style="background: none; color: #D9CDB3; border-bottom: none; font-weight: bold; text-align: center; font-size: 25px;">@ {{mentor.company}}</div>
+                                </div>
+                                <div class="card-body" style="overflow-y: auto; padding: 1rem;">
+                                    <p class="card-text" style="text-align: left; color: #D9CDB3;">Experience: {{mentor.experience}}</p>
+                                </div>
+                              </div>
+                            </div>
+                            {% endfor %}
+                          </div>
+                        </div>
 
-            <!-- Grad Mentoring Fieldset -->
-            <fieldset id="grad-mentoring-fieldset" style="display: none; background-color: #d9cdb3;">
-              <div class="form-card" id="t01" style="background-color: #d9cdb3;">
-                <div class="row"></div>
-                <br><br>
-                <div class="bs-example">
-                  <ul class="nav nav-tabs">
-                    <li class="nav-item">
-                      <a class="nav-link active" aria-current="true" href="#coreGrad" data-toggle="tab">CORE</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="#managementGrad" data-toggle="tab">MANAGEMENT</a>
-                    </li>
-                  </ul>
-            
-                  <div class="tab-content">
-                    <div class="tab-pane fade show active" id="coreGrad">
-                      <div class="row" id="t05">
-                        {% for mentor in mentors_core %}
-                        <div class="col-sm-3" id="mentors">
-                          <div class="card text-white bg-dark mb-3" style="max-width: 18rem;" id="t06">
-                            <div class="card-header">Mentor id: {{mentor.id}}</div>
-                            <div class="card-body" style="height: 367.2px;">
-                              <h6 class="degree" style="color: #87c240;">{{mentor.university}} - {{mentor.subject}}</h4>
-                                <p class="card-text">{{mentor.experience}}</p>
-                            </div>
+                        <div class="tab-pane fade" id="analytics">
+                          <div class="row" id="t05">
+                            {% for mentor in mentors_list_analysis %}
+                            <div class="col-sm-3" id="mentors" style=" margin-bottom: 3rem";>
+                              <div class="card" style="background-color: #624F48; border-radius: 25px; max-width: 18rem; height: 100%; color: #D3C7B7; padding: 1rem; font-family: 'Libre Bodoni', serif; position: relative; overflow: hidden;margin-bottom: 3rem ">
+                                <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 5px solid white; border-radius: 25px; box-sizing: border-box;"></div>
+                                <div class="upper-card" style="box-sizing: border-box; border-radius: 25px; background-color: #715f56; margin: -0.4rem; padding: 0.4rem;">
+                                    <div class="card-header" style="background: none; border-bottom: none; font-weight: bold; color: #D9CDB3;">Mentor id: {{mentor.id}}</div>
+                                    <div class="card-header" style="background: none; color: #D9CDB3; border-bottom: none; font-weight: bold; text-align: center; font-size: 20px;">{{mentor.workprofile}}</div>
+                                    <div class="card-header" style="background: none; color: #D9CDB3; border-bottom: none; font-weight: bold; text-align: center; font-size: 25px;">@ {{mentor.company}}</div>
+                                </div>
+                                <div class="card-body" style="overflow-y: auto; padding: 1rem;">
+                                    <p class="card-text" style="text-align: left; color: #D9CDB3;">Experience: {{mentor.experience}}</p>
+                                </div>
+                              </div>
+                            </div>
+                            {% endfor %}
+                            {% for mentor in bhadwa %}
+                            <div class="col-sm-3" id="mentors" style=" margin-bottom: 3rem";>
+                              <div class="card" style="background-color: #624F48; border-radius: 25px; max-width: 18rem; height: 100%; color: #D3C7B7; padding: 1rem; font-family: 'Libre Bodoni', serif; position: relative; overflow: hidden;margin-bottom: 3rem ">
+                                <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 5px solid white; border-radius: 25px; box-sizing: border-box;"></div>
+                                <div class="upper-card" style="box-sizing: border-box; border-radius: 25px; background-color: #715f56; margin: -0.4rem; padding: 0.4rem;">
+                                    <div class="card-header" style="background: none; border-bottom: none; font-weight: bold; color: #D9CDB3;">Mentor id: {{mentor.id}}</div>
+                                    <div class="card-header" style="background: none; color: #D9CDB3; border-bottom: none; font-weight: bold; text-align: center; font-size: 20px;">{{mentor.workprofile}}</div>
+                                    <div class="card-header" style="background: none; color: #D9CDB3; border-bottom: none; font-weight: bold; text-align: center; font-size: 25px;">@ {{mentor.company}}</div>
+                                </div>
+                                <div class="card-body" style="overflow-y: auto; padding: 1rem;">
+                                    <p class="card-text" style="text-align: left; color: #D9CDB3;">Experience: {{mentor.experience}}</p>
+                                </div>
+                              </div>
+                            </div>
+                            {% endfor %}
                           </div>
                         </div>
-                        {% endfor %}
-                        {% for mentor in mentors_Core %}
-                        <div class="col-sm-3" id="mentors">
-                          <div class="card text-white bg-dark mb-3" style="max-width: 18rem;" id="t06">
-                            <div class="card-header">Mentor id: {{mentor.id}}</div>
-                            <div class="card-body" style="height: 367.2px;">
-                              <h6 class="degree" style="color: #87c240;">{{mentor.university}} - {{mentor.subject}}</h4>
-                                <p class="card-text">{{mentor.experience}}</p>
-                            </div>
+
+                        <div class="tab-pane fade" id="finance">
+                          <div class="row" id="t05">
+                            {% for mentor in mentors_list_fin %}
+                            <div class="col-sm-3" id="mentors" style=" margin-bottom: 3rem";>
+                              <div class="card" style="background-color: #624F48; border-radius: 25px; max-width: 18rem; height: 100%; color: #D3C7B7; padding: 1rem; font-family: 'Libre Bodoni', serif; position: relative; overflow: hidden;margin-bottom: 3rem ">
+                                <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 5px solid white; border-radius: 25px; box-sizing: border-box;"></div>
+                                <div class="upper-card" style="box-sizing: border-box; border-radius: 25px; background-color: #715f56; margin: -0.4rem; padding: 0.4rem;">
+                                    <div class="card-header" style="background: none; border-bottom: none; font-weight: bold; color: #D9CDB3;">Mentor id: {{mentor.id}}</div>
+                                    <div class="card-header" style="background: none; color: #D9CDB3; border-bottom: none; font-weight: bold; text-align: center; font-size: 20px;">{{mentor.workprofile}}</div>
+                                    <div class="card-header" style="background: none; color: #D9CDB3; border-bottom: none; font-weight: bold; text-align: center; font-size: 25px;">@ {{mentor.company}}</div>
+                                </div>
+                                <div class="card-body" style="overflow-y: auto; padding: 1rem;">
+                                    <p class="card-text" style="text-align: left; color: #D9CDB3;">Experience: {{mentor.experience}}</p>
+                                </div>
+                              </div>
+                            </div>
+                            {% endfor %}
+                            {% for mentor in finance %}
+                            <div class="col-sm-3" id="mentors" style=" margin-bottom: 3rem";>
+                              <div class="card" style="background-color: #624F48; border-radius: 25px; max-width: 18rem; height: 100%; color: #D3C7B7; padding: 1rem; font-family: 'Libre Bodoni', serif; position: relative; overflow: hidden;margin-bottom: 3rem ">
+                                <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 5px solid white; border-radius: 25px; box-sizing: border-box;"></div>
+                                <div class="upper-card" style="box-sizing: border-box; border-radius: 25px; background-color: #715f56; margin: -0.4rem; padding: 0.4rem;">
+                                    <div class="card-header" style="background: none; border-bottom: none; font-weight: bold; color: #D9CDB3;">Mentor id: {{mentor.id}}</div>
+                                    <div class="card-header" style="background: none; color: #D9CDB3; border-bottom: none; font-weight: bold; text-align: center; font-size: 20px;">{{mentor.workprofile}}</div>
+                                    <div class="card-header" style="background: none; color: #D9CDB3; border-bottom: none; font-weight: bold; text-align: center; font-size: 25px;">@ {{mentor.company}}</div>
+                                </div>
+                                <div class="card-body" style="overflow-y: auto; padding: 1rem;">
+                                    <p class="card-text" style="text-align: left; color: #D9CDB3;">Experience: {{mentor.experience}}</p>
+                                </div>
+                              </div>
+                            </div>
+                            {% endfor %}
                           </div>
                         </div>
-                        {% endfor %}
+
+                        <div class="tab-pane fade" id="software">
+                          <div class="row" id="t05">
+                            {% for mentor in mentors_list_cs %}
+                            <div class="col-sm-3" id="mentors" style=" margin-bottom: 3rem";>
+                              <div class="card" style="background-color: #624F48; border-radius: 25px; max-width: 18rem; height: 100%; color: #D3C7B7; padding: 1rem; font-family: 'Libre Bodoni', serif; position: relative; overflow: hidden;margin-bottom: 3rem ">
+                                <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 5px solid white; border-radius: 25px; box-sizing: border-box;"></div>
+                                <div class="upper-card" style="box-sizing: border-box; border-radius: 25px; background-color: #715f56; margin: -0.4rem; padding: 0.4rem;">
+                                    <div class="card-header" style="background: none; border-bottom: none; font-weight: bold; color: #D9CDB3;">Mentor id: {{mentor.id}}</div>
+                                    <div class="card-header" style="background: none; color: #D9CDB3; border-bottom: none; font-weight: bold; text-align: center; font-size: 20px;">{{mentor.workprofile}}</div>
+                                    <div class="card-header" style="background: none; color: #D9CDB3; border-bottom: none; font-weight: bold; text-align: center; font-size: 25px;">@ {{mentor.company}}</div>
+                                </div>
+                                <div class="card-body" style="overflow-y: auto; padding: 1rem;">
+                                    <p class="card-text" style="text-align: left; color: #D9CDB3;">Experience: {{mentor.experience}}</p>
+                                </div>
+                              </div>
+                            </div>
+                            {% endfor %}
+                            {% for mentor in itsoftwar %}
+                            <div class="col-sm-3" id="mentors" style=" margin-bottom: 3rem";>
+                              <div class="card" style="background-color: #624F48; border-radius: 25px; max-width: 18rem; height: 100%; color: #D3C7B7; padding: 1rem; font-family: 'Libre Bodoni', serif; position: relative; overflow: hidden;margin-bottom: 3rem ">
+                                <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 5px solid white; border-radius: 25px; box-sizing: border-box;"></div>
+                                <div class="upper-card" style="box-sizing: border-box; border-radius: 25px; background-color: #715f56; margin: -0.4rem; padding: 0.4rem;">
+                                    <div class="card-header" style="background: none; border-bottom: none; font-weight: bold; color: #D9CDB3;">Mentor id: {{mentor.id}}</div>
+                                    <div class="card-header" style="background: none; color: #D9CDB3; border-bottom: none; font-weight: bold; text-align: center; font-size: 20px;">{{mentor.workprofile}}</div>
+                                    <div class="card-header" style="background: none; color: #D9CDB3; border-bottom: none; font-weight: bold; text-align: center; font-size: 25px;">@ {{mentor.company}}</div>
+                                </div>
+                                <div class="card-body" style="overflow-y: auto; padding: 1rem;">
+                                    <p class="card-text" style="text-align: left; color: #D9CDB3;">Experience: {{mentor.experience}}</p>
+                                </div>
+                              </div>
+                            </div>
+                            {% endfor %}
+                            {% for mentor in randi %}
+                            <div class="col-sm-3" id="mentors" style=" margin-bottom: 3rem";>
+                              <div class="card" style="background-color: #624F48; border-radius: 25px; max-width: 18rem; height: 100%; color: #D3C7B7; padding: 1rem; font-family: 'Libre Bodoni', serif; position: relative; overflow: hidden;margin-bottom: 3rem ">
+                                <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 5px solid white; border-radius: 25px; box-sizing: border-box;"></div>
+                                <div class="upper-card" style="box-sizing: border-box; border-radius: 25px; background-color: #715f56; margin: -0.4rem; padding: 0.4rem;">
+                                    <div class="card-header" style="background: none; border-bottom: none; font-weight: bold; color: #D9CDB3;">Mentor id: {{mentor.id}}</div>
+                                    <div class="card-header" style="background: none; color: #D9CDB3; border-bottom: none; font-weight: bold; text-align: center; font-size: 20px;">{{mentor.workprofile}}</div>
+                                    <div class="card-header" style="background: none; color: #D9CDB3; border-bottom: none; font-weight: bold; text-align: center; font-size: 25px;">@ {{mentor.company}}</div>
+                                </div>
+                                <div class="card-body" style="overflow-y: auto; padding: 1rem;">
+                                    <p class="card-text" style="text-align: left; color: #D9CDB3;">Experience: {{mentor.experience}}</p>
+                                </div>
+                              </div>
+                            </div>
+                            {% endfor %}
+                          </div>
+                        </div>
+
+                        <div class="tab-pane fade" id="others">
+                          <div class="row" id="t05">
+                            {% for mentor in mentors_list_other %}
+                            <div class="col-sm-3" id="mentors" style=" margin-bottom: 3rem";>
+                              <div class="card" style="background-color: #624F48; border-radius: 25px; max-width: 18rem; height: 100%; color: #D3C7B7; padding: 1rem; font-family: 'Libre Bodoni', serif; position: relative; overflow: hidden;margin-bottom: 3rem ">
+                                <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 5px solid white; border-radius: 25px; box-sizing: border-box;"></div>
+                                <div class="upper-card" style="box-sizing: border-box; border-radius: 25px; background-color: #715f56; margin: -0.4rem; padding: 0.4rem;">
+                                    <div class="card-header" style="background: none; border-bottom: none; font-weight: bold; color: #D9CDB3;">Mentor id: {{mentor.id}}</div>
+                                    <div class="card-header" style="background: none; color: #D9CDB3; border-bottom: none; font-weight: bold; text-align: center; font-size: 20px;">{{mentor.workprofile}}</div>
+                                    <div class="card-header" style="background: none; color: #D9CDB3; border-bottom: none; font-weight: bold; text-align: center; font-size: 25px;">@ {{mentor.company}}</div>
+                                </div>
+                                <div class="card-body" style="overflow-y: auto; padding: 1rem;">
+                                    <p class="card-text" style="text-align: left; color: #D9CDB3;">Experience: {{mentor.experience}}</p>
+                                </div>
+                              </div>
+                            </div>
+                            {% endfor %}
+                            {% for mentor in mentors_list_Other %}
+                            <div class="col-sm-3" id="mentors" style=" margin-bottom: 3rem";>
+                              <div class="card" style="background-color: #624F48; border-radius: 25px; max-width: 18rem; height: 100%; color: #D3C7B7; padding: 1rem; font-family: 'Libre Bodoni', serif; position: relative; overflow: hidden;margin-bottom: 3rem ">
+                                <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 5px solid white; border-radius: 25px; box-sizing: border-box;"></div>
+                                <div class="upper-card" style="box-sizing: border-box; border-radius: 25px; background-color: #715f56; margin: -0.4rem; padding: 0.4rem;">
+                                    <div class="card-header" style="background: none; border-bottom: none; font-weight: bold; color: #D9CDB3;">Mentor id: {{mentor.id}}</div>
+                                    <div class="card-header" style="background: none; color: #D9CDB3; border-bottom: none; font-weight: bold; text-align: center; font-size: 20px;">{{mentor.workprofile}}</div>
+                                    <div class="card-header" style="background: none; color: #D9CDB3; border-bottom: none; font-weight: bold; text-align: center; font-size: 25px;">@ {{mentor.company}}</div>
+                                </div>
+                                <div class="card-body" style="overflow-y: auto; padding: 1rem;">
+                                    <p class="card-text" style="text-align: left; color: #D9CDB3;">Experience: {{mentor.experience}}</p>
+                                </div>
+                              </div>
+                            </div>
+                            {% endfor %}
+                            {% for mentor in mentors_list_Others %}
+                            <div class="col-sm-3" id="mentors" style=" margin-bottom: 3rem";>
+                              <div class="card" style="background-color: #624F48; border-radius: 25px; max-width: 18rem; height: 100%; color: #D3C7B7; padding: 1rem; font-family: 'Libre Bodoni', serif; position: relative; overflow: hidden;margin-bottom: 3rem ">
+                                <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 5px solid white; border-radius: 25px; box-sizing: border-box;"></div>
+                                <div class="upper-card" style="box-sizing: border-box; border-radius: 25px; background-color: #715f56; margin: -0.4rem; padding: 0.4rem;">
+                                    <div class="card-header" style="background: none; border-bottom: none; font-weight: bold; color: #D9CDB3;">Mentor id: {{mentor.id}}</div>
+                                    <div class="card-header" style="background: none; color: #D9CDB3; border-bottom: none; font-weight: bold; text-align: center; font-size: 20px;">{{mentor.workprofile}}</div>
+                                    <div class="card-header" style="background: none; color: #D9CDB3; border-bottom: none; font-weight: bold; text-align: center; font-size: 25px;">@ {{mentor.company}}</div>
+                                </div>
+                                <div class="card-body" style="overflow-y: auto; padding: 1rem;">
+                                    <p class="card-text" style="text-align: left; color: #D9CDB3;">Experience: {{mentor.experience}}</p>
+                                </div>
+                              </div>
+                            </div>
+                            {% endfor %}
+                            {% for mentor in mentors_list_chutiya %}
+                            <div class="col-sm-3" id="mentors" style=" margin-bottom: 3rem";>
+                              <div class="card" style="background-color: #624F48; border-radius: 25px; max-width: 18rem; height: 100%; color: #D3C7B7; padding: 1rem; font-family: 'Libre Bodoni', serif; position: relative; overflow: hidden;margin-bottom: 3rem ">
+                                <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 5px solid white; border-radius: 25px; box-sizing: border-box;"></div>
+                                <div class="upper-card" style="box-sizing: border-box; border-radius: 25px; background-color: #715f56; margin: -0.4rem; padding: 0.4rem;">
+                                    <div class="card-header" style="background: none; border-bottom: none; font-weight: bold; color: #D9CDB3;">Mentor id: {{mentor.id}}</div>
+                                    <div class="card-header" style="background: none; color: #D9CDB3; border-bottom: none; font-weight: bold; text-align: center; font-size: 20px;">{{mentor.workprofile}}</div>
+                                    <div class="card-header" style="background: none; color: #D9CDB3; border-bottom: none; font-weight: bold; text-align: center; font-size: 25px;">@ {{mentor.company}}</div>
+                                </div>
+                                <div class="card-body" style="overflow-y: auto; padding: 1rem;">
+                                    <p class="card-text" style="text-align: left; color: #D9CDB3;">Experience: {{mentor.experience}}</p>
+                                </div>
+                              </div>
+                            </div>
+                            {% endfor %}
+                            {% for mentor in mentors_list_fmcg %}
+                            <div class="col-sm-3" id="mentors" style=" margin-bottom: 3rem";>
+                              <div class="card" style="background-color: #624F48; border-radius: 25px; max-width: 18rem; height: 100%; color: #D3C7B7; padding: 1rem; font-family: 'Libre Bodoni', serif; position: relative; overflow: hidden;margin-bottom: 3rem ">
+                                <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 5px solid white; border-radius: 25px; box-sizing: border-box;"></div>
+                                <div class="upper-card" style="box-sizing: border-box; border-radius: 25px; background-color: #715f56; margin: -0.4rem; padding: 0.4rem;">
+                                    <div class="card-header" style="background: none; border-bottom: none; font-weight: bold; color: #D9CDB3;">Mentor id: {{mentor.id}}</div>
+                                    <div class="card-header" style="background: none; color: #D9CDB3; border-bottom: none; font-weight: bold; text-align: center; font-size: 20px;">{{mentor.workprofile}}</div>
+                                    <div class="card-header" style="background: none; color: #D9CDB3; border-bottom: none; font-weight: bold; text-align: center; font-size: 25px;">@ {{mentor.company}}</div>
+                                </div>
+                                <div class="card-body" style="overflow-y: auto; padding: 1rem;">
+                                    <p class="card-text" style="text-align: left; color: #D9CDB3;">Experience: {{mentor.experience}}</p>
+                                </div>
+                              </div>
+                            </div>
+                            {% endfor %}
+                          </div>
+                        </div>
+
                       </div>
                     </div>
-            
-                    <div class="tab-pane fade" id="managementGrad">
-                      <div class="row" id="t05">
-                        {% for mentor in mentors_management %}
-                        <div class="col-sm-3" id="mentors">
-                          <div class="card text-white bg-dark mb-3" style="max-width: 18rem;" id="t06">
-                            <div class="card-header">Mentor id: {{mentor.id}}</div>
-                            <div class="card-body" style="height: 367.2px;">
-                              <h6 class="degree" style="color: #87c240;">{{mentor.university}} - {{mentor.subject}}</h4>
-                                <p class="card-text">{{mentor.experience}}</p>
-                            </div>
-                          </div>
-                        </div>
-                        {% endfor %}
-                        {% for mentor in mentors_Management %}
-                        <div class="col-sm-3" id="mentors">
-                          <div class="card text-white bg-dark mb-3" style="max-width: 18rem;" id="t06">
-                            <div class="card-header">Mentor id: {{mentor.id}}</div>
-                            <div class="card-body" style="height: 367.2px;">
-                              <h6 class="degree" style="color: #87c240;">{{mentor.university}} - {{mentor.subject}}</h4>
-                                <p class="card-text">{{mentor.experience}}</p>
-                            </div>
-                          </div>
-                        </div>
-                        {% endfor %}
-                      </div>
-                    </div>
-            
-                  </div>
                 </div>
-            
-                <form method="POST" action="regcom/" style="display: flex; flex-direction: column">
-                  {% csrf_token %}
-            
-                  <label class="fieldlabels">First Preference: </label>
-                  <input style="padding: 10px;" type="text" id="preference_1" name="preference_1" placeholder="First Preference Mentor's id">
-                  <label class="fieldlabels">Second Preference: </label>
-                  <input style="padding: 10px;" type="text" id="preference_2" name="preference_2" placeholder="Second Preference Mentor's id">
-                  <label class="fieldlabels">Third Preference: </label>
-                  <input style="padding: 10px;" type="text" id="preference_3" name="preference_3" placeholder="Third Preference Mentor's id">
-                  <label class="fieldlabels">Fourth Preference: </label>
-                  <input style="padding: 10px;" type="text" id="preference_4" name="preference_4" placeholder="Fourth Preference Mentor's id">
-                  <label class="fieldlabels">Fifth Preference: </label>
-                  <input style="padding: 10px;" type="text" id="preference_5" name="preference_5" placeholder="Fifth Preference Mentor's id">
-            
-                  <button type="button" name="previous" class="previous action-button-previous" value="Previous">Previous</button>
-                  <button type="submit" name="next" class="next action-button" value="Next">Submit</button>
-                </form>
-              </div>
-            </fieldset>            
+              </fieldset>
+
+              <!-- Grad Mentoring Fieldset -->
+              <fieldset id="grad-mentoring-fieldset" style=" background-color: #d9cdb3;">
+                <div class="form-card" id="t01" style="background-color: #d9cdb3;">
+                  <div class="row"></div>
+                  <br><br>
+                  <div class="switches-container">
+                    <input type="radio" id="coreGradToggle" name="coreOrManagement" value="coreGrad" checked="checked" />
+                    <label for="coreGradToggle">Core</label>
+                    <input type="radio" id="managementGradToggle" name="coreOrManagement" value="managementGrad" />
+                    <label for="managementGradToggle">Management</label>
+                    <div class="switch-wrapper">
+                      <div class="switch">
+                        <div>Core</div>
+                        <div>Management</div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div id="coreGrad" style="display: block;">
+                    <div class="bs-example" style="background-color: #d9cdb3;">
+                      <div class="tab-content">  
+                        <div class="tab-pane fade show active" id="core">
+                          <div class="row" id="t05">
+                            {% for mentor in mentors_core %}
+                            <div class="col-sm-3" id="mentors" style=" margin-bottom: 3rem";>
+                              <div class="card" style="background-color: #624F48; border-radius: 25px; max-width: 18rem; height: 100%; color: #D3C7B7; padding: 1rem; font-family: 'Libre Bodoni', serif; position: relative; overflow: hidden;margin-bottom: 3rem ">
+                                <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 5px solid white; border-radius: 25px; box-sizing: border-box;"></div>
+                                <div class="upper-card" style="box-sizing: border-box; border-radius: 25px; background-color: #715f56; margin: -0.4rem; padding: 0.4rem;">
+                                    <div class="card-header" style="background: none; border-bottom: none; font-weight: bold; color: #D9CDB3;">Mentor id: {{mentor.id}}</div>
+                                    <div class="card-header" style="background: none; color: #D9CDB3; border-bottom: none; font-weight: bold; text-align: center; font-size: 20px;">{{mentor.workprofile}}</div>
+                                    <div class="card-header" style="background: none; color: #D9CDB3; border-bottom: none; font-weight: bold; text-align: center; font-size: 25px;">@ {{mentor.company}}</div>
+                                </div>
+                                <div class="card-body" style="overflow-y: auto; padding: 1rem;">
+                                    <p class="card-text" style="text-align: left; color: #D9CDB3;">Experience: {{mentor.experience}}</p>
+                                </div>
+                              </div>
+                            </div>
+                            {% endfor %}
+                            {% for mentor in mentors_Core %}
+                            <div class="col-sm-3" id="mentors" style=" margin-bottom: 3rem";>
+                              <div class="card" style="background-color: #624F48; border-radius: 25px; max-width: 18rem; height: 100%; color: #D3C7B7; padding: 1rem; font-family: 'Libre Bodoni', serif; position: relative; overflow: hidden;margin-bottom: 3rem ">
+                                <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 5px solid white; border-radius: 25px; box-sizing: border-box;"></div>
+                                <div class="upper-card" style="box-sizing: border-box; border-radius: 25px; background-color: #715f56; margin: -0.4rem; padding: 0.4rem;">
+                                    <div class="card-header" style="background: none; border-bottom: none; font-weight: bold; color: #D9CDB3;">Mentor id: {{mentor.id}}</div>
+                                    <div class="card-header" style="background: none; color: #D9CDB3; border-bottom: none; font-weight: bold; text-align: center; font-size: 20px;">{{mentor.workprofile}}</div>
+                                    <div class="card-header" style="background: none; color: #D9CDB3; border-bottom: none; font-weight: bold; text-align: center; font-size: 25px;">@ {{mentor.company}}</div>
+                                </div>
+                                <div class="card-body" style="overflow-y: auto; padding: 1rem;">
+                                    <p class="card-text" style="text-align: left; color: #D9CDB3;">Experience: {{mentor.experience}}</p>
+                                </div>
+                              </div>
+                            </div>
+                            {% endfor %}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div id="managementGrad" style="display: block;">
+                    <div class="bs-example" style="background-color: #d9cdb3;">
+                      <div class="tab-content">  
+                        <div class="tab-pane fade show active" id="core">
+                          <div class="row" id="t05">
+                            {% for mentor in mentors_management %}
+                            <div class="col-sm-3" id="mentors" style=" margin-bottom: 3rem";>
+                              <div class="card" style="background-color: #624F48; border-radius: 25px; max-width: 18rem; height: 100%; color: #D3C7B7; padding: 1rem; font-family: 'Libre Bodoni', serif; position: relative; overflow: hidden;margin-bottom: 3rem ">
+                                <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 5px solid white; border-radius: 25px; box-sizing: border-box;"></div>
+                                <div class="upper-card" style="box-sizing: border-box; border-radius: 25px; background-color: #715f56; margin: -0.4rem; padding: 0.4rem;">
+                                    <div class="card-header" style="background: none; border-bottom: none; font-weight: bold; color: #D9CDB3;">Mentor id: {{mentor.id}}</div>
+                                    <div class="card-header" style="background: none; color: #D9CDB3; border-bottom: none; font-weight: bold; text-align: center; font-size: 20px;">{{mentor.workprofile}}</div>
+                                    <div class="card-header" style="background: none; color: #D9CDB3; border-bottom: none; font-weight: bold; text-align: center; font-size: 25px;">@ {{mentor.company}}</div>
+                                </div>
+                                <div class="card-body" style="overflow-y: auto; padding: 1rem;">
+                                    <p class="card-text" style="text-align: left; color: #D9CDB3;">Experience: {{mentor.experience}}</p>
+                                </div>
+                              </div>
+                            </div>
+                            {% endfor %}
+                            {% for mentor in mentors_Management %}
+                            <div class="col-sm-3" id="mentors" style=" margin-bottom: 3rem";>
+                              <div class="card" style="background-color: #624F48; border-radius: 25px; max-width: 18rem; height: 100%; color: #D3C7B7; padding: 1rem; font-family: 'Libre Bodoni', serif; position: relative; overflow: hidden;margin-bottom: 3rem ">
+                                <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 5px solid white; border-radius: 25px; box-sizing: border-box;"></div>
+                                <div class="upper-card" style="box-sizing: border-box; border-radius: 25px; background-color: #715f56; margin: -0.4rem; padding: 0.4rem;">
+                                    <div class="card-header" style="background: none; border-bottom: none; font-weight: bold; color: #D9CDB3;">Mentor id: {{mentor.id}}</div>
+                                    <div class="card-header" style="background: none; color: #D9CDB3; border-bottom: none; font-weight: bold; text-align: center; font-size: 20px;">{{mentor.workprofile}}</div>
+                                    <div class="card-header" style="background: none; color: #D9CDB3; border-bottom: none; font-weight: bold; text-align: center; font-size: 25px;">@ {{mentor.company}}</div>
+                                </div>
+                                <div class="card-body" style="overflow-y: auto; padding: 1rem;">
+                                    <p class="card-text" style="text-align: left; color: #D9CDB3;">Experience: {{mentor.experience}}</p>
+                                </div>
+                              </div>
+                            </div>
+                            {% endfor %}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </fieldset>
+
+              <form method="POST" action="regcom/" style="display: flex; flex-direction: column">
+                {% csrf_token %}
+                <label class="fieldlabels">First Preference: </label>
+                <input style="padding: 10px;" type="text" id="preference_1" name="preference_1" placeholder="First Preference Mentor's id" required>
+                <label class="fieldlabels">Second Preference: </label>
+                <input style="padding: 10px;" type="text" id="preference_2" name="preference_2" placeholder="Second Preference Mentor's id" required>
+                <label class="fieldlabels">Third Preference: </label>
+                <input style="padding: 10px;" type="text" id="preference_3" name="preference_3" placeholder="Third Preference Mentor's id" required>
+                <label class="fieldlabels">Fourth Preference: </label>
+                <input style="padding: 10px;" type="text" id="preference_4" name="preference_4" placeholder="Fourth Preference Mentor's id" required>
+                <label class="fieldlabels">Fifth Preference: </label>
+                <input style="padding: 10px;" type="text" id="preference_5" name="preference_5" placeholder="Fifth Preference Mentor's id" required>
+              
+                <button type="button" name="previous" class="previous action-button-previous" value="Previous">Previous</button>
+                <button type="submit" name="next" class="next action-button" value="Next">Submit</button>
+              </form>              
+            </fieldset>        
 
             <!-- Success Page Fieldset -->
             {% comment %} <fieldset>
