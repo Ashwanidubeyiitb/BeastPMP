@@ -88,8 +88,8 @@ body {
 
 .bttn {
     background-color: black;
-    border-top: 6px solid #624F48;
-    border-radius: 0;
+  
+    border-radius: 17px;
     align-self: center;
     width: 150%;
     padding: 20px 30px;
@@ -374,7 +374,7 @@ body {
     position: relative;
     height: 10%;
     top: 20%;
-    margin-bottom: 20%;
+    margin-bottom: 10%;
     text-align: center !important;
     font-family: 'Poppins';
     font-style: normal;
@@ -1470,7 +1470,7 @@ body {
        margin-top: 10%;
    }
    .member-photo:hover {
-       box-shadow: 0 0 20px 15px #D5877D;
+       box-shadow: 0 0 20px 15px #624f48;
    }
 
    .member-name {
