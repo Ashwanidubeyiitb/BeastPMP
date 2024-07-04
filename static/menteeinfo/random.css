@@ -35,7 +35,7 @@
   }
   
   #msform fieldset {
-    background: #222629;
+    /* background: #222629; */
     border: 0 none;
     border-radius: 0.5rem;
     box-sizing: border-box;
