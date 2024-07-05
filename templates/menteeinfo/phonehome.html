@@ -723,6 +723,7 @@
             line-height: 50px;
             transition: all 0.3s ease;
           }
+
           .wrapper ul li a:after{
             position: absolute;
             content: "";
@@ -776,6 +777,258 @@
             }
           }
           
+
+          /* Contact section */
+
+   .team-members {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+flex-wrap: wrap;    
+}
+
+.member {
+    text-align: center;
+}
+
+.member-photo {
+    border-radius: 50%;
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    margin-bottom: 10px;
+    margin-right: 100px;
+    margin-left: 100px;
+    margin-top: 10%;
+}
+.member-photo:hover {
+    box-shadow: 0 0 20px 15px #624f48;
+}
+
+.member-name {
+    margin-bottom: 5px;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+ .member-details{
+     margin-bottom: 5px;
+     font-size: 22px;
+ }
+
+.social-media a {
+    margin-right: 5px;
+    font-size: 25px;
+    color: #000;
+}
+
+.social-media a:hover {
+    color: #D5877D;
+}
+
+
+@media (min-width : 801px) {
+ .contact>.container {
+     display: flex;
+     justify-content: space-around;
+     align-items: center;
+     margin-bottom: 15vh;
+ }
+
+ .contactOne,
+ .contactTwo {
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     color: #222629;
+     background-color: #DBF4A7;
+     font-weight: bold;
+     padding: 1rem;
+ }
+
+ .container .contactOne::before {
+     content: "";
+     position: relative;
+     left: 10%;
+     bottom: -10px;
+     height: 20px;
+     width: 20px;
+     background-color: #DBF4A7;
+     transform: translateX(-50%) rotate(45deg);
+     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.15);
+ }
+
+ .team-bg {
+     background-color: #f8f9fa;
+     overflow: hidden;
+ }
+
+ .team .section-title {
+     padding-bottom: 40px;
+ }
+
+ .team .section-title .main-team-subheading {
+     font-size: 14px;
+     font-weight: 500;
+     padding: 0;
+     line-height: 1px;
+     margin: 0 0 5px 0;
+     letter-spacing: 2px;
+     text-transform: uppercase;
+     color: #aaaaaa;
+ }
+
+ .team .section-title .main-team-subheading::after {
+     content: "";
+     width: 120px;
+     height: 1px;
+     display: inline-block;
+     background: #556270;
+     margin: 4px 10px;
+ }
+
+ .team .main-team-heading {
+     margin: 0;
+     font-size: 36px;
+     font-weight: 700;
+     text-transform: uppercase;
+     color: #556270;
+ }
+
+ .team .member {
+     position: relative;
+     box-shadow: 0px 2px 15px rgba(85, 98, 112, 0.08);
+     padding: 30px;
+     border-radius: 4px;
+     background: #fff;
+ }
+
+ .team .member .pic {
+     overflow: hidden;
+     width: 140px;
+     border-radius: 4px;
+ }
+
+ .team .member .pic img {
+     transition: ease-in-out 0.3s;
+ }
+
+ .team .member:hover img {
+     transform: scale(1.1);
+ }
+
+ .team .member .member-info {
+     padding-left: 30px;
+ }
+
+ .team .member .member-heading {
+     font-weight: 700;
+     margin-bottom: 5px;
+     font-size: 20px;
+     color: #556270;
+     line-height: 1.2;
+ }
+
+ .team .member span {
+     display: block;
+     font-size: 15px;
+     padding-bottom: 10px;
+     position: relative;
+     font-weight: 500;
+ }
+
+ .team .member span::after {
+     content: '';
+     position: absolute;
+     display: block;
+     width: 50px;
+     height: 1px;
+     background: #dee2e6;
+     bottom: 0;
+     left: 0;
+ }
+
+ .team .member .member-para {
+     margin: 10px 0 0 0;
+     font-size: 14px;
+ }
+
+ .team .member .social {
+     margin-top: 12px;
+     display: flex;
+     align-items: center;
+     justify-content: flex-start;
+ }
+
+ .team .member .social a {
+     transition: ease-in-out 0.3s;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     border-radius: 4px;
+     width: 32px;
+     height: 32px;
+     background: #8795a4;
+ }
+
+ .team .member .social a+a {
+     margin-left: 8px;
+ }
+
+ .team .member .social a:hover {
+     background: #41A1FD;
+ }
+
+ .team .member .social a .team-icon {
+     color: #fff;
+     font-size: 16px;
+     margin: 0 2px;
+ }
+}
+
+@media(max-width : 800px) {
+ #contact {
+     position: relative;
+     margin-top: 15%;
+ }
+
+ #contact {
+     height: 10vh;
+     width: 45vh;
+     background: white;
+     display: grid;
+     place-items: center;
+     font-size: 4vh;
+     font-weight: bold;
+ }
+
+ .contact>.container {
+     display: flex;
+     flex-direction: column;
+     justify-content: space-evenly;
+     align-items: center;
+     margin-top: 5vh;
+ }
+
+ .contactOne,
+ .contactTwo {
+     color: #222629;
+     background-color: #DBF4A7;
+     font-weight: bold;
+     padding: 1rem;
+     display: flex;
+     flex-direction: column;
+     margin-top: 1rem;
+     margin-bottom: 1rem;
+
+ }
+
+ .conatiner {
+     margin-bottom: 5%;
+ }
+
+
+}
 
 .loader {
     position : fixed;
@@ -840,7 +1093,7 @@ background: #D9CDB3; padding: 10px;">
         requirements, with intermediate follow-ups to address any hurdles that may occur.
     </p>
     <hr>
-    <h3 style="display: flex; justify-content: center;"><span style="text-align: center; background-color: #624F48; padding: 0% 2%; border-radius: 30px; border: 2px solid white; color: white; font-size: 20px;">BENIFITS</span></h3>
+    <h3 style="display: flex; justify-content: center;"><span style="text-align: center; background-color: #624F48; padding: 0% 2%; border-radius: 30px; border: 2px solid white; color: white; font-size: 20px;">BENEFITS</span></h3>
 
 
    <div>
@@ -936,23 +1189,34 @@ background: #D9CDB3; padding: 10px;">
 
 {% include 'menteeinfo/testimonial.html' %}
 
-<hr>
+
 <h3 style="display: flex; justify-content: center; margin-top: -60%;"><span style="text-align: center; background-color: #624F48; padding: 0% 2%; border-radius: 30px; border: 2px solid white; color: white; font-size: 20px;">CONTACT US</span></h3>
-<div class='contact' style="margin-top:-20%;">
-    <div class='container '>
-        <div class='contactOne'>
-            <p>Agrajah Bhobe</p>
-            <p>Core Team Member, Hostel and Department Affairs</p>
-            <p>Contact Number - +91 83296 91276</p>
-          
-        </div>
-        <div class='contactTwo'>
-        <p>Garv Gupta</p>
-        <p>Core Team Member, Hostel and Department Affairs</p>
-        <p>Contact Number - +91 99535 60809</p>
-        </div>
+   <div class="team-members">
+    <div class="member">
+      <img src="../static/img/bhakti.jpg" alt="Team Member 1" class="member-photo">
+      <h3 class="member-name">Bhakti Joshi</h3>
+      <p class="member-details">Core Team Member, <br/> Hostel and Department Affairs</p>
+      <p class="member-details"><i class="fas fa-phone"></i> +91 62644 42349 </p>
+      <div class="social-media">
+        <a href="mailto:bhakti@sarciitb.org" target="_blank"><i class="fas fa-envelope"></i></a>
+        <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
+        <a href="https://www.linkedin.com/in/bhakti-joshi-33b1b7252/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://www.instagram.com/bhaktijoshi_14" target="_blank"><i class="fab fa-instagram"></i></a>
+      </div>
     </div>
-   </div>
+    <div class="member">
+      <img src="../static/img/ishan.jpg" alt="Team Member 2" class="member-photo">
+      <h3 class="member-name">Ishan Grover</h3>
+      <p class="member-details">Core Team Member, <br/> Hostel and Department Affairs</p>
+      <p class="member-details"><i class="fas fa-phone"></i> +91 93406 66736</p>
+      <div class="social-media">
+        <a href="mailto:ishan@sarciitb.org" target="_blank"><i class="fas fa-envelope"></i></a>
+        <a href="https://www.facebook.com/profile.php?id=100093298782746" target="_blank"><i class="fab fa-facebook"></i></a>
+        <a href="n: https://www.linkedin.com/in/ishan-grover-30b499256/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://www.instagram.com/ishan__grover" target="_blank"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+  </div>
 <script>
     const toggles = document.querySelectorAll('.faq-toggle');
 
@@ -1013,8 +1277,8 @@ window.addEventListener("scroll", function (event) {
 </script>
 
 <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-<hr><hr>
-<h4 style="color: #624F48; text-align: center;">MADE WITH <3 BY SARC 2022</h4>
+<hr>
+<h4 style="color: #624F48; text-align: center;">MADE WITH 💙 BY SARC 2024</h4>
     <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 <script type="text/javascript">
     $(window).load(function() {
