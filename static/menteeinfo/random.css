@@ -35,7 +35,7 @@
   }
   
   #msform fieldset {
-    background: #222629;
+    background: #d9cdb3;
     border: 0 none;
     border-radius: 0.5rem;
     box-sizing: border-box;
@@ -169,7 +169,7 @@
   }
   
   #progressbar .active {
-    color: #87C240;
+    color: #624f48;
   }
   
   #progressbar li {
@@ -245,7 +245,7 @@
   }
   
   #t01 {
-    background-color: #222629;
+    background-color: #d9cdb3;
   }
   
   .t03 {
@@ -260,7 +260,7 @@
     font-weight: 600;
     margin: 0 0 30px 0;
     background-color: #624f48;
-    color:#222629;
+    color:white;
     text-align: center;
     padding: 20px;
   }
