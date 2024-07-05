@@ -668,7 +668,7 @@
             background: BLACK;
             clip-path: circle(25px at calc(100% - 45px) 45px);
             transition: all 0.3s ease-in-out;
-            z-index:1;
+            z-index: 100;
           }
           #active:checked ~ .wrapper{
             clip-path: circle(75%);
@@ -706,6 +706,7 @@
             transform: translate(-50%, -50%);
             list-style: none;
             text-align: center;
+            margin: 0 !important;
           }
           .wrapper ul li{
             margin: 15px 0;
@@ -1054,11 +1055,10 @@ background: #D9CDB3; padding: 10px;">
   <img src="../static/img/sarc black@3x.png" style="width: 30vw; height: auto;">
     <div class="wrapper">
       <ul>
-<li><a href="/">Home</a></li>
-<li><a href="/savedata_new">Register</a></li>
-<li><a href="https://team22.sarc-iitb.org/contact/">Team</a></li>
-</ul>
-</div>
+        <li><a href="/">Home</a></li>
+        <li><a href="/registration">Register</a></li>
+      </ul>
+    </div>
 <div style="margin-top: 100px; height: 200px">
     <h1 style="color: black; text-align: center; ">Placement Mentoring</h1>
     <h1 style="color: black; text-align: center; ">Program</h1>
@@ -1190,7 +1190,7 @@ background: #D9CDB3; padding: 10px;">
 {% include 'menteeinfo/testimonial.html' %}
 
 
-<h3 style="display: flex; justify-content: center; margin-top: -60%;"><span style="text-align: center; background-color: #624F48; padding: 0% 2%; border-radius: 30px; border: 2px solid white; color: white; font-size: 20px;">CONTACT US</span></h3>
+<h3 id="contact" style="background-color: #d9cdb3; display: flex; justify-content: center; margin-top: -60%;"><span style="text-align: center; background-color: #624F48; padding: 0% 2%; border-radius: 30px; border: 2px solid white; color: white; font-size: 20px;">CONTACT US</span></h3>
    <div class="team-members">
     <div class="member">
       <img src="../static/img/bhakti.jpg" alt="Team Member 1" class="member-photo">
