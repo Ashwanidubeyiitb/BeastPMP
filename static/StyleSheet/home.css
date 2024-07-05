@@ -2,6 +2,7 @@
     box-sizing: border-box;
     margin: 0px;
     padding: 0px;
+    font-family: 'Libre Bodoni', serif;
 }
 
 /* ::-webkit-scrollbar{
@@ -88,7 +89,6 @@ body {
 
 .bttn {
     background-color: black;
-  
     border-radius: 17px;
     align-self: center;
     width: 150%;
@@ -545,13 +545,6 @@ body {
     margin-top: 1rem;
 
 }
-
-
-
-
-
-
-
 
 /* Mentor section */
 

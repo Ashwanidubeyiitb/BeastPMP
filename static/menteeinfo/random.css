@@ -92,12 +92,12 @@
   }
   
   #msform .action-button {
-    background: #87C240;
+    background: #624f48;
+    border-radius: 18px;
     font-weight: bold;
     width: 150px;
-    color: #222629;
+    color: #fff;
     border: 0 none;
-    border-radius: 0px;
     cursor: pointer;
     padding: 10px 5px;
     margin: 10px 5px 10px 5px;
@@ -113,11 +113,11 @@
    */
   #msform .action-button-previous {
     width: 150px;
-    background: #87C240;
+    background: #624f48;
+    border-radius: 18px;
     font-weight: bold;
-    color: #222629;
+    color: #fff;
     border: 0 none;
-    border-radius: 0px;
     cursor: pointer;
     padding: 10px 5px;
     margin: 10px 5px 10px 5px;
@@ -169,7 +169,7 @@
   }
   
   #progressbar .active {
-    color: #87C240;
+    color: #624f48;
   }
   
   #progressbar li {

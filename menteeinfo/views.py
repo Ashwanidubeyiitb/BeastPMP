@@ -437,31 +437,43 @@ def register(request):
 #     return render(request, "menteeinfo/register.html", context)
 
 def menteereg(request):
-	if request.method == 'POST':
-		full_name = request.POST.get('full_name')
-		roll_no = request.POST.get('roll_no')
-		department = request.POST.get('department')
-		degree = request.POST.get('degree')
-		degree_other= request.POST.get('degree_other')
-		contact_number = request.POST.get('contact')
-		email_id = request.POST.get('email_id')
-		preference_1 = request.POST.get('preference_1')
-		preference_2 = request.POST.get('preference_2')
-		preference_3 = request.POST.get('preference_3')
-		preference_4 = request.POST.get('preference_4')
-		preference_5 = request.POST.get('preference_5')
-		suggestion = request.POST.get('suggestion')
-		SOP = request.POST.get('SOP')
+    if request.method == 'POST':
+        full_name = request.POST.get('full_name')
+        roll_no = request.POST.get('roll_no')
+        department = request.POST.get('department')
+        dept_other = request.POST.get('dept_other')
+        degree = request.POST.get('degree')
+        degree_other = request.POST.get('degree_other')
+        contact_number = request.POST.get('contact_number')
+        email_id = request.POST.get('email_id')
+        preference_1 = request.POST.get('preference_1')
+        preference_2 = request.POST.get('preference_2')
+        preference_3 = request.POST.get('preference_3')
+        preference_4 = request.POST.get('preference_4')
+        preference_5 = request.POST.get('preference_5')
+        suggestion = request.POST.get('suggestion')
+        SOP = request.POST.get('SOP')
         
-		mentee = Mentee(full_name = full_name, roll_no = roll_no,
-			department = department, degree = degree, degree_other= degree_other,
-			contact_number = contact_number, email_id = email_id,
-			preference_1 = preference_1, preference_2 = preference_2,
-			preference_3 = preference_3, preference_4 = preference_4, 
-			preference_5 = preference_5, suggestion = suggestion, SOP = SOP)
-		mentee.save()
-		context = {}
-	return render(request, 'menteeinfo/register_success.html',)
+        mentee = Mentee(
+            full_name=full_name,
+            roll_no=roll_no,
+            department=department,
+            dept_other=dept_other,
+            degree=degree,
+            degree_other=degree_other,
+            contact_number=contact_number,
+            email_id=email_id,
+            preference_1=preference_1,
+            preference_2=preference_2,
+            preference_3=preference_3,
+            preference_4=preference_4,
+            preference_5=preference_5,
+            suggestion=suggestion,
+            SOP=SOP
+        )
+        mentee.save()
+        context = {}
+    return render(request, 'menteeinfo/register_success.html', context)
 
 
 def export(request):

@@ -271,7 +271,7 @@
     <div class="row justify-content-center">
       <div class="col-11 text-center p-0 mt-3 mb-2">
         <div class="card px-0 pt-4 pb-0 mt-3 mb-3" id="t01" style="background-color: #d9cdb3;">
-          <h2 id="heading" style="color: #fff">MENTEE REGISTRATION FORM</h2>
+          <h2 id="heading" style="color: #624f48;">MENTEE REGISTRATION FORM</h2>
           <form id="msform" action="regcom/" method="POST">
             {% csrf_token %}
 
@@ -285,14 +285,14 @@
             <!-- fieldsets -->
             <!-- first registration page -->
             <fieldset style="background-color: #d9cdb3;"> 
-              <div class="form-card" id="t01" style="background-color: #d9cdb3;">
+              <div class="form-card" id="t01" style="background-color: #d9cdb3; padding: 20px; border-radius: 10px;">
                 <div class="row"></div>
-                <label class="fieldlabels">Name</label>
-                <input type="text" name="full_name" placeholder="John Doe" id="name" />
-                <label class="fieldlabels">Roll No</label>
-                <input type="text" name="roll_no" placeholder="180010000" id="roll_no" class="form-control" />
-                <label class="fieldlabels">Department</label>
-                <select class="form-select my-3" aria-label="Department" name='department' id='department' onchange='CheckDept(this.value);'> 
+                <label class="fieldlabels" style="color: #4e3b30; font-family: 'Times New Roman', serif;">Name</label>
+                <input type="text" name="full_name" placeholder="John Doe" id="name" style="width: 100%; padding: 10px; border-radius: 25px; border: 2px solid #4e3b30; background-color: #624f48; color: white !important; font-family: 'Times New Roman', serif;"/>
+                <label class="fieldlabels" style="color: #4e3b30; font-family: 'Times New Roman', serif;">Roll No</label>
+                <input type="text" name="roll_no" placeholder="180010000" id="roll_no" class="form-control" style="width: 100%; padding: 10px; border-radius: 25px; border: 2px solid #4e3b30; background-color: #624f48; color: white !important; font-family: 'Times New Roman', serif;" />
+                <label class="fieldlabels" style="color: #4e3b30; font-family: 'Times New Roman', serif;">Department</label>
+                <select class="form-select my-3" aria-label="Department" name='department' id='department' onchange='CheckDept(this.value);' style="color: #fff; width: 100%; padding: 10px; border-radius: 25px; border: 2px solid #4e3b30; background-color: #624f48; color: white; font-family: 'Times New Roman', serif;" > 
                   <optgroup style="font-family: 'helvetica','Times New Roman';">
                     <option selected style="font-family: 'helvetica','Times New Roman';">---</option>
                     <option value="Aerospace">Aerospace</option>
@@ -314,13 +314,11 @@
                     <option value="Other">Other</option>
                   </optgroup>
                 </select>
-                 <input type="text" class="form-control" id="dept_other" name="dept_other"
-                    placeholder="Department (in case of others)" style='display: none;'>
+                <input type="text" class="form-control" id="dept_other" name="dept_other" placeholder="Department (in case of others)" style="display: none; color: #fff; width: 100%; padding: 10px; border-radius: 25px; border: 2px solid #4e3b30; background-color: #624f48; color: white; font-family: 'Times New Roman', serif;">
 
                 <div>
-                  <label class="fieldlabels">Degree</label>
-                  <select class="form-select my-3" aria-label="Degree" name='degree' id='degree'
-                    onchange='CheckDegree(this.value);'>
+                  <label class="fieldlabels" style="color: #4e3b30; font-family: 'Times New Roman', serif;">Degree</label>
+                  <select class="form-select my-3" aria-label="Degree" name='degree' id='degree' onchange='CheckDegree(this.value);' style="color: #fff; width: 100%; padding: 10px; border-radius: 25px; border: 2px solid #4e3b30; background-color: #624f48; color: white; font-family: 'Times New Roman', serif;">
                     <option selected>---</option>
                     <option value="btech">B.Tech</option>
                     <option value="bs">BS</option>
@@ -330,39 +328,40 @@
                     <option value="phd">PhD</option>
                     <option value="other">Other</option>
                   </select>
-                  <input type="text" class="form-control" id="degree_other" name="degree_other"
-                    placeholder="Degree (in case of others)" style='display: none;'>
+                  <input type="text" class="form-control" id="degree_other" name="degree_other" placeholder="Degree (in case of others)" style="display: none; color: #fff; width: 100%; padding: 10px; border-radius: 25px; border: 2px solid #4e3b30; background-color: #624f48; color: white; font-family: 'Times New Roman', serif;">
                 </div>
 
-                <label class="fieldlabels">Contact Number</label>
-                <input type="text" class="form-control" id="contact" name="contact_number" placeholder="Contact Number">
-                <label class="fieldlabels">Email </label>
-                <input type="text" name="email_id" placeholder="180010000@iitb.ac.in" id="email_id" />
-                <label class="fieldlabels">Statement of Purpose</label>
-                <textarea id="t04" name="SOP" rows="10" placeholder="Statement of Purpose"></textarea>
-                <label class="fieldlabels">Suggestions</label>
-                <textarea id="suggestion" name="suggestion" rows="10" placeholder="Suggestions"></textarea>
+                <label class="fieldlabels" style="color: #4e3b30; font-family: 'Times New Roman', serif;">Contact Number</label>
+                <input type="text" class="form-control" id="contact" name="contact_number" placeholder="Contact Number" style="color: #fff; width: 100%; padding: 10px; border-radius: 25px; border: 2px solid #4e3b30; background-color: #624f48; color: white; font-family: 'Times New Roman', serif;">
+                <label class="fieldlabels" style="color: #4e3b30; font-family: 'Times New Roman', serif;">Email </label>
+                <input type="text" name="email_id" placeholder="180010000@iitb.ac.in" id="email_id"  style="color: #fff; width: 100%; padding: 10px; border-radius: 25px; border: 2px solid #4e3b30; background-color: #624f48; color: white; font-family: 'Times New Roman', serif;"/>
+                <label class="fieldlabels" style="color: #4e3b30; font-family: 'Times New Roman', serif;">Statement of Purpose</label>
+                <textarea id="t04" name="SOP" rows="10" placeholder="Statement of Purpose" style="color: #fff; width: 100%; padding: 10px; border-radius: 25px; border: 2px solid #4e3b30; background-color: #624f48; color: white; font-family: 'Times New Roman', serif;"></textarea>
+                <label class="fieldlabels" style="color: #4e3b30; font-family: 'Times New Roman', serif;">Suggestions</label>
+                <textarea id="suggestion" name="suggestion" rows="10" placeholder="Suggestions" style="color: #fff; width: 100%; padding: 10px; border-radius: 25px; border: 2px solid #4e3b30; background-color: #624f48; color: white; font-family: 'Times New Roman', serif;"></textarea>
                 <div id="t09">
-                  <ul style="color:white; list-style-type: none; padding: 0;">
-                    <li style="margin-bottom: 10px;">
-                        <input type="checkbox" class="requirement-checkbox" id="requirement1" style="margin-right: 10px;"/>
-                        <label for="requirement1">I will maintain constant contact with the mentor throughout the duration of the program.</label>
+                  <ul style="list-style-type: none; padding: 0;">
+                    <li style="margin-bottom: 10px; display: flex; align-items: flex-start; justify-self: center;">
+                      <input type="checkbox" class="requirement-checkbox" id="requirement1" 
+                        style="margin-right: 10px; width: 15px; height: 15px;" />
+                      <label for="requirement1" style="color: #624f48; margin: 0;">I will maintain constant contact with the mentor throughout the duration of the program.</label>
                     </li>
-                    <li style="margin-bottom: 10px;">
-                        <input type="checkbox" class="requirement-checkbox" id="requirement2" style="margin-right: 10px;"/>
-                        <label for="requirement2">I will provide appropriate feedback to SARC team at timely intervals (through feedback form).</label>
+                    <li style="margin-bottom: 10px; display: flex; align-items: flex-start; justify-self: center;">
+                      <input type="checkbox" class="requirement-checkbox" id="requirement2" 
+                        style="margin-right: 10px; width: 15px; height: 15px;" />
+                      <label for="requirement2" style="color: #624f48; margin: 0;">I will provide appropriate feedback to SARC team at timely intervals (through feedback form).</label>
                     </li>
-                    <li style="margin-bottom: 10px;">
-                        <input type="checkbox" class="requirement-checkbox" id="requirement3" style="margin-right: 10px;"/>
-                        <label for="requirement3">I understand that having been allotted a mentor, it is my responsibility to utilize the program.</label>
+                    <li style="margin-bottom: 10px; display: flex; align-items: flex-start; justify-self: center;">
+                      <input type="checkbox" class="requirement-checkbox" id="requirement3" 
+                        style="margin-right: 10px; width: 15px; height: 15px;" />
+                      <label for="requirement3" style="color: #624f48; margin: 0;">I understand that having been allotted a mentor, it is my responsibility to utilize the program.</label>
                     </li>
-                  </ul>
+                  </ul>                                                                                                     
                 </div>
               </div>
-              {% comment %} <input type="button" name="next" class="next action-button" value="Next" id="next_button" style="background-color: #624f48; color: #fff"/> {% endcomment %}
-              <input type="button" name="next" class="next action-button" value="Next" id="next_button" style="background-color: #624f48; color: #fff" disabled/>
+              <input type="button" name="next" class="next action-button" value="Next" id="next_button" style="background-color: #624f48; color: #fff; font-family: 'Libre Bodoni', serif;" disabled/>
             </fieldset>
-
+  
             <!-- Placement vs gradMentoring -->
             <fieldset style="background-color: #d9cdb3;">
               <div class="form-card" id="t01" style="background-color: #d9cdb3;">
@@ -382,7 +381,7 @@
               </div>          
 
               <!-- Placement Mentoring Fieldset -->
-              <fieldset class="show active" id="placement-fieldset" style="display: none; background-color: #d9cdb3;">
+              <fieldset class="show active" id="placement-fieldset" style="display: block; background-color: #d9cdb3;">
                 <div class="form-card" id="t01" style="background-color: #d9cdb3;">
                   <div class="row"></div>
                   <br><br>
@@ -823,7 +822,7 @@
 
               <form method="POST" action="regcom/" style="display: flex; flex-direction: column">
                 {% csrf_token %}
-                <label class="fieldlabels">First Preference: </label>
+                {% comment %} <label class="fieldlabels">First Preference: </label>
                 <input style="padding: 10px;" type="text" id="preference_1" name="preference_1" placeholder="First Preference Mentor's id" required>
                 <label class="fieldlabels">Second Preference: </label>
                 <input style="padding: 10px;" type="text" id="preference_2" name="preference_2" placeholder="Second Preference Mentor's id" required>
@@ -832,11 +831,20 @@
                 <label class="fieldlabels">Fourth Preference: </label>
                 <input style="padding: 10px;" type="text" id="preference_4" name="preference_4" placeholder="Fourth Preference Mentor's id" required>
                 <label class="fieldlabels">Fifth Preference: </label>
-                <input style="padding: 10px;" type="text" id="preference_5" name="preference_5" placeholder="Fifth Preference Mentor's id" required>
-              
+                <input style="padding: 10px;" type="text" id="preference_5" name="preference_5" placeholder="Fifth Preference Mentor's id" required> {% endcomment %}
+                <label class="fieldlabels" style="color: #4e3b30; font-family: 'Times New Roman', serif; text-align: left !important; display: block;">First Preference: </label>
+                <input type="text" id="preference_1" name="preference_1" placeholder="First Preference Mentor's id" style="width: 100%; padding: 10px; border-radius: 25px; border: 2px solid #4e3b30; background-color: #624f48; color: white; font-family: 'Times New Roman', serif;">
+                <label class="fieldlabels" style="color: #4e3b30; font-family: 'Times New Roman', serif; text-align: left !important; display: block;">Second Preference: </label>
+                <input type="text" id="preference_2" name="preference_2" placeholder="Second Preference Mentor's id" style="width: 100%; padding: 10px; border-radius: 25px; border: 2px solid #4e3b30; background-color: #624f48; color: white; font-family: 'Times New Roman', serif;">
+                <label class="fieldlabels" style="color: #4e3b30; font-family: 'Times New Roman', serif; text-align: left !important; display: block;">Third Preference: </label>
+                <input type="text" id="preference_3" name="preference_3" placeholder="Third Preference Mentor's id" style="width: 100%; padding: 10px; border-radius: 25px; border: 2px solid #4e3b30; background-color: #624f48; color: white; font-family: 'Times New Roman', serif;">
+                <label class="fieldlabels" style="color: #4e3b30; font-family: 'Times New Roman', serif; text-align: left !important; display: block;">Fourth Preference: </label>
+                <input type="text" id="preference_4" name="preference_4" placeholder="Fourth Preference Mentor's id" style="width: 100%; padding: 10px; border-radius: 25px; border: 2px solid #4e3b30; background-color: #624f48; color: white; font-family: 'Times New Roman', serif;">
+                <label class="fieldlabels" style="color: #4e3b30; font-family: 'Times New Roman', serif; text-align: left !important; display: block;">Fifth Preference: </label>
+                <input type="text" id="preference_5" name="preference_5" placeholder="Fifth Preference Mentor's id" style="width: 100%; padding: 10px; border-radius: 25px; border: 2px solid #4e3b30; background-color: #624f48; color: white; font-family: 'Times New Roman', serif;">
                 <button type="button" name="previous" class="previous action-button-previous" value="Previous">Previous</button>
-                <button type="submit" name="next" class="next action-button" value="Next">Submit</button>
-              </form>              
+                <button type="submit" name="next" class="next action-button" value="Next" style="font-family: 'Libre Bodoni', serif">Submit</button>
+              </form>
             </fieldset>        
 
             <!-- Success Page Fieldset -->
