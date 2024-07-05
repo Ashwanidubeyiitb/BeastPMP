@@ -231,7 +231,6 @@
 
       $('input[name="coreOrNonCore"]').change(function() {
 
-        console.log($(this).val());
         if ($(this).val() === 'core') {
           coreDiv.style.display = 'block';
           noncoreDiv.style.display = 'none';
@@ -401,9 +400,9 @@
                     <div class="bs-example" style="background-color: #d9cdb3;">
                       <div class="tab-content">  
                         <div class="tab-pane fade show active" id="core">
-                          <div class="row" id="t05">
+                          <div class="row" id="t05" style="display: flex; flex-wrap: wrap; justify-content: center;">
                             {% for mentor in mentors_list_core %}
-                            <div class="col-sm-3" id="mentors" style=" margin-bottom: 3rem";>
+                            <div class="col-sm-3" id="mentors" style=" margin-bottom: 3rem;";>
                               <div class="card" style="background-color: #624F48; border-radius: 25px; max-width: 18rem; height: 100%; color: #D3C7B7; padding: 1rem; font-family: 'Libre Bodoni', serif; position: relative; overflow: hidden;margin-bottom: 3rem; ">
                                   <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 5px solid white; border-radius: 25px; box-sizing: border-box;"></div>
                                   <div class="upper-card" style="box-sizing: border-box; border-radius: 25px; background-color: #715f56; margin: -0.4rem; padding: 0.4rem;">
@@ -419,7 +418,7 @@
                             </div>
                             {% endfor %}
                             {% for mentor in mentors_list_Core %}
-                            <div class="col-sm-3" id="mentors" style=" margin-bottom: 3rem";>
+                            <div class="col-sm-3" id="mentors" style=" margin-bottom: 3rem;";>
                               <div class="card" style="background-color: #624F48; border-radius: 25px; max-width: 18rem; height: 100%; color: #D3C7B7; padding: 1rem; font-family: 'Libre Bodoni', serif; position: relative; overflow: hidden;margin-bottom: 3rem; ">
                                   <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 5px solid white; border-radius: 25px; box-sizing: border-box;"></div>
                                   <div class="upper-card" style="box-sizing: border-box; border-radius: 25px; background-color: #715f56; margin: -0.4rem; padding: 0.4rem;">
@@ -462,9 +461,9 @@
                     <div class="bs-example" style="background-color: #d9cdb3;">
                       <div class="tab-content">
                         <div class="tab-pane fade" id="consult">
-                          <div class="row" id="t05">
+                          <div class="row" id="t05" style="display: flex; flex-wrap: wrap; justify-content: center;">
                             {% for mentor in mentors_list_consult %}
-                            <div class="col-sm-3" id="mentors" style=" margin-bottom: 3rem";>
+                            <div class="col-sm-3" id="mentors" style=" margin-bottom: 3rem;";>
                               <div class="card" style="background-color: #624F48; border-radius: 25px; max-width: 18rem; height: 100%; color: #D3C7B7; padding: 1rem; font-family: 'Libre Bodoni', serif; position: relative; overflow: hidden;margin-bottom: 3rem ">
                                 <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 5px solid white; border-radius: 25px; box-sizing: border-box;"></div>
                                 <div class="upper-card" style="box-sizing: border-box; border-radius: 25px; background-color: #715f56; margin: -0.4rem; padding: 0.4rem;">
@@ -479,7 +478,7 @@
                             </div>
                             {% endfor %}
                             {% for mentor in consulting %}
-                            <div class="col-sm-3" id="mentors" style=" margin-bottom: 3rem";>
+                            <div class="col-sm-3" id="mentors" style=" margin-bottom: 3rem;";>
                               <div class="card" style="background-color: #624F48; border-radius: 25px; max-width: 18rem; height: 100%; color: #D3C7B7; padding: 1rem; font-family: 'Libre Bodoni', serif; position: relative; overflow: hidden;margin-bottom: 3rem ">
                                 <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 5px solid white; border-radius: 25px; box-sizing: border-box;"></div>
                                 <div class="upper-card" style="box-sizing: border-box; border-radius: 25px; background-color: #715f56; margin: -0.4rem; padding: 0.4rem;">
@@ -494,7 +493,7 @@
                             </div>
                             {% endfor %}
                             {% for mentor in Consultmentors %}
-                            <div class="col-sm-3" id="mentors" style=" margin-bottom: 3rem";>
+                            <div class="col-sm-3" id="mentors" style=" margin-bottom: 3rem;";>
                               <div class="card" style="background-color: #624F48; border-radius: 25px; max-width: 18rem; height: 100%; color: #D3C7B7; padding: 1rem; font-family: 'Libre Bodoni', serif; position: relative; overflow: hidden;margin-bottom: 3rem ">
                                 <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 5px solid white; border-radius: 25px; box-sizing: border-box;"></div>
                                 <div class="upper-card" style="box-sizing: border-box; border-radius: 25px; background-color: #715f56; margin: -0.4rem; padding: 0.4rem;">
@@ -514,7 +513,7 @@
                         <div class="tab-pane fade" id="analytics">
                           <div class="row" id="t05">
                             {% for mentor in mentors_list_analysis %}
-                            <div class="col-sm-3" id="mentors" style=" margin-bottom: 3rem";>
+                            <div class="col-sm-3" id="mentors" style=" margin-bottom: 3rem;";>
                               <div class="card" style="background-color: #624F48; border-radius: 25px; max-width: 18rem; height: 100%; color: #D3C7B7; padding: 1rem; font-family: 'Libre Bodoni', serif; position: relative; overflow: hidden;margin-bottom: 3rem ">
                                 <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 5px solid white; border-radius: 25px; box-sizing: border-box;"></div>
                                 <div class="upper-card" style="box-sizing: border-box; border-radius: 25px; background-color: #715f56; margin: -0.4rem; padding: 0.4rem;">
@@ -529,7 +528,7 @@
                             </div>
                             {% endfor %}
                             {% for mentor in bhadwa %}
-                            <div class="col-sm-3" id="mentors" style=" margin-bottom: 3rem";>
+                            <div class="col-sm-3" id="mentors" style=" margin-bottom: 3rem;";>
                               <div class="card" style="background-color: #624F48; border-radius: 25px; max-width: 18rem; height: 100%; color: #D3C7B7; padding: 1rem; font-family: 'Libre Bodoni', serif; position: relative; overflow: hidden;margin-bottom: 3rem ">
                                 <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 5px solid white; border-radius: 25px; box-sizing: border-box;"></div>
                                 <div class="upper-card" style="box-sizing: border-box; border-radius: 25px; background-color: #715f56; margin: -0.4rem; padding: 0.4rem;">
@@ -549,7 +548,7 @@
                         <div class="tab-pane fade" id="finance">
                           <div class="row" id="t05">
                             {% for mentor in mentors_list_fin %}
-                            <div class="col-sm-3" id="mentors" style=" margin-bottom: 3rem";>
+                            <div class="col-sm-3" id="mentors" style=" margin-bottom: 3rem;";>
                               <div class="card" style="background-color: #624F48; border-radius: 25px; max-width: 18rem; height: 100%; color: #D3C7B7; padding: 1rem; font-family: 'Libre Bodoni', serif; position: relative; overflow: hidden;margin-bottom: 3rem ">
                                 <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 5px solid white; border-radius: 25px; box-sizing: border-box;"></div>
                                 <div class="upper-card" style="box-sizing: border-box; border-radius: 25px; background-color: #715f56; margin: -0.4rem; padding: 0.4rem;">
@@ -564,7 +563,7 @@
                             </div>
                             {% endfor %}
                             {% for mentor in finance %}
-                            <div class="col-sm-3" id="mentors" style=" margin-bottom: 3rem";>
+                            <div class="col-sm-3" id="mentors" style=" margin-bottom: 3rem;";>
                               <div class="card" style="background-color: #624F48; border-radius: 25px; max-width: 18rem; height: 100%; color: #D3C7B7; padding: 1rem; font-family: 'Libre Bodoni', serif; position: relative; overflow: hidden;margin-bottom: 3rem ">
                                 <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 5px solid white; border-radius: 25px; box-sizing: border-box;"></div>
                                 <div class="upper-card" style="box-sizing: border-box; border-radius: 25px; background-color: #715f56; margin: -0.4rem; padding: 0.4rem;">

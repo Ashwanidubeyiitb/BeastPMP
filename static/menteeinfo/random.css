@@ -384,9 +384,12 @@
           max-width: calc(50% - 1rem);
       }
   }
-  @media (max-width: 768px) {
+  @media (max-width: 699px) {
       .col-sm-3 {
           flex: 1 1 calc(100% - 1rem);
           max-width: calc(100% - 1rem);
+          min-width: 80vw;
+          justify-content: center;
+          align-items: center;
       }
   }
