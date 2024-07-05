@@ -136,6 +136,10 @@
     background-size: 100% 100%;
 }
 
+/* #slide2 .experience p{
+    margin-top: -5%;
+} */
+
 @media (max-width: 1620px) {
     .photoo{
         height: 30%;
@@ -219,5 +223,45 @@
     }
     .slide.active {
         transform: scale(1);
+    }
+}
+
+
+
+@media (max-width: 1025px){
+
+    .carousel-container {
+        position: relative;
+        width: 80%;
+        overflow: hidden;
+        height: 100%;
+        padding-top: 20%;
+    }
+    .carousel{
+        height: 60%;
+    }
+    .slide{
+        width: 100% !important;
+        min-width: 100% !important;
+    }
+    .photoo{
+        padding-top: 5%;
+    }
+    .btn-left {
+        top: 40%;
+        left: 10px;
+        background-color: rgba(255, 255, 255, 0.585);
+
+    }
+    
+    .btn-right {
+        top: 40%;
+        right: 10px;
+        background-color: rgba(255, 255, 255, 0.585);
+    }
+
+    .experience p{
+        top:-13%;
+        line-height: 18px;
     }
 }
