@@ -259,43 +259,6 @@
       });
     });
   </script>
-
-  <script>
-    $(document).ready(function () {
-      function checkPreferences() {
-        var allFilled = true; // Assume all fields are filled initially
-
-        // Check each preference field
-        $("#preference_1, #preference_2, #preference_3, #preference_4, #preference_5").each(function () {
-          if ($(this).val().trim() === "") {
-            allFilled = false;
-            return false; // Exit the loop if one field is empty
-          }
-        });
-
-        // Enable or disable the submit button based on allFilled flag
-        $("#submit").prop("disabled", !allFilled);
-
-        // Show or hide the message based on button state
-        if (!allFilled) {
-          $("#submit").css('background-color', 'grey');
-        } else {
-          $("#submit").css('background-color', '#624f48');
-        }
-      }
-
-      // Initially disable the submit button and hide the message
-      $("#submit").prop("disabled", true);
-
-      // Check preferences on input change
-      $("#preference_1, #preference_2, #preference_3, #preference_4, #preference_5").on("input", function () {
-        checkPreferences();
-      });
-
-      // Optional: Run the check on page load in case there are pre-filled values
-      checkPreferences();
-    });
-  </script>
 </head>
 
 <body style="background-color: #d9cdb3;">
@@ -879,7 +842,8 @@
                 <label class="fieldlabels" style="color: #4e3b30; font-family: 'Times New Roman', serif; text-align: left !important; display: block;">Fifth Preference: <span class="imp">*</span></label>
                 <input type="text" id="preference_5" name="preference_5" placeholder="Fifth Preference Mentor's id" style="width: 100%; padding: 10px; border-radius: 25px; border: 2px solid #4e3b30; background-color: #624f48; color: white; font-family: 'Times New Roman', serif;">
                 <button type="button" name="previous" class="previous action-button-previous" value="Previous">Previous</button>
-                <button type="submit" name="next" id="submit" class="next action-button" value="Next" style="font-family: 'Libre Bodoni', serif; background-color: transparent !important">Submit</button>
+                <button type="submit" name="next" id="submit-btn" class="action-button" value="Next" style="font-family: 'Libre Bodoni', serif;">Submit</button>
+                <div id="error-message"></div>
               </form>
             </fieldset>        
 
