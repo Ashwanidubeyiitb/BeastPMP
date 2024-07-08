@@ -133,6 +133,7 @@ class Mentee(models.Model):
     SOP = models.TextField(null=True)
     suggestion = models.TextField(null=True)
 	
+
 #mentor data
 class Mentor(models.Model):
     id = models.AutoField(primary_key=True)
@@ -141,9 +142,20 @@ class Mentor(models.Model):
     degree = models.CharField(max_length=255, null=True)
     graduation_year = models.CharField(max_length=10, null=True)
     experience = models.CharField(max_length=350, null=True)
-    field = models.CharField(max_length=12, null=True)
+    type = models.CharField(max_length=15, null=True, choices=OPTIONS)  # 'placement' or 'grad'
+
+    
+
+    field = models.CharField(max_length=15, null=True, choices=[
+    ('it_software', 'IT/Software'),
+    ('analytics', 'Analytics'),
+    ('consultancy', 'Consultancy'),
+    ('finance', 'Finance'),
+    ('management', 'Management'),
+    ('core', 'Core'),
+    ('other', 'Other')
+])
     specialization = models.CharField(max_length=100, null=True)
-    type = models.CharField(max_length=10, null=True)  # 'placement' or 'grad'
     
     # Exclusive to 'placement'
     workprofile = models.CharField(max_length=255, null=True, blank=True)
@@ -152,6 +164,8 @@ class Mentor(models.Model):
     # Exclusive to 'grad'
     university = models.CharField(max_length=255, null=True, blank=True)
     subject = models.CharField(max_length=255, null=True, blank=True)
+
+    
 
 	# hits = models.IntegerField(default = 0, null=True)
 	# gray_out = models.CharField(max_length = 1000, default = 1, null=True)

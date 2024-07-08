@@ -1,0 +1,53 @@
+{% extends "admin/change_form.html" %}
+
+{% block extrahead %}
+    {{ block.super }}
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            var placementFields = [
+                ['it_software', 'IT/Software'],
+                ['analytics', 'Analytics'],
+                ['consultancy', 'Consultancy'],
+                ['finance', 'Finance'],
+                ['management', 'Management'],
+                ['core', 'Core'],
+                ['other', 'Other']
+            ];
+
+            var gradFields = [
+                ['management', 'Management'],
+                ['core', 'Core']
+            ];
+
+            function updateFieldChoices() {
+                var type = $('#id_type').val();
+                var field = $('#id_field');
+                
+                field.empty();  // Clear existing options
+
+                var options = [];
+                if (type === 'placement') {
+                    options = placementFields;
+                } else if (type === 'grad') {
+                    options = gradFields;
+                }
+
+                // Populate 'field' dropdown with options
+                options.forEach(function(option) {
+                    // var isSelected = (savedValue === option[0]);  // Check if this option is selected
+                    // console.log(isSelected)
+                    field.append(new Option(option[1], option[0], true, true));
+                });
+            }
+
+            // Attach event listener to 'type' field change
+            $('#id_type').change(function() {
+                updateFieldChoices();  // Update 'field' dropdown when 'type' changes
+            });
+
+            // Initialize the 'field' dropdown on page load
+            // updateFieldChoices();
+        });
+    </script>
+{% endblock %}

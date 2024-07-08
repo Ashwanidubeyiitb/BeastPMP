@@ -1,6 +1,6 @@
 OPTIONS = [
     ('placement', 'Placement'),
-    ('gradmentoring', 'Grad Mentoring'),
+    ('grad', 'Grad Mentoring'),
 ]
 
 PLACEMENT_FIELDS = [
@@ -10,11 +10,12 @@ PLACEMENT_FIELDS = [
     ('finance', 'Finance'),
     ('management', 'Management'),
     ('core', 'Core'),
+    ('other', 'Other')
 ]
 
 HIGHERSTUDIES_FIELDS = [
     ('management', 'Management'),
-    ('core', 'Core'),
+    ('core', 'Core')
 ]
 
 DEGREE_CHOICES =[

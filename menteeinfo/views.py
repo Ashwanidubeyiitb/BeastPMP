@@ -328,7 +328,7 @@ from django.core.exceptions import ValidationError
 import csv
 from rest_framework.decorators import api_view
 # from . import options
-from .options import OPTIONS
+from .options import *
 
 # # from .resources import MentorResource
 # # from django.contrib import messages
@@ -355,6 +355,14 @@ from .options import OPTIONS
 # # Create your views here.
 # def index(request):
 # 	return render(request, 'menteeinfo/index.html')
+
+def mentor_create_view(request, mentor_id):
+    mentor = Mentor.objects.get(id=mentor_id)
+    saved_field_value = mentor.field
+
+    return render(request, 'change_form.html', {
+        'saved_field_value': saved_field_value,
+    })
 
 # Mentee registration
 def register(request):
