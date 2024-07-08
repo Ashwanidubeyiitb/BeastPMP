@@ -141,7 +141,7 @@ class Mentor(models.Model):
     degree = models.CharField(max_length=255, null=True)
     graduation_year = models.CharField(max_length=10, null=True)
     experience = models.CharField(max_length=350, null=True)
-    field = models.CharField(max_length=10, null=True)
+    field = models.CharField(max_length=12, null=True)
     specialization = models.CharField(max_length=100, null=True)
     type = models.CharField(max_length=10, null=True)  # 'placement' or 'grad'
     

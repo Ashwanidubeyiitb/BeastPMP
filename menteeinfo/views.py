@@ -367,15 +367,15 @@ def register(request):
     finmentors = Mentor.objects.filter(field="Finance", type="placement")
     finance = Mentor.objects.filter(field="finance", type="placement")
     csmentor = Mentor.objects.filter(field="IT/Software", type="placement")
-    othermentors = Mentor.objects.filter(field="Other", type="placement")
+    othermentors = Mentor.objects.filter(field="other", type="placement")
     Othermentors = Mentor.objects.filter(field="Other", type="placement")
     Othersmentors = Mentor.objects.filter(field="Others", type="placement")
-    chutiya = Mentor.objects.filter(field="FMCG(product management", type="placement")
+    chutiya = Mentor.objects.filter(field="FMCG(product management)", type="placement")
     fmcg = Mentor.objects.filter(field="FMCG", type="placement")
-    bhadwa = Mentor.objects.filter(field="Analytics", type="placement")
-    randi = Mentor.objects.filter(field="IT/Software", type="placement")
+    bhadwa = Mentor.objects.filter(field="analytics", type="placement")
+    # randi = Mentor.objects.filter(field="IT/Software", type="placement")
     corecontrol = Mentor.objects.filter(field="Mechanical(core control)", type="placement")
-    itsoftwar = Mentor.objects.filter(field="IT/Softwar", type="placement")
+    itsoftwar = Mentor.objects.filter(field="it_software", type="placement")
 
     CorementorsGrad = Mentor.objects.filter(field="core", type="grad")
     corementorsGrad = Mentor.objects.filter(field="Core", type="grad")
@@ -395,7 +395,7 @@ def register(request):
         'mentors_list_Others': Othersmentors,
         'mentors_list_chutiya': chutiya,
         'bhadwa': bhadwa,
-        'randi': randi,
+        # 'randi': randi,
         'corecontrol': corecontrol,
         'Consultmentors': Consultmentors,
         'consulting': consulting,
