@@ -21,12 +21,8 @@ class Mentee(models.Model):
 
     def save(self, *args, **kwargs):
         super(Mentee, self).save(*args, **kwargs)
-        # Update hits for preferred mentors
-        preferences = [self.preference_1, self.preference_2, self.preference_3, self.preference_4, self.preference_5]
-        mentors = Mentor.objects.filter(id__in=preferences)
-        for mentor in mentors:
-            mentor.hits += 1
-            mentor.save()
+
+
 
 class Mentor(models.Model):
     id = models.AutoField(primary_key=True)

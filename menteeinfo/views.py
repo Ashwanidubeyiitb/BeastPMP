@@ -1,237 +1,238 @@
-from django.shortcuts import render, redirect
-from django.http import HttpResponse
-from .models import Mentee, Mentor, Registration
-from django.core.exceptions import ValidationError
-from django.db.models import F  # Import F from django.db.models
-import csv
-from rest_framework.decorators import api_view
-from .options import *
+# from django.shortcuts import render, redirect
+# from django.http import HttpResponse
+# from .models import Mentee, Mentor, Registration
+# from django.core.exceptions import ValidationError
+# from django.db.models import F  # Import F from django.db.models
+# import csv
+# from rest_framework.decorators import api_view
+# from .options import *
 
-def mentor_create_view(request, mentor_id):
-    mentor = Mentor.objects.get(id=mentor_id)
-    saved_field_value = mentor.field
-    return render(request, 'change_form.html', {'saved_field_value': saved_field_value})
+# def mentor_create_view(request, mentor_id):
+#     mentor = Mentor.objects.get(id=mentor_id)
+#     saved_field_value = mentor.field
+#     return render(request, 'change_form.html', {'saved_field_value': saved_field_value})
 
-# Mentee registration
-def register(request):
-    corementors = Mentor.objects.filter(field="Core", type="placement", hits__lt=F('gray_out'))
-    Corementors = Mentor.objects.filter(field="core", type="placement", hits__lt=F('gray_out'))
-    consultmentors = Mentor.objects.filter(field="Consultancy", type="placement", hits__lt=F('gray_out'))
-    Consultmentors = Mentor.objects.filter(field="consultancy", type="placement", hits__lt=F('gray_out'))
-    consulting = Mentor.objects.filter(field="consulting", type="placement", hits__lt=F('gray_out'))
-    analyticmentors = Mentor.objects.filter(field="Analytics", type="placement", hits__lt=F('gray_out'))
-    finmentors = Mentor.objects.filter(field="Finance", type="placement", hits__lt=F('gray_out'))
-    finance = Mentor.objects.filter(field="finance", type="placement", hits__lt=F('gray_out'))
-    csmentor = Mentor.objects.filter(field="IT/Software", type="placement", hits__lt=F('gray_out'))
-    othermentors = Mentor.objects.filter(field="other", type="placement", hits__lt=F('gray_out'))
-    Othermentors = Mentor.objects.filter(field="Other", type="placement", hits__lt=F('gray_out'))
-    Othersmentors = Mentor.objects.filter(field="Others", type="placement", hits__lt=F('gray_out'))
-    chutiya = Mentor.objects.filter(field="FMCG(product management)", type="placement", hits__lt=F('gray_out'))
-    fmcg = Mentor.objects.filter(field="FMCG", type="placement", hits__lt=F('gray_out'))
-    bhadwa = Mentor.objects.filter(field="analytics", type="placement", hits__lt=F('gray_out'))
-    corecontrol = Mentor.objects.filter(field="Mechanical(core control)", type="placement", hits__lt=F('gray_out'))
-    itsoftwar = Mentor.objects.filter(field="it_software", type="placement", hits__lt=F('gray_out'))
+# # Mentee registration
+# def register(request):
+#     corementors = Mentor.objects.filter(field="Core", type="placement", hits__lt=F('gray_out'))
+#     Corementors = Mentor.objects.filter(field="core", type="placement", hits__lt=F('gray_out'))
+#     consultmentors = Mentor.objects.filter(field="Consultancy", type="placement", hits__lt=F('gray_out'))
+#     Consultmentors = Mentor.objects.filter(field="consultancy", type="placement", hits__lt=F('gray_out'))
+#     consulting = Mentor.objects.filter(field="consulting", type="placement", hits__lt=F('gray_out'))
+#     analyticmentors = Mentor.objects.filter(field="Analytics", type="placement", hits__lt=F('gray_out'))
+#     finmentors = Mentor.objects.filter(field="Finance", type="placement", hits__lt=F('gray_out'))
+#     finance = Mentor.objects.filter(field="finance", type="placement", hits__lt=F('gray_out'))
+#     csmentor = Mentor.objects.filter(field="IT/Software", type="placement", hits__lt=F('gray_out'))
+#     othermentors = Mentor.objects.filter(field="other", type="placement", hits__lt=F('gray_out'))
+#     Othermentors = Mentor.objects.filter(field="Other", type="placement", hits__lt=F('gray_out'))
+#     Othersmentors = Mentor.objects.filter(field="Others", type="placement", hits__lt=F('gray_out'))
+#     chutiya = Mentor.objects.filter(field="FMCG(product management)", type="placement", hits__lt=F('gray_out'))
+#     fmcg = Mentor.objects.filter(field="FMCG", type="placement", hits__lt=F('gray_out'))
+#     bhadwa = Mentor.objects.filter(field="analytics", type="placement", hits__lt=F('gray_out'))
+#     corecontrol = Mentor.objects.filter(field="Mechanical(core control)", type="placement", hits__lt=F('gray_out'))
+#     itsoftwar = Mentor.objects.filter(field="it_software", type="placement", hits__lt=F('gray_out'))
 
-    CorementorsGrad = Mentor.objects.filter(field="core", type="grad", hits__lt=F('gray_out'))
-    corementorsGrad = Mentor.objects.filter(field="Core", type="grad", hits__lt=F('gray_out'))
-    managementmentorsGrad = Mentor.objects.filter(field="management", type="grad", hits__lt=F('gray_out'))
-    ManagementmentorsGrad = Mentor.objects.filter(field="Management", type="grad", hits__lt=F('gray_out'))
+#     CorementorsGrad = Mentor.objects.filter(field="core", type="grad", hits__lt=F('gray_out'))
+#     corementorsGrad = Mentor.objects.filter(field="Core", type="grad", hits__lt=F('gray_out'))
+#     managementmentorsGrad = Mentor.objects.filter(field="management", type="grad", hits__lt=F('gray_out'))
+#     ManagementmentorsGrad = Mentor.objects.filter(field="Management", type="grad", hits__lt=F('gray_out'))
 
-    context = {
-        'mentors_list_core': corementors,
-        'mentors_list_consult': consultmentors,
-        'mentors_list_analysis': analyticmentors,
-        'mentors_list_fin': finmentors,
-        'mentors_list_cs': csmentor,
-        'mentors_list_other': othermentors,
-        'mentors_list_fmcg': fmcg,
-        'mentors_list_Core': Corementors,
-        'mentors_list_Other': Othermentors,
-        'mentors_list_Others': Othersmentors,
-        'mentors_list_chutiya': chutiya,
-        'bhadwa': bhadwa,
-        'corecontrol': corecontrol,
-        'Consultmentors': Consultmentors,
-        'consulting': consulting,
-        'finance': finance,
-        'itsoftwar': itsoftwar,
-        'mentors_core': corementorsGrad,
-        'mentors_Core': CorementorsGrad,
-        'mentors_management': managementmentorsGrad,
-        'mentors_Management': ManagementmentorsGrad,
-    }
+#     context = {
+#         'mentors_list_core': corementors,
+#         'mentors_list_consult': consultmentors,
+#         'mentors_list_analysis': analyticmentors,
+#         'mentors_list_fin': finmentors,
+#         'mentors_list_cs': csmentor,
+#         'mentors_list_other': othermentors,
+#         'mentors_list_fmcg': fmcg,
+#         'mentors_list_Core': Corementors,
+#         'mentors_list_Other': Othermentors,
+#         'mentors_list_Others': Othersmentors,
+#         'mentors_list_chutiya': chutiya,
+#         'bhadwa': bhadwa,
+#         'corecontrol': corecontrol,
+#         'Consultmentors': Consultmentors,
+#         'consulting': consulting,
+#         'finance': finance,
+#         'itsoftwar': itsoftwar,
+#         'mentors_core': corementorsGrad,
+#         'mentors_Core': CorementorsGrad,
+#         'mentors_management': managementmentorsGrad,
+#         'mentors_Management': ManagementmentorsGrad,
+#     }
 
-    return render(request, "menteeinfo/register.html", context)
+#     return render(request, "menteeinfo/register.html", context)
 
-def menteereg(request):
-    if request.method == 'POST':
-        full_name = request.POST.get('full_name')
-        roll_no = request.POST.get('roll_no')
-        department = request.POST.get('department')
-        dept_other = request.POST.get('dept_other')
-        degree = request.POST.get('degree')
-        degree_other = request.POST.get('degree_other')
-        contact_number = request.POST.get('contact_number')
-        email_id = request.POST.get('email_id')
-        preference_1 = request.POST.get('preference_1')
-        preference_2 = request.POST.get('preference_2')
-        preference_3 = request.POST.get('preference_3')
-        preference_4 = request.POST.get('preference_4')
-        preference_5 = request.POST.get('preference_5')
-        suggestion = request.POST.get('suggestion')
-        SOP = request.POST.get('SOP')
+# def menteereg(request):
+#     if request.method == 'POST':
+#         full_name = request.POST.get('full_name')
+#         roll_no = request.POST.get('roll_no')
+#         department = request.POST.get('department')
+#         dept_other = request.POST.get('dept_other')
+#         degree = request.POST.get('degree')
+#         degree_other = request.POST.get('degree_other')
+#         contact_number = request.POST.get('contact_number')
+#         email_id = request.POST.get('email_id')
+#         preference_1 = request.POST.get('preference_1')
+#         preference_2 = request.POST.get('preference_2')
+#         preference_3 = request.POST.get('preference_3')
+#         preference_4 = request.POST.get('preference_4')
+#         preference_5 = request.POST.get('preference_5')
+#         suggestion = request.POST.get('suggestion')
+#         SOP = request.POST.get('SOP')
 
-        mentee = Mentee(
-            full_name=full_name,
-            roll_no=roll_no,
-            department=department,
-            dept_other=dept_other,
-            degree=degree,
-            degree_other=degree_other,
-            contact_number=contact_number,
-            email_id=email_id,
-            preference_1=preference_1,
-            preference_2=preference_2,
-            preference_3=preference_3,
-            preference_4=preference_4,
-            preference_5=preference_5,
-            suggestion=suggestion,
-            SOP=SOP
-        )
-        mentee.save()
-        context = {}
-    return render(request, 'menteeinfo/register_success.html', context)
+#         mentee = Mentee(
+#             full_name=full_name,
+#             roll_no=roll_no,
+#             department=department,
+#             dept_other=dept_other,
+#             degree=degree,
+#             degree_other=degree_other,
+#             contact_number=contact_number,
+#             email_id=email_id,
+#             preference_1=preference_1,
+#             preference_2=preference_2,
+#             preference_3=preference_3,
+#             preference_4=preference_4,
+#             preference_5=preference_5,
+#             suggestion=suggestion,
+#             SOP=SOP
+#         )
+#         mentee.save()
+#         context = {}
+#     return render(request, 'menteeinfo/register_success.html', context)
 
-def export(request):
-    response = HttpResponse(content_type='text/csv')
-    writer = csv.writer(response)
-    writer.writerow([
-        'Fullname',
-        'Roll No',
-        'Department',
-        'Other department',
-        'degree',
-        'Other Degree',
-        'Graduation Year',
-        'Contact',
-        'Email',
-        'Option',
-        'Designation',
-        'Company Name',
-        'University Name',
-        'experience',
-        'Preference 1',
-        'Preference 2',
-        'Preference 3',
-        'Core',
-        'Core Subdivision',
-        'Preferred mentees',
-        'Suggestions',
-        'Recommendations',
-    ])
-    for registration in Registration.objects.all().values_list(
-        'fullname',
-        'rollno',
-        'department',
-        'department_other',
-        'degree',
-        'degree_other',
-        'graduation_year',
-        'contact',
-        'email',
-        'placementOrGrad',
-        'designation',
-        'company_name',
-        'university_name',
-        'experience',
-        'field_pref1',
-        'field_pref2',
-        'field_pref3',
-        'branch',
-        'branch_subdivision',
-        'preferred_mentees',
-        'suggestions',
-        'alumni_recommendations'
-    ):
-        writer.writerow(registration)
+# def export(request):
+#     response = HttpResponse(content_type='text/csv')
+#     writer = csv.writer(response)
+#     writer.writerow([
+#         'Fullname',
+#         'Roll No',
+#         'Department',
+#         'Other department',
+#         'degree',
+#         'Other Degree',
+#         'Graduation Year',
+#         'Contact',
+#         'Email',
+#         'Option',
+#         'Designation',
+#         'Company Name',
+#         'University Name',
+#         'experience',
+#         'Preference 1',
+#         'Preference 2',
+#         'Preference 3',
+#         'Core',
+#         'Core Subdivision',
+#         'Preferred mentees',
+#         'Suggestions',
+#         'Recommendations',
+#     ])
+#     for registration in Registration.objects.all().values_list(
+#         'fullname',
+#         'rollno',
+#         'department',
+#         'department_other',
+#         'degree',
+#         'degree_other',
+#         'graduation_year',
+#         'contact',
+#         'email',
+#         'placementOrGrad',
+#         'designation',
+#         'company_name',
+#         'university_name',
+#         'experience',
+#         'field_pref1',
+#         'field_pref2',
+#         'field_pref3',
+#         'branch',
+#         'branch_subdivision',
+#         'preferred_mentees',
+#         'suggestions',
+#         'alumni_recommendations'
+#     ):
+#         writer.writerow(registration)
 
-    response['Content-Disposition'] = 'attachment; filename="mentors_pmp23.csv"'
-    return response
+#     response['Content-Disposition'] = 'attachment; filename="mentors_pmp23.csv"'
+#     return response
 
-def index(request):
-    return render(request, 'menteeinfo/home.html')
+# def index(request):
+#     return render(request, 'menteeinfo/home.html')
 
-def phonehome(request):
-    return render(request, 'menteeinfo/phonehome.html')
+# def phonehome(request):
+#     return render(request, 'menteeinfo/phonehome.html')
 
-def mentorReg(request):
-    def __str__(self):
-        return self.fullname
+# def mentorReg(request):
+#     def __str__(self):
+#         return self.fullname
 
-    if request.method == 'POST':
-        fullname = request.POST.get('fullname')
-        rollno = request.POST.get('rollno')
-        department = request.POST.get('department')
-        department_other = request.POST.get('other_department')
-        degree = request.POST.get('degree')
-        degree_other = request.POST.get('degree_other')
-        graduation_year = request.POST.get('graduation_year')
-        contact = request.POST.get('contact')
-        email = request.POST.get('email')
-        placementOrGrad = request.POST.get('placementOrGrad')
+#     if request.method == 'POST':
+#         fullname = request.POST.get('fullname')
+#         rollno = request.POST.get('rollno')
+#         department = request.POST.get('department')
+#         department_other = request.POST.get('other_department')
+#         degree = request.POST.get('degree')
+#         degree_other = request.POST.get('degree_other')
+#         graduation_year = request.POST.get('graduation_year')
+#         contact = request.POST.get('contact')
+#         email = request.POST.get('email')
+#         placementOrGrad = request.POST.get('placementOrGrad')
 
-        field_pref3 = "NA"
+#         field_pref3 = "NA"
 
-        if placementOrGrad == 'placement':
-            experience = request.POST.get('placementExperience')
-            field_pref1 = request.POST.get('placementPref1')
-            field_pref2 = request.POST.get('placementPref2')
-            field_pref3 = request.POST.get('placementPref3')
-        else:
-            experience = request.POST.get('gradExperience')
-            field_pref1 = request.POST.get('gradPref1')
-            field_pref2 = request.POST.get('gradPref2')
+#         if placementOrGrad == 'placement':
+#             experience = request.POST.get('placementExperience')
+#             field_pref1 = request.POST.get('placementPref1')
+#             field_pref2 = request.POST.get('placementPref2')
+#             field_pref3 = request.POST.get('placementPref3')
+#         else:
+#             experience = request.POST.get('gradExperience')
+#             field_pref1 = request.POST.get('gradPref1')
+#             field_pref2 = request.POST.get('gradPref2')
 
-        designation = request.POST.get('designation')
-        company_name = request.POST.get('company_name')
-        university = request.POST.get('university_name')
-        suggestions = request.POST.get('suggestion')
-        recommendations = request.POST.get('referral')
-        core_branch = request.POST.get('core')
-        branch_subdivision = request.POST.get('subdivisions')
+#         designation = request.POST.get('designation')
+#         company_name = request.POST.get('company_name')
+#         university = request.POST.get('university_name')
+#         suggestions = request.POST.get('suggestion')
+#         recommendations = request.POST.get('referral')
+#         core_branch = request.POST.get('core')
+#         branch_subdivision = request.POST.get('subdivisions')
 
-        print(branch_subdivision)
+#         print(branch_subdivision)
 
-        preferred_mentees = request.POST.get('no_of_mentees')
+#         preferred_mentees = request.POST.get('no_of_mentees')
 
-        registration = Registration(
-            fullname=fullname or "NA", email=email or "NA", department=department or "NA", rollno=rollno or "NA", department_other=department_other or "NA",
-            degree=degree or "NA", degree_other=degree_other or "NA", graduation_year=graduation_year or "NA", field_pref3=field_pref3 or "NA",
-            contact=contact or "NA", placementOrGrad=placementOrGrad or "NA", designation=designation or "NA", company_name=company_name or "NA",
-            experience=experience or "NA", field_pref1=field_pref1 or "NA", field_pref2=field_pref2 or "NA", branch=(core_branch or "NA"), branch_subdivision=(branch_subdivision or "NA"),
-            preferred_mentees=preferred_mentees or "NA", university_name=(university or "NA"), suggestions=suggestions or "NA", alumni_recommendations=recommendations or "NA"
-        )
+#         registration = Registration(
+#             fullname=fullname or "NA", email=email or "NA", department=department or "NA", rollno=rollno or "NA", department_other=department_other or "NA",
+#             degree=degree or "NA", degree_other=degree_other or "NA", graduation_year=graduation_year or "NA", field_pref3=field_pref3 or "NA",
+#             contact=contact or "NA", placementOrGrad=placementOrGrad or "NA", designation=designation or "NA", company_name=company_name or "NA",
+#             experience=experience or "NA", field_pref1=field_pref1 or "NA", field_pref2=field_pref2 or "NA", branch=(core_branch or "NA"), branch_subdivision=(branch_subdivision or "NA"),
+#             preferred_mentees=preferred_mentees or "NA", university_name=(university or "NA"), suggestions=suggestions or "NA", alumni_recommendations=recommendations or "NA"
+#         )
 
-        registration.save()
-        return render(request, 'menteeinfo/thank.html')
+#         registration.save()
+#         return render(request, 'menteeinfo/thank.html')
 
-    context = {
-        'options': OPTIONS,
-    }
+#     context = {
+#         'options': OPTIONS,
+#     }
 
-    return render(request, 'menteeinfo/form.html', context)
+#     return render(request, 'menteeinfo/form.html', context)
 
-def thank(request):
-    return render(request, 'menteeinfo/thank.html')
+# def thank(request):
+#     return render(request, 'menteeinfo/thank.html')
 
-@api_view(['POST'])
-def testapi(request):
-    req_data = request.data
-    alumni_id = req_data['id']
-    duration = req_data['duration']
-    context = {'alumni_id': alumni_id, 'duration': duration}
-    return render(request, 'thank.html', context)
+# @api_view(['POST'])
+# def testapi(request):
+#     req_data = request.data
+#     alumni_id = req_data['id']
+#     duration = req_data['duration']
+#     context = {'alumni_id': alumni_id, 'duration': duration}
+#     return render(request, 'thank.html', context)
 
+# uper wala for different grey out
 
 
 
@@ -907,3 +908,252 @@ def testapi(request):
 #     return render(request, 'thank.html', context)
 
 
+
+# new grayout logic
+
+from django.shortcuts import render, redirect
+from django.http import HttpResponse
+from .models import Mentee, Mentor, Registration
+from django.core.exceptions import ValidationError
+from django.db.models import F  # Import F from django.db.models
+import csv
+from rest_framework.decorators import api_view
+from .options import *
+
+def mentor_create_view(request, mentor_id):
+    mentor = Mentor.objects.get(id=mentor_id)
+    saved_field_value = mentor.field
+    return render(request, 'change_form.html', {'saved_field_value': saved_field_value})
+
+# Mentee registration
+def register(request):
+    corementors = Mentor.objects.filter(field="Core", type="placement", hits__lt=21)
+    Corementors = Mentor.objects.filter(field="core", type="placement", hits__lt=21)
+    consultmentors = Mentor.objects.filter(field="Consultancy", type="placement", hits__lt=21)
+    Consultmentors = Mentor.objects.filter(field="consultancy", type="placement", hits__lt=21)
+    consulting = Mentor.objects.filter(field="consulting", type="placement", hits__lt=21)
+    analyticmentors = Mentor.objects.filter(field="Analytics", type="placement", hits__lt=21)
+    finmentors = Mentor.objects.filter(field="Finance", type="placement", hits__lt=21)
+    finance = Mentor.objects.filter(field="finance", type="placement", hits__lt=21)
+    csmentor = Mentor.objects.filter(field="IT/Software", type="placement", hits__lt=21)
+    othermentors = Mentor.objects.filter(field="other", type="placement", hits__lt=21)
+    Othermentors = Mentor.objects.filter(field="Other", type="placement", hits__lt=21)
+    Othersmentors = Mentor.objects.filter(field="Others", type="placement", hits__lt=21)
+    chutiya = Mentor.objects.filter(field="FMCG(product management)", type="placement", hits__lt=21)
+    fmcg = Mentor.objects.filter(field="FMCG", type="placement", hits__lt=21)
+    bhadwa = Mentor.objects.filter(field="analytics", type="placement", hits__lt=21)
+    corecontrol = Mentor.objects.filter(field="Mechanical(core control)", type="placement", hits__lt=21)
+    itsoftwar = Mentor.objects.filter(field="it_software", type="placement", hits__lt=21)
+
+    CorementorsGrad = Mentor.objects.filter(field="core", type="grad", hits__lt=21)
+    corementorsGrad = Mentor.objects.filter(field="Core", type="grad", hits__lt=21)
+    managementmentorsGrad = Mentor.objects.filter(field="management", type="grad", hits__lt=21)
+    ManagementmentorsGrad = Mentor.objects.filter(field="Management", type="grad", hits__lt=21)
+
+    context = {
+        'mentors_list_core': corementors,
+        'mentors_list_consult': consultmentors,
+        'mentors_list_analysis': analyticmentors,
+        'mentors_list_fin': finmentors,
+        'mentors_list_cs': csmentor,
+        'mentors_list_other': othermentors,
+        'mentors_list_fmcg': fmcg,
+        'mentors_list_Core': Corementors,
+        'mentors_list_Other': Othermentors,
+        'mentors_list_Others': Othersmentors,
+        'mentors_list_chutiya': chutiya,
+        'bhadwa': bhadwa,
+        'corecontrol': corecontrol,
+        'Consultmentors': Consultmentors,
+        'consulting': consulting,
+        'finance': finance,
+        'itsoftwar': itsoftwar,
+        'mentors_core': corementorsGrad,
+        'mentors_Core': CorementorsGrad,
+        'mentors_management': managementmentorsGrad,
+        'mentors_Management': ManagementmentorsGrad,
+    }
+
+    return render(request, "menteeinfo/register.html", context)
+
+def menteereg(request):
+    if request.method == 'POST':
+        full_name = request.POST.get('full_name')
+        roll_no = request.POST.get('roll_no')
+        department = request.POST.get('department')
+        dept_other = request.POST.get('dept_other')
+        degree = request.POST.get('degree')
+        degree_other = request.POST.get('degree_other')
+        contact_number = request.POST.get('contact_number')
+        email_id = request.POST.get('email_id')
+        preference_1 = request.POST.get('preference_1')
+        preference_2 = request.POST.get('preference_2')
+        preference_3 = request.POST.get('preference_3')
+        preference_4 = request.POST.get('preference_4')
+        preference_5 = request.POST.get('preference_5')
+        suggestion = request.POST.get('suggestion')
+        SOP = request.POST.get('SOP')
+
+        mentee = Mentee(
+            full_name=full_name,
+            roll_no=roll_no,
+            department=department,
+            dept_other=dept_other,
+            degree=degree,
+            degree_other=degree_other,
+            contact_number=contact_number,
+            email_id=email_id,
+            preference_1=preference_1,
+            preference_2=preference_2,
+            preference_3=preference_3,
+            preference_4=preference_4,
+            preference_5=preference_5,
+            suggestion=suggestion,
+            SOP=SOP
+        )
+        mentee.save()
+
+        # Update hits based on preferences
+        preferences = [preference_1, preference_2, preference_3, preference_4, preference_5]
+        weights = [3, 2, 1, 0, 0]
+        
+        for idx, preference in enumerate(preferences):
+            if preference:
+                mentor = Mentor.objects.get(id=preference)
+                mentor.hits = F('hits') + weights[idx]
+                mentor.save()
+
+        context = {}
+        return render(request, 'menteeinfo/register_success.html', context)
+
+    return render(request, 'menteeinfo/register.html')
+
+def export(request):
+    response = HttpResponse(content_type='text/csv')
+    writer = csv.writer(response)
+    writer.writerow([
+        'Fullname',
+        'Roll No',
+        'Department',
+        'Other department',
+        'degree',
+        'Other Degree',
+        'Graduation Year',
+        'Contact',
+        'Email',
+        'Option',
+        'Designation',
+        'Company Name',
+        'University Name',
+        'experience',
+        'Preference 1',
+        'Preference 2',
+        'Preference 3',
+        'Core',
+        'Core Subdivision',
+        'Preferred mentees',
+        'Suggestions',
+        'Recommendations',
+    ])
+    for registration in Registration.objects.all().values_list(
+        'fullname',
+        'rollno',
+        'department',
+        'department_other',
+        'degree',
+        'degree_other',
+        'graduation_year',
+        'contact',
+        'email',
+        'placementOrGrad',
+        'designation',
+        'company_name',
+        'university_name',
+        'experience',
+        'field_pref1',
+        'field_pref2',
+        'field_pref3',
+        'branch',
+        'branch_subdivision',
+        'preferred_mentees',
+        'suggestions',
+        'alumni_recommendations'
+    ):
+        writer.writerow(registration)
+
+    response['Content-Disposition'] = 'attachment; filename="mentors_pmp23.csv"'
+    return response
+
+def index(request):
+    return render(request, 'menteeinfo/home.html')
+
+def phonehome(request):
+    return render(request, 'menteeinfo/phonehome.html')
+
+def mentorReg(request):
+    def __str__(self):
+        return self.fullname
+
+    if request.method == 'POST':
+        fullname = request.POST.get('fullname')
+        rollno = request.POST.get('rollno')
+        department = request.POST.get('department')
+        department_other = request.POST.get('other_department')
+        degree = request.POST.get('degree')
+        degree_other = request.POST.get('degree_other')
+        graduation_year = request.POST.get('graduation_year')
+        contact = request.POST.get('contact')
+        email = request.POST.get('email')
+        placementOrGrad = request.POST.get('placementOrGrad')
+
+        field_pref3 = "NA"
+
+        if placementOrGrad == 'placement':
+            experience = request.POST.get('placementExperience')
+            field_pref1 = request.POST.get('placementPref1')
+            field_pref2 = request.POST.get('placementPref2')
+            field_pref3 = request.POST.get('placementPref3')
+        else:
+            experience = request.POST.get('gradExperience')
+            field_pref1 = request.POST.get('gradPref1')
+            field_pref2 = request.POST.get('gradPref2')
+
+        designation = request.POST.get('designation')
+        company_name = request.POST.get('company_name')
+        university = request.POST.get('university_name')
+        suggestions = request.POST.get('suggestion')
+        recommendations = request.POST.get('referral')
+        core_branch = request.POST.get('core')
+        branch_subdivision = request.POST.get('subdivisions')
+
+        print(branch_subdivision)
+
+        preferred_mentees = request.POST.get('no_of_mentees')
+
+        registration = Registration(
+            fullname=fullname or "NA", email=email or "NA", department=department or "NA", rollno=rollno or "NA", department_other=department_other or "NA",
+            degree=degree or "NA", degree_other=degree_other or "NA", graduation_year=graduation_year or "NA", field_pref3=field_pref3 or "NA",
+            contact=contact or "NA", placementOrGrad=placementOrGrad or "NA", designation=designation or "NA", company_name=company_name or "NA",
+            experience=experience or "NA", field_pref1=field_pref1 or "NA", field_pref2=field_pref2 or "NA", branch=(core_branch or "NA"), branch_subdivision=(branch_subdivision or "NA"),
+            preferred_mentees=preferred_mentees or "NA", university_name=(university or "NA"), suggestions=suggestions or "NA", alumni_recommendations=recommendations or "NA"
+        )
+
+        registration.save()
+        return render(request, 'menteeinfo/thank.html')
+
+    context = {
+        'options': OPTIONS,
+    }
+
+    return render(request, 'menteeinfo/form.html', context)
+
+def thank(request):
+    return render(request, 'menteeinfo/thank.html')
+
+@api_view(['POST'])
+def testapi(request):
+    req_data = request.data
+    alumni_id = req_data['id']
+    duration = req_data['duration']
+    context = {'alumni_id': alumni_id, 'duration': duration}
+    return render(request, 'thank.html', context)
