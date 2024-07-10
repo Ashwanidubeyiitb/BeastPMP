@@ -389,7 +389,7 @@ def register(request):
     corementorsGrad = Mentor.objects.filter(field="Core", type="grad")
     managementmentorsGrad = Mentor.objects.filter(field="management", type="grad")
     ManagementmentorsGrad = Mentor.objects.filter(field="Management", type="grad")
-    # allmentors_sorted = allmentors.order_by['gray_out']
+    
     context = {
         'mentors_list_core': corementors, 
         'mentors_list_consult': consultmentors,
@@ -422,7 +422,7 @@ def register(request):
     #     explist = exp.split(",")
     #     dict[mentor.rollno] = explist
     # print (dict[183020060])
-
+    # allmentors_sorted = Mentor.objects.all().order_by['gray_out']
     return render(request, "menteeinfo/register.html", context)
 
 # def mentorexp(request):

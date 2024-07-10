@@ -167,8 +167,8 @@ class Mentor(models.Model):
 
     
 
-	# hits = models.IntegerField(default = 0, null=True)
-	# gray_out = models.CharField(max_length = 1000, default = 1, null=True)
+    hits = models.IntegerField(default = 0, null=True)
+    gray_out = models.CharField(max_length = 1000, default = 1, null=True)
 
 # class gradMentor(models.Model):
 # 	id = models.AutoField(primary_key=True)

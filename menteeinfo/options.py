@@ -10,7 +10,7 @@ PLACEMENT_FIELDS = [
     ('finance', 'Finance'),
     ('management', 'Management'),
     ('core', 'Core'),
-    ('other', 'Other')
+     ('other', 'Product Management')
 ]
 
 HIGHERSTUDIES_FIELDS = [

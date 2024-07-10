@@ -134,6 +134,11 @@
     background-image: url('../img/adarshh.jpg');
     background-size: 100% 100%;
 }
+#slide5 .circular{
+    max-width: 210px;
+    background-image: url('../img/vivek.png');
+    background-size: 100% 100%;
+}
 
 /* #slide2 .experience p{
     margin-top: -5%;
