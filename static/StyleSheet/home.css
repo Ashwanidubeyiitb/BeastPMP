@@ -114,9 +114,7 @@ body {
     box-shadow: 0 1px 5px 1px rgba(0, 0, 0, 0.2);
     width: 100vw;
     position: fixed;
-    background-color:#624F48
-
-    ;
+    background-color:#624F48;
     transition: all 0.5s ease-in-out;
     z-index: 200;
 }
@@ -348,17 +346,13 @@ body {
 }
 
 .headBox {
-    position: relative;
     height: 10%;
-    top: 10%;
     text-align: center !important;
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 400;
     font-size: 400%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    margin-top: 4rem;
 }
 
 .headBox span{
@@ -373,18 +367,15 @@ body {
 }
 
 .headBox0 {
-    position: relative;
+
     height: 10%;
-    top: 20%;
+
     margin-bottom: 10%;
     text-align: center !important;
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 400;
     font-size: 400%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .headBox0 span{
@@ -440,17 +431,13 @@ body {
 
 /* About section */
 @media (min-width:801px) {
-    .section5 {
-        height: 100vh;
-        width: 100vw;
-    }
 
     .about-info {
         z-index: 5;
         text-align: justify;
         font-size: 1.9rem;
         color: black;
-        margin: 8% 10% 0% 10%;
+        margin: 3% 10% 0% 10%;
     }
 
     .illustration {
@@ -460,15 +447,6 @@ body {
         top: 142px;
         left: -10px;
         z-index: -1;
-    }
-
-    .hexagons-div {
-        position: relative;
-        margin-top: 4vh;
-        padding: 2vh;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-evenly;
     }
 
     .hexagon {
@@ -525,9 +503,6 @@ body {
         background: #D5877D;
         position: relative;
         clip-path: polygon(0% 25%, 0% 75%, 50% 100%, 100% 75%, 100% 25%, 50% 0%);
-    }
-
-    .hexagon {
         display: grid;
         place-content: center;
         color: #222629;
@@ -551,9 +526,14 @@ body {
 
 }
 
-
-
-
+.hexagons-div {
+    height: 30vh;
+    margin-top: 4vh;
+    padding: 2vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
 
 .mentees,
 .mentors,
@@ -567,6 +547,7 @@ body {
 
 /* Mentor section */
 .section3{
+    margin-top: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1756,4 +1737,63 @@ body {
     }
 
 
+}
+
+.team-members {
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+gap: 100px;
+padding: 20px;
+}
+
+.member {
+padding: 20px;
+max-width: 300px;
+width: 100%;
+text-align: center;
+}
+
+.member-photo {
+width: 100%;
+height: 60%;
+border-radius: 50%;
+margin: auto;
+}
+
+.member-name {
+font-size: 1.5em;
+margin: 10px 0;
+}
+
+.member-details {
+font-size: 1em;
+margin: 5px 0;
+}
+
+.social-media a {
+margin: 0 10px;
+color: #333;
+font-size: 1.2em;
+}
+
+@media (max-width: 768px) {
+.team-members {
+    flex-direction: column;
+    align-items: center;
+    margin-top: 24px;
+}
+.member {
+    padding: 20px;
+    max-width: 300px;
+    width: 100%;
+    text-align: center;
+    }
+    
+.member-photo {
+    width: 100%;
+    height: 300px;
+    border-radius: 50%;
+    margin: auto;
+    }
 }
