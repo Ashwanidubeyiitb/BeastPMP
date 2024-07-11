@@ -91,7 +91,7 @@ body {
     background-color: black;
     border-radius: 17px;
     align-self: center;
-    width: 150%;
+    /* width: 150%; */
     padding: 20px 30px;
     color: black;
     font-weight: bold;
@@ -335,10 +335,6 @@ body {
     }
 
 }
-
-
-
-
 
 /* Common to all sections */
 
